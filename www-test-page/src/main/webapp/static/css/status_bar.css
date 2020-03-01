@@ -1,0 +1,51 @@
+/*状态--搜索*/
+.status_bar {
+    height: 100px;
+    width: 92%;
+    margin: 20px auto;
+    font-size: 22px;
+    color: var(--theme-colors);
+}
+
+.status_bar a:link {
+    color: var(--theme-colors);
+    /*margin-right: 200px;*/
+    /*margin-left: 50px;*/
+}
+
+/*已访问过链接的样式*/
+.status_bar a:visited {
+    /*color: darkgray;*/
+    color: var(--theme-colors);
+}
+
+.status_bar_div_input {
+    text-align: center;
+}
+
+
+.status_bar_div_input_text {
+    width: 400px;
+    height: 36px;
+    border: 1px solid var(--theme-colors);
+    /*只设置position，但不设置偏移量，
+目的是为了让它成为子元素绝对定位的目标，并非让它真的偏移。*/
+    position: relative;
+}
+
+.status_bar_div_input_text_search {
+    height: 38px;
+    width: 50px;
+    position: absolute;
+    font-size: 15px;
+    background-color: var(--theme-colors);
+    color: cornsilk;
+    border: 0;
+    cursor: pointer;
+}
+
+/*.status_bar_div{*/
+/*    height: 50px;*/
+/*    !*line-height: 50px;*!*/
+/*    background: darkgray;*/
+/*}*/

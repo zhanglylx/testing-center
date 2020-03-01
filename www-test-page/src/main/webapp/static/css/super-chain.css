@@ -1,0 +1,26 @@
+/*.superChain {*/
+/*    color: cornsilk;*/
+/*}*/
+
+/*定义正常链接的样式*/
+.superChain:link {
+    text-decoration: none;
+    color: cornsilk;
+}
+
+/*定义鼠标悬浮在链接上时的样式*/
+.superChain:hover {
+    text-decoration: underline;
+}
+
+/*已访问过链接的样式*/
+.superChain:visited {
+    /*color: darkgray;*/
+    color: cornsilk;
+    font-weight: bold;
+}
+
+/*定义鼠标点击链接时的样式*/
+.superChain:active {
+    color: red;
+}

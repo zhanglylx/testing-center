@@ -1,0 +1,46 @@
+/*导航栏*/
+.navigation {
+    width: 92%;
+    height: 40px;
+    margin: auto;
+    line-height: 40px;
+    background-color: rgb(220, 220, 220);
+    border-bottom: var(--theme-colors) 1px solid;
+    border-radius: 20px;
+    /*    给背景设置透明：  background-color:rgba(244,244,244,0.9);*/
+}
+
+.navigation > ul {
+    display: block;
+    list-style: none;
+    font-size: 0;
+    float: left;
+    cursor: pointer;
+}
+
+.navigation li {
+    float: left;
+    text-align: center;
+    font-size: 15px;
+    height: 40px;
+    line-height: 40px;
+    list-style: none;
+    padding: 0 17px;
+    display: inline-block;
+    color: var(--theme-colors);
+    border-radius: 10px;
+    /*list-style-position: inside;*/
+}
+
+.navigation li:hover {
+    cursor: pointer;
+    background-color: ghostwhite;
+}
+
+.navigation .navigation_ul_select {
+    border-bottom: var(--theme-colors) 2px solid;
+    border-left: var(--theme-colors) 2px solid;
+    border-right: var(--theme-colors) 2px solid;
+    border-collapse: collapse;
+    background-color: ghostwhite;
+}

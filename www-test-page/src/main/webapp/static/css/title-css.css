@@ -1,0 +1,33 @@
+/*顶部栏*/
+.title-g-nav {
+    padding: 0;
+    background-color: #363636;
+    background-size: cover;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    height: 29px;
+    margin: 0;
+    width:auto;
+}
+
+.title-g-nav > ul {
+    display: inline;
+    margin: 0;
+}
+
+.title-g-nav > ul > li {
+    float: left;
+    list-style: none;
+    position: relative;
+    display: inline-block;
+    padding: 0 12px;
+    height: 29px;
+    line-height: 29px;
+    color: cornsilk;
+    text-decoration: none;
+}
+
+.fr {
+    display: inline;
+    float: right;
+}

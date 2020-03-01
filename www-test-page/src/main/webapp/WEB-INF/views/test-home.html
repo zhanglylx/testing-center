@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>测试中心-在线工具</title>
+    <script src="../../static/js/base-values.js"></script>
+    <script src="../../static/js/tool.js"></script>
+    <link rel="icon" href="../../static/image/logo.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="../../static/css/html.css">
+    <link rel="stylesheet" href="../../static/css/theme.css">
+    <link rel="stylesheet" href="../../static/css/title-css.css">
+    <link rel="stylesheet" href="../../static/css/super-chain.css">
+    <link rel="stylesheet" href="../../static/css/status_bar.css">
+    <link rel="stylesheet" href="../../static/css/tool.css">
+    <link rel="stylesheet" href="../../static/css/navigation.css">
+</head>
+<body>
+
+<div id="public_div">
+    <!--    <iframe src="public-page.html" width="100%" height="100%" frameborder="no" ></iframe>-->
+    <script>$("#public_div").load("static/public-html/public-page.html", function () {
+        $.getScript("../../static/js/navigation.js", function () {
+            //依赖导航栏处理成功后执行动态加载所有元素
+            $(function () {
+                var id = setInterval(function () {
+                    if ($("#navigation_ul_tool").data("loadStatus") === true) {
+                        $("#navigation_select_all").click();
+                        clearInterval(id);
+                    }
+                }, 100);
+
+            });
+        });
+    });
+    </script>
+</div>
+<div id="tools">
+    <div class="tools_div"></div>
+</div>
+</body>
+</html>

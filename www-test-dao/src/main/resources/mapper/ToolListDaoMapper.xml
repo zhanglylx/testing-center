@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testing.center.dao.ToolListDaoMapper">
+    <select id="findAll" resultType="map">
+        SELECT  list.*,box.tool_box_name,box.tool_box_colour
+         FROM tool_box as box INNER  JOIN tool_list as list ON box.id = list.tool_box_id
+          WHERE box.tool_box_status = 1 AND list.tool_list_status = 1 ORDER BY list.tool_list_type;
+   </select>
+</mapper>
+
+
+
+
+
+
