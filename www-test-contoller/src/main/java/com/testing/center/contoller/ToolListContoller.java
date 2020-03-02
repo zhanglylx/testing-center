@@ -4,6 +4,7 @@ import com.testing.center.cmmon.utils.TestingCenterResult;
 import com.testing.center.service.ToolListService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -21,4 +22,11 @@ public class ToolListContoller {
     public TestingCenterResult<List<Map>> loadToolListAll() {
         return toolListService.loadAllToolList();
     }
+
+    @RequestMapping("/findByBoxId")
+    @ResponseBody
+    public TestingCenterResult<List<Map>> loadByBoxIdToolList(@RequestParam("boxId") Integer boxId) {
+        return toolListService.loadByBoxIdToolList(boxId);
+    }
+
 }

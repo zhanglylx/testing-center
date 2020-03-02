@@ -3,6 +3,7 @@ package com.testing.center.service.impl;
 import com.testing.center.cmmon.utils.TestingCenterResult;
 import com.testing.center.dao.ToolListDaoMapper;
 import com.testing.center.service.ToolListService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,7 +17,21 @@ public class ToolListServiceImpl implements ToolListService {
 
     @Override
     public TestingCenterResult<List<Map>> loadAllToolList() {
-        List<Map> list = toolListDaoMapper.findAll();
+        return getListTestingCenterResult(toolListDaoMapper.findAll());
+    }
+
+    @Override
+    public TestingCenterResult<List<Map>> loadByBoxIdToolList(Integer boxId) {
+        TestingCenterResult<List<Map>> testingCenterResult = new TestingCenterResult<>();
+        if (boxId == null) {
+            testingCenterResult.errorParameter("boxId不能为空");
+            return testingCenterResult;
+        }
+
+        return getListTestingCenterResult(toolListDaoMapper.findByBoxId(boxId));
+    }
+
+    private TestingCenterResult<List<Map>> getListTestingCenterResult(List<Map> list) {
         TestingCenterResult<List<Map>> testingCenterResult = new TestingCenterResult<>();
         if (list == null) {
             testingCenterResult.errorCommon("没有相关的测试工具记录");

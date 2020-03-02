@@ -8,6 +8,12 @@
          FROM tool_box as box INNER  JOIN tool_list as list ON box.id = list.tool_box_id
           WHERE box.tool_box_status = 1 AND list.tool_list_status = 1 ORDER BY list.tool_list_type;
    </select>
+    <select id="findByBoxId" resultType="map">
+        SELECT  list.*,box.tool_box_name,box.tool_box_colour
+         FROM tool_box as box INNER  JOIN tool_list as list ON box.id = list.tool_box_id
+          WHERE box.tool_box_status = 1 AND list.tool_list_status = 1 AND list.tool_box_id=#{id}
+            ORDER BY list.tool_list_type;
+    </select>
 </mapper>
 
 

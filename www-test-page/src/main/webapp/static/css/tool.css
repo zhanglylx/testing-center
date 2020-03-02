@@ -1,9 +1,10 @@
-#tools{
+#tools {
     width: 92%;
     padding-top: 10px;
     height: 100%;
     margin: 0 auto;
 }
+
 .tools_div {
     text-align: center;
 }
@@ -25,11 +26,22 @@
     cursor: pointer;
 }
 
-.tool_div img{
+.tools_div_img {
     height: 35%;
     width: 20%;
+    float: left;
+    text-align: center;
+    line-height: 35%;
 }
-.tool_name{
+
+.tools_div_img img {
+    height: 80%;
+    width: 100%;
+    margin-bottom: 12%;
+    margin-top: 8%;
+}
+
+.tool_name {
     float: right;
     display: inline-block;
     width: 70%;
@@ -42,9 +54,11 @@
     font-size: 12px;
     display: block;
 }
-.clear_float{
+
+.clear_float {
     clear: right;
 }
+
 /*分割线*/
 .too_halving_div {
     height: 1px;

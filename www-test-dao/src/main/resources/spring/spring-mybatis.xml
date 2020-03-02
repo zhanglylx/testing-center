@@ -22,7 +22,7 @@
     <bean id="dbcp" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="driverClassName" value="#{jdbcConfig.driverClassName}"/>
         <property name="url" value="#{jdbcConfig.url}"/>
-        <property name="username" value="#{jdbcConfig.username}"/>
+        <property name="username" value="#{jdbcConfig.userName}"/>
         <property name="password" value="#{jdbcConfig.password}"/>
         <property name="initialSize" value="#{jdbcConfig.initialSize}"/>
         <property name="maxTotal" value="#{jdbcConfig.maxTotal}"/>

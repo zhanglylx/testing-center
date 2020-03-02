@@ -39,22 +39,67 @@
 <script>
     $(function () {
         loadNavigation();
-        $("#navigation_select_all").click(function () {
-                _$ajaxGetJSON(
-                    path_toolList_findAll,
-                    "",
-                    function (response) {
-                        _$analysisJsonSuccessResponse(response, function (data) {
-                            _$empty($("#tools"));
-                            for (var i = 0; i < data.length; i++) {
-                                $("#tools").append(createToolDiv(data[i]));
-                            }
-                        });
-                    },null,$("body")
-                );
-            }
-        );
+        $("#navigation_select_all").click(allClick);
+        $("#navigation_ul_tool").on("click", "li", function () {
+            clickNavigationCss(this);
+            _$ajaxPostJSON(
+                path_toolList_findByBoxId,
+                {"boxId": $(this).data(data_navigationId)},
+                function (response) {
+                    loadTool(response);
+                }, null, $("body")
+            );
+        })
     });
+
+    /**
+     * 点击导航栏样式,通过导航栏id
+     * @private
+     */
+    function clickNavigationByIdCss(boxId) {
+        var $lis = $("#navigation_ul li");
+        _$traversalList($lis, function ($li) {
+            if ($li.data(data_navigationId) === boxId) {
+                clickNavigationCss($li);
+                return true;
+            }
+        });
+    }
+
+    /**
+     * 点击导航栏样式
+     * @private
+     */
+    function clickNavigationCss(li) {
+        $("#navigation_ul li").removeClass();
+        $(li).addClass("navigation_ul_select");
+    }
+
+    /**
+     * 导航栏所有点击函数
+     */
+    function allClick() {
+        clickNavigationCss(this);
+        _$ajaxGetJSON(
+            path_toolList_findAll,
+            "",
+            function (response) {
+                loadTool(response);
+            }, null, $("body")
+        );
+    }
+
+    /**
+     * @private
+     */
+    function loadTool(response) {
+        _$analysisJsonSuccessResponse(response, function (data) {
+            _$empty($("#tools"));
+            for (var i = 0; i < data.length; i++) {
+                $("#tools").append(createToolDiv(data[i]));
+            }
+        });
+    }
 
     /**
      * 创建导航栏li
@@ -62,7 +107,7 @@
     function addNavigationLi(id, name) {
         var li = "<li>" + name + "</li>";
         var $li = $(li);
-        $li.data("navigationId", id);
+        $li.data(data_navigationId, id);
         return $li;
     }
 

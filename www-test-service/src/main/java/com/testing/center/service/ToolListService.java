@@ -7,4 +7,6 @@ import java.util.Map;
 
 public interface ToolListService {
     TestingCenterResult<List<Map>> loadAllToolList();
+
+    TestingCenterResult<List<Map>> loadByBoxIdToolList(Integer boxId);
 }

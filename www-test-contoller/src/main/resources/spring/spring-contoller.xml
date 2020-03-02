@@ -23,6 +23,7 @@
     <context:component-scan base-package="com.testing.center.contoller"/>
     <!--    配置mvc注解扫描-->
     <mvc:annotation-driven/>
+    
 </beans>
 
 

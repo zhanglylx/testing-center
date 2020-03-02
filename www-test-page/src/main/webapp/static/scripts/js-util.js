@@ -231,3 +231,16 @@ function _$isNullNonZero(object) {
 
     }
 };
+
+/**
+ * 遍历list
+ * @param object list对象
+ * @param f 回调方法,传入$对象,方法如果返回true，则停止循环
+ */
+function _$traversalList(object, f) {
+    for (var i = 0; i < object.length; i++) {
+        if (f($(object[i])) === true) {
+            return;
+        }
+    }
+}
