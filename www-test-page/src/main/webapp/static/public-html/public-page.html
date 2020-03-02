@@ -32,10 +32,64 @@
 <div class="navigation">
     <ul id="navigation_ul">
         <li class="navigation_ul_select" id="navigation_select_all">所有</li>
-<!--        动态工具导航栏-->
+        <!--        动态工具导航栏-->
         <span id="navigation_ul_tool"></span>
     </ul>
 </div>
+<script>
+    $(function () {
+        loadNavigation();
+        $("#navigation_select_all").click(function () {
+                _$ajaxGetJSON(
+                    path_toolList_findAll,
+                    "",
+                    function (response) {
+                        _$analysisJsonSuccessResponse(response, function (data) {
+                            _$empty($("#tools"));
+                            for (var i = 0; i < data.length; i++) {
+                                $("#tools").append(createToolDiv(data[i]));
+                            }
+                        });
+                    },null,$("body")
+                );
+            }
+        );
+    });
 
+    /**
+     * 创建导航栏li
+     */
+    function addNavigationLi(id, name) {
+        var li = "<li>" + name + "</li>";
+        var $li = $(li);
+        $li.data("navigationId", id);
+        return $li;
+    }
+
+    /**
+     * 加载导航栏
+     */
+    function loadNavigation() {
+        $("#navigation_ul_tool").data("loadStatus", false);
+        _$ajaxGetJSON(path_toolBox_findAll,
+            "",
+            function (response) {
+                _$analysisJsonSuccessResponse(response, function (data) {
+                    for (var i = 0; i < data.length; i++) {
+                        var id = data[i].id;
+                        var name = data[i].tool_box_name;
+                        $("#navigation_ul_tool").append(addNavigationLi(id, name));
+                    }
+                    $("#navigation_ul_tool").data("loadStatus", true);
+                });
+
+            },
+            function () {
+                alert("获取工具栏失败了，功能可能无法正常使用，请联系管理员为您解决");
+            },
+            $("body")
+        );
+    }
+</script>
 
 </body>

@@ -25,10 +25,14 @@
     cursor: pointer;
 }
 
-
-.tool_name {
+.tool_div img{
+    height: 35%;
+    width: 20%;
+}
+.tool_name{
+    float: right;
     display: inline-block;
-    width: 100%;
+    width: 70%;
     height: 35%;
 }
 
@@ -36,8 +40,11 @@
 .tool_name_navigation {
     float: right;
     font-size: 12px;
+    display: block;
 }
-
+.clear_float{
+    clear: right;
+}
 /*分割线*/
 .too_halving_div {
     height: 1px;
@@ -49,6 +56,6 @@
 /*}*/
 
 .tool_desc {
-    height: 60%;
+    height: 56%;
     padding: 3px 0;
 }
