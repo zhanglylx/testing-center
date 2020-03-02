@@ -244,3 +244,33 @@ function _$traversalList(object, f) {
         }
     }
 }
+
+/**
+ * 动态引入css
+ * @param path
+ */
+function _$loadCss(path) {
+    $("head").append("<link>");
+    var $css = $("head").children(":last");
+    $css.attr({
+        rel: "stylesheet",
+        type: "text/css",
+        href: path
+    });
+}
+
+/**
+ * 动态引入js
+ * @param url
+ * @param f  回调方法
+ */
+function _$loadJs(url, f) {
+    try {
+        $.getScript(url, function () {
+            if (f) f();
+        });
+    } catch (e) {
+        alert("获取js失败：" + url);
+    }
+
+}

@@ -12,6 +12,7 @@ var path_toolBox_findAll="toolBox/findAll";
 var path_toolList_findAll="toolList/findAll";
 var path_toolList_findByBoxId="toolList/findByBoxId";
 var data_navigationId = "navigationId";
+var data_tools_div = "data_tools_div";
 
 
 
