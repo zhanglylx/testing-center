@@ -53,6 +53,7 @@ $(function () {
         //3:直接访问url并且将返回的消息:msg进行弹窗
         switch (tool_list_type) {
             case 1:
+                clickNavigationByIdCss(tool_box_id);
                 _$ajax(
                     tool_list_url,
                     tool_list_request_method,
