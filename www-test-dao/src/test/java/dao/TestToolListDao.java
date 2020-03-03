@@ -5,8 +5,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class TestToolListDao {
-    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring/spring-mybatis.xml");
+public class TestToolListDao extends TestBase {
+
     ToolListDaoMapper toolListDaoMapper = applicationContext.getBean("toolListDaoMapper",ToolListDaoMapper.class);
     @Test
     public void testFindAll(){

@@ -110,9 +110,26 @@ function _$ajaxPostJSON(stringUrl, data, successFunction, errorFuncation, $butto
  * @param async  是否异步请求，空或者true为异步请求
  */
 function _$ajaxJSON(stringUrl, type, data, successFunction, errorFuncation, $button, async) {
-    _$ajax(stringUrl, type, data, "JSON", successFunction, errorFuncation, $button, async);
+    _$ajaxAutoRequestLimits(stringUrl, type, data, "JSON", successFunction, errorFuncation, $button, async);
 };
 
+/**
+ *发送ajax请求，自动限制请求没有执行完成时的操作和请求错误后自动弹窗提示
+ *
+ */
+function _$ajaxAutoRequestLimits(stringUrl, type, data, dataType, successFunction, errorFuncation, $button, async) {
+    if (!$button) {
+        $button = $("body");
+    }
+    if (errorFuncation) {
+        _$ajax(stringUrl, type, data, dataType, successFunction, errorFuncation, $button, async);
+    } else {
+        _$ajax(stringUrl, type, data, dataType, successFunction, function (httpStatus) {
+            alert("服务器响应失败，请稍后重试,服务状态:" + httpStatus.status);
+        }, $button, async);
+    }
+
+}
 
 /**
  * 发送ajax请求
@@ -146,28 +163,27 @@ function _$ajax(stringUrl, type, data, dataType, successFunction, errorFuncation
         async: as,
         success: function (httpResponse) {
             if (successFunction) successFunction(httpResponse);
-            if ($button) {
-                _$buttonClickUndoable($button, false);
-                $button.data('_$ajaxJSONClcikStatus', false);
-            }
-
+            _$ajaxRequestLimits($button);
         },
         error: function (httpStatus) {
             if (errorFuncation) {
                 errorFuncation(httpStatus);
-            } else {
-                alert("服务器响应失败，请稍后重试,服务状态:" + httpStatus.status);
             }
-
-            if ($button) {
-                _$buttonClickUndoable($button, false);
-                $($button).data('_$ajaxJSONClcikStatus', false);
-            }
-
+            _$ajaxRequestLimits($button);
         }
     });
 };
 
+/**
+ * ajax请求限制
+ * @private
+ */
+function _$ajaxRequestLimits($button) {
+    if ($button) {
+        _$buttonClickUndoable($button, false);
+        $($button).data('_$ajaxJSONClcikStatus', false);
+    }
+}
 
 /**
  * 获取css变量,默认从root获取
@@ -239,7 +255,7 @@ function _$isNullNonZero(object) {
  */
 function _$traversalList(object, f) {
     for (var i = 0; i < object.length; i++) {
-        if (f($(object[i])) === true) {
+        if (f(object[i]) === true) {
             return;
         }
     }

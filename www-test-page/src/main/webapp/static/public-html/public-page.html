@@ -58,7 +58,8 @@
      */
     function clickNavigationByIdCss(boxId) {
         var $lis = $("#navigation_ul li");
-        _$traversalList($lis, function ($li) {
+        _$traversalList($lis, function (li) {
+            var $li = $(li);
             if ($li.data(data_navigationId) === boxId) {
                 clickNavigationCss($li);
                 return true;

@@ -6,7 +6,6 @@
 .address_div dt {
     margin-bottom: 5px;
 }
-
 .address_div dd {
     margin-left: 20px;
     display: inline;
@@ -20,5 +19,15 @@
 }
 .address_div h1{
     color: var(--theme-colors);
+}
+.address_div_query_button{
+    color: var(--theme-colors);
+    margin-left: 50px;
+
+}
+.address_div_copy_button{
+    color: var(--theme-colors);
+    margin-left: 5px;
+
 }
 
