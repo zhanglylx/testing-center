@@ -1,4 +1,4 @@
-#tools {
+#tools_div_root {
     width: 92%;
     padding-top: 10px;
     height: 100%;
@@ -21,6 +21,7 @@
     overflow: auto;
     float: left;
     cursor: pointer;
+    z-index: 1000;
 }
 
 .tools_div_img {
@@ -69,4 +70,8 @@
 .tool_desc {
     height: 56%;
     padding: 3px 0;
+}
+
+.tools_div_root_clear{
+    clear: left;
 }

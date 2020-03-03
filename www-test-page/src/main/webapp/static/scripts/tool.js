@@ -1,5 +1,5 @@
 $(function () {
-    $("#tools").on("click", "div", function () {
+    $("#tools").on("click", ".tool_div", function () {
         if ($(this).attr("class") !== "tool_div") {
             return;
         }
@@ -104,7 +104,9 @@ function createToolDiv(data) {
         '<div class="clear_float"></div>' +
         '<div class="too_halving_div"></div>' +
         '<div class="tool_desc">' + data.tool_list_des + '</div>' +
-        '</div>';
+        '<div class="tools_div_root_clear"></div>' +
+        '</div>' ;
+        // '<div class="tools_div_root_clear"></div>';
     var $tool = $(tool);
     $tool.data(data_tools_div, data);
     return $tool;
