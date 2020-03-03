@@ -272,5 +272,30 @@ function _$loadJs(url, f) {
     } catch (e) {
         alert("获取js失败：" + url);
     }
+}
 
+/**
+ * 复制文本
+ * 使用介绍:<textarea id="bar">Mussum ipsum cacilds...</textarea>
+ *          data-clipboard-action 属性为 copy/cut 来，明确操作是 复制 / 剪切,默认为复制
+ *           <button class="btn" data-clipboard-action="cut" data-clipboard-target="#bar">
+ *           Cut to clipboard
+ *           </button>
+ * @param selector  选择器
+ */
+function _$copyText(selector) {
+    var clipboard = new ClipboardJS(selector);
+
+    clipboard.on('success', function (e) {
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+
+        e.clearSelection();
+    });
+
+    clipboard.on('error', function (e) {
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+    });
 }

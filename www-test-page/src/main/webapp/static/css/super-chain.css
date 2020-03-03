@@ -5,7 +5,8 @@
 /*定义正常链接的样式*/
 .superChain:link {
     text-decoration: none;
-    color: cornsilk;
+    /*color: cornsilk;*/
+    color: var(--theme-colors);
 }
 
 /*定义鼠标悬浮在链接上时的样式*/
@@ -16,7 +17,8 @@
 /*已访问过链接的样式*/
 .superChain:visited {
     /*color: darkgray;*/
-    color: cornsilk;
+    color: var(--theme-colors);
+    font-style: italic;
     font-weight: bold;
 }
 

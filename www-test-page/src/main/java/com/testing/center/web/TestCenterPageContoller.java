@@ -10,4 +10,9 @@ public class TestCenterPageContoller {
     public String getTestHomePage() {
         return "test-home";
     }
+
+    @RequestMapping("/address/address")
+    public String getAddressPage() {
+        return "address/address";
+    }
 }

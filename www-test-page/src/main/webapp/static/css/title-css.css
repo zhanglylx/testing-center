@@ -1,7 +1,7 @@
 /*顶部栏*/
 .title-g-nav {
     padding: 0;
-    background-color: #363636;
+    background-color: rgba(172,167,159,0.8);
     background-size: cover;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -23,7 +23,8 @@
     padding: 0 12px;
     height: 29px;
     line-height: 29px;
-    color: cornsilk;
+    /*color: cornsilk;*/
+    color: var(--theme-colors);
     text-decoration: none;
 }
 

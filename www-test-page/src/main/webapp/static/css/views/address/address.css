@@ -1,0 +1,24 @@
+.address_div dl {
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.address_div dt {
+    margin-bottom: 5px;
+}
+
+.address_div dd {
+    margin-left: 20px;
+    display: inline;
+
+}
+
+.address_div .address_dd_div {
+    border-bottom: var(--theme-colors) 1px solid;
+    margin-left: 20px;
+    padding-bottom: 5px;
+}
+.address_div h1{
+    color: var(--theme-colors);
+}
+

@@ -72,6 +72,13 @@
     padding: 3px 0;
 }
 
-.tools_div_root_clear{
+.tools_div_root_clear {
     clear: left;
+}
+
+#tools_title {
+    color: var(--theme-colors);
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
 }

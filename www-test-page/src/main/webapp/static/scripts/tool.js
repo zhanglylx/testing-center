@@ -16,6 +16,7 @@ $(function () {
         var tool_list_request_parameter = data.tool_list_request_parameter;
         var tool_list_js = data.tool_list_js;
         var tool_list_css = data.tool_list_css;
+        var tool_list_name = data.tool_list_name;
         if (_$isNullNonZero(tool_box_id)) {
             alert("boxId不能为空,请联系管理员");
             return;
@@ -61,6 +62,8 @@ $(function () {
                     "HTML",
                     function (response) {
                         $("#tools").html(response);
+                        var $title = $('<div id="tools_title">'+tool_list_name+'</div>');
+                        $("#tools").prepend($title);
                         if (tool_list_js) {
                             _$loadJs(tool_list_js);
                         }
@@ -105,8 +108,8 @@ function createToolDiv(data) {
         '<div class="too_halving_div"></div>' +
         '<div class="tool_desc">' + data.tool_list_des + '</div>' +
         '<div class="tools_div_root_clear"></div>' +
-        '</div>' ;
-        // '<div class="tools_div_root_clear"></div>';
+        '</div>';
+    // '<div class="tools_div_root_clear"></div>';
     var $tool = $(tool);
     $tool.data(data_tools_div, data);
     return $tool;
