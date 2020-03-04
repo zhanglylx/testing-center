@@ -19,7 +19,7 @@ public class TestAddressClassifyServiceImpl implements TestAddressClassifyServic
     public TestingCenterResult<List<Map>> findAllClassify() {
         List<Map> mapList = testAddressClassifyDaoMapper.findTestAddressClassify();
         TestingCenterResult<List<Map>> testingCenterResult = new TestingCenterResult<>();
-        if (mapList == null) {
+        if (mapList == null || mapList.size() == 0) {
             testingCenterResult.errorCommon("没有可用的数据");
             return testingCenterResult;
         }

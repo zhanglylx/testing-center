@@ -23,7 +23,7 @@ public class TestAddressListServiceImpl implements TestAddressListService {
             return testingCenterResult;
         }
         List<Map> mapList = testAddressListDaoMapper.findTestAddressListByClassifyId(classifyId);
-        if (mapList == null) {
+        if (mapList == null || mapList.size() == 0) {
             testingCenterResult.errorCommon("没有查询到可用的数据");
             return testingCenterResult;
         }

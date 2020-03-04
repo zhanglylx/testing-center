@@ -33,7 +33,7 @@ public class ToolListServiceImpl implements ToolListService {
 
     private TestingCenterResult<List<Map>> getListTestingCenterResult(List<Map> list) {
         TestingCenterResult<List<Map>> testingCenterResult = new TestingCenterResult<>();
-        if (list == null) {
+        if (list == null || list.size() == 0) {
             testingCenterResult.errorCommon("没有相关的测试工具记录");
             return testingCenterResult;
         }

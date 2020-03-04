@@ -17,7 +17,7 @@ public class ToolBoxServiceImpl implements ToolBoxService {
     public TestingCenterResult<List<ToolBox>> findAll() {
         TestingCenterResult<List<ToolBox>> toolBoxTestingCenterResult = new TestingCenterResult<List<ToolBox>>();
         List<ToolBox> list = toolBoxDaoMapper.findAll();
-        if (list == null) {
+        if (list == null || list.size() == 0) {
             return toolBoxTestingCenterResult.errorCommon("没有找到可用的工具组");
         }
         toolBoxTestingCenterResult.setData(list);
