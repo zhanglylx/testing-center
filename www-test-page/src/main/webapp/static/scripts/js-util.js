@@ -303,15 +303,47 @@ function _$copyText(selector) {
     var clipboard = new ClipboardJS(selector);
 
     clipboard.on('success', function (e) {
-        console.info('Action:', e.action);
-        console.info('Text:', e.text);
-        console.info('Trigger:', e.trigger);
-
+        // console.info('Action:', e.action);
+        // console.info('Text:', e.text);
+        // console.info('Trigger:', e.trigger);
         e.clearSelection();
+        _$toastText("复制成功：" + e.text);
     });
 
     clipboard.on('error', function (e) {
-        console.error('Action:', e.action);
-        console.error('Trigger:', e.trigger);
+        // console.error('Action:', e.action);
+        // console.error('Trigger:', e.trigger);
+        _$toastText("复制成功失败，请手动复制");
     });
+}
+
+/**
+ * 浮动弹窗提示文本
+ * 在页面中心悬浮2.5秒后自然消失
+ */
+var _$toastTextIntervalId;
+function _$toastText(text) {
+    var width = text.length * 20;
+    var math = Math.random();
+    if(_$toastTextIntervalId){
+        clearInterval(_$toastTextIntervalId);
+    }
+    $(".body_reminder_div").remove();
+    $("body").prepend("<div math="+math+" class='body_reminder_div'style='z-index: 1000000;position: absolute;top: 45%;left:49%;background: rgba(220,220,220,0.9);'>" +
+        '<div style="height: 25px ;width: ' + width + 'px;text-align: center; font-size: 15px ;line-height: 25px; color: var(--theme-colors)">' +
+        text +
+        '</div>' +
+        "</div>");
+    var i = 0;
+    var a = 0.8;
+    var ai = 0.04;
+     _$toastTextIntervalId = setInterval(function () {
+        a = a - ai;
+        $(".body_reminder_div").css("background", "rgba(220,220,220," + a + ")");
+        i++;
+        if (i === 20) {
+            clearInterval(_$toastTextIntervalId);
+            $(".body_reminder_div").remove();
+        }
+    }, 100)
 }
