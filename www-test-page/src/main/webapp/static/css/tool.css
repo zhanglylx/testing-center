@@ -11,7 +11,7 @@
     display: inline-block;
     border: var(--theme-colors) 1px solid;
     width: 17%;
-    height: 150px;
+    height: 170px;
     /*margin: 10px 10px 10px 2px;*/
     margin: 10px 0.5%;
     padding: 10px 10px 10px 10px;
@@ -43,7 +43,7 @@
     float: right;
     display: inline-block;
     width: 70%;
-    height: 35%;
+    height: 40%;
 }
 
 

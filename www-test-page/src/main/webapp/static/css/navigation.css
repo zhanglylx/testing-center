@@ -27,9 +27,11 @@
     list-style: none;
     padding: 0 17px;
     display: inline-block;
-    color: var(--theme-colors);
     border-radius: 10px;
     /*list-style-position: inside;*/
+}
+#navigation_select_all{
+    color: var(--theme-colors);
 }
 
 .navigation li:hover {

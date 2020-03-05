@@ -106,8 +106,11 @@
     /**
      * 创建导航栏li
      */
-    function addNavigationLi(id, name) {
-        var li = "<li>" + name + "</li>";
+    function addNavigationLi(id, name, tool_box_colour) {
+        if (_$isNullNonZero(tool_box_colour)) {
+            tool_box_colour = "var(--theme-colors)";
+        }
+        var li = "<li style='color:" + tool_box_colour + "'>" + name + "</li>";
         var $li = $(li);
         $li.data(data_navigationId, id);
         return $li;
@@ -125,7 +128,8 @@
                     for (var i = 0; i < data.length; i++) {
                         var id = data[i].id;
                         var name = data[i].tool_box_name;
-                        $("#navigation_ul_tool").append(addNavigationLi(id, name));
+                        var tool_box_colour = data[i].tool_box_colour;
+                        $("#navigation_ul_tool").append(addNavigationLi(id, name, tool_box_colour));
                     }
                     $("#navigation_ul_tool").data("loadStatus", true);
                 });
@@ -136,7 +140,8 @@
             },
             $("body")
         );
-    }
+    };
+
 </script>
 
 </body>

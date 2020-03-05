@@ -2,6 +2,11 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
     <title>测试中心-在线工具</title>
     <script src="static/scripts/base-values.js"></script>
     <script src="static/scripts/tool.js"></script>
@@ -13,6 +18,15 @@
     <link rel="stylesheet" href="static/css/status_bar.css">
     <link rel="stylesheet" href="static/css/tool.css">
     <link rel="stylesheet" href="static/css/navigation.css">
+    　　　　
+
+    <script>
+        $(function () {
+            var colos = ["#00a0e9", "#770088", "#aa00aa","chocolate"];
+            var rand = _$randomNum(colos.length);
+            _$setCssPropertyValue("--theme-colors", colos[rand]);
+        });
+    </script>
 </head>
 <body>
 

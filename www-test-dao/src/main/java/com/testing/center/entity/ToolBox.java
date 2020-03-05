@@ -5,6 +5,15 @@ import java.util.Objects;
 public class ToolBox {
     private String tool_box_name;
     private Integer id;
+    private String tool_box_colour;
+
+    public String getTool_box_colour() {
+        return tool_box_colour;
+    }
+
+    public void setTool_box_colour(String tool_box_colour) {
+        this.tool_box_colour = tool_box_colour;
+    }
 
     public String getTool_box_name() {
         return tool_box_name;

@@ -39,19 +39,64 @@ function _$emptyInput($element_Arr) {
 };
 
 /**
+ * 跳转连接
+ * @param url
+ * @param method   请求方法，默认get
+ * @param isNewPage  是否新建页面打开
+ * @param params
+ * @returns {HTMLFormElement}
+ */
+function _$go(url, method, isNewPage, params) {
+    if (!method) {
+        method = "get";
+    }
+    var className = "go" + parseInt(Math.random() * 100000);
+    var temp = document.createElement("form");
+    temp.action = url;
+    temp.method = method;
+    temp.class = className;
+    if (isNewPage === true) {
+        temp.target = "_blank";
+    }
+    temp.style.display = 'none';
+    if (params) {
+        params = eval("(" + params + ")");
+        for (var p in params) {
+            var opt = document.createElement('textarea')
+            ;
+            opt.name = p;
+            opt.value = params[p];
+            temp.appendChild(opt);
+        }
+    }
+    var mathOpt = document.createElement('textarea');
+    mathOpt.name = "math";
+    mathOpt.value = Math.random();
+    temp.appendChild(mathOpt);
+    document.body.appendChild(temp);
+    temp.submit();
+    $("." + className + "").remove();
+    return temp;
+}
+
+/**
  * 当前页面跳转链接
  * @param url
+ * @param method
+ * @param params
  */
-function _$goToUrlCurrentPage(url) {
-    window.location.href = url;
+function _$goToUrlCurrentPage(url, method, params) {
+    // window.location.href = url;
+    _$go(url, method, false, params);
 };
 
 /**
  * 新建页面跳转
  * @param url
  */
-function _$goToUrlNewPage(url) {
-    window.open(url);
+function _$goToUrlNewPage(url, method, params) {
+    // window.open(url);
+    _$go(url, method, true, params);
 };
 
 
@@ -213,6 +258,10 @@ function _$getCssPropertyValue(node, keyName) {
  * @param value
  */
 function _$setCssPropertyValue(keyName, value) {
+    if (_$isNullNonZero(keyName) || _$isNullNonZero(value)) {
+        alert("_$setCssPropertyValue：参数传入非法");
+        return;
+    }
     document.documentElement.style.setProperty(keyName, value);
 };
 
@@ -322,14 +371,16 @@ function _$copyText(selector) {
  * 在页面中心悬浮2.5秒后自然消失
  */
 var _$toastTextIntervalId;
+
 function _$toastText(text) {
     var width = text.length * 20;
     var math = Math.random();
-    if(_$toastTextIntervalId){
+    if (_$toastTextIntervalId) {
         clearInterval(_$toastTextIntervalId);
     }
+
     $(".body_reminder_div").remove();
-    $("body").prepend("<div math="+math+" class='body_reminder_div'style='z-index: 1000000;position: absolute;top: 45%;left:49%;background: rgba(220,220,220,0.9);'>" +
+    $("body").prepend("<div math=" + math + " class='body_reminder_div'style='z-index: 1000000;position: absolute;top: 45%;left:49%;background: rgba(220,220,220,0.9);'>" +
         '<div style="height: 25px ;width: ' + width + 'px;text-align: center; font-size: 15px ;line-height: 25px; color: var(--theme-colors)">' +
         text +
         '</div>' +
@@ -337,7 +388,7 @@ function _$toastText(text) {
     var i = 0;
     var a = 0.8;
     var ai = 0.04;
-     _$toastTextIntervalId = setInterval(function () {
+    _$toastTextIntervalId = setInterval(function () {
         a = a - ai;
         $(".body_reminder_div").css("background", "rgba(220,220,220," + a + ")");
         i++;
@@ -346,4 +397,22 @@ function _$toastText(text) {
             $(".body_reminder_div").remove();
         }
     }, 100)
+}
+
+/**
+ * 生成从minNum到maxNum的随机数，包前不包后
+ * 如果只传入minNum，则0-minNum-1的返回值
+ * 如果传入超过2个参数，默认返回0
+ * @param minNum  最小值
+ * @param maxNum 最大值
+ */
+function _$randomNum(minNum, maxNum) {
+    switch (arguments.length) {
+        case 1:
+            return parseInt(Math.random() * minNum, 10);
+        case 2:
+            return parseInt(Math.random() * (maxNum - minNum) + minNum, 10);
+        default:
+            return 0;
+    }
 }

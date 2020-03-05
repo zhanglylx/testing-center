@@ -46,7 +46,8 @@ $(function () {
                 tool_list_request_method = "post";
                 break;
             default:
-                alert("不支持的请求方法类型：" + tool_list_request_method)
+                alert("不支持的请求方法类型：" + tool_list_request_method);
+                return;
         }
 
         //1:加载当前页面到tools
@@ -62,7 +63,7 @@ $(function () {
                     "HTML",
                     function (response) {
                         $("#tools").html(response);
-                        var $title = $('<div id="tools_title">'+tool_list_name+'</div>');
+                        var $title = $('<div id="tools_title">' + tool_list_name + '</div>');
                         $("#tools").prepend($title);
                         if (tool_list_js) {
                             _$loadJs(tool_list_js);
@@ -74,7 +75,7 @@ $(function () {
                 );
                 break;
             case 2:
-                _$goToUrlNewPage(tool_list_url);
+                _$goToUrlNewPage(tool_list_url, tool_list_request_method, tool_list_request_parameter);
                 break;
             case 3:
                 _$ajaxJSON(
@@ -99,10 +100,14 @@ function createToolDiv(data) {
     if (_$isNullNonZero(imgUrl)) {
         imgUrl = "static/image/logo.png";
     }
+    var tool_box_colour = data.tool_box_colour;
+    if (_$isNullNonZero(tool_box_colour)) {
+        tool_box_colour = "var(--theme-colors)";
+    }
     var tool = '<div class="tool_div">' +
         '<div class="tools_div_img"><img src="' + imgUrl + '" ></div>' +
         '<div class="tool_name"><h3>' + data.tool_list_name + '</h3>' +
-        '<div class="tool_name_navigation" style="color: ' + data.tool_box_colour + '">[' + data.tool_box_name + ']</div>' +
+        '<div class="tool_name_navigation" style="color: ' + tool_box_colour + '">[' + data.tool_box_name + ']</div>' +
         '</div>' +
         '<div class="clear_float"></div>' +
         '<div class="too_halving_div"></div>' +
