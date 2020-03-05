@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        dl {
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        dd {
+            margin-left: 20px;
+            display: inline;
+        }
+
+    </style>
+    <script src="static/scripts/jquery/jquery3-4-1.js"></script>
+    <script src="static/scripts/jquery/jquery.zclip.js"></script>
+    <script src="static/scripts/plug/clipboard/clipboard.js"></script>
+    <script>
+        alert(_$randomNum(1));
+        function _$randomNum(minNum, maxNum) {
+            switch (arguments.length) {
+                case 1:
+                    return parseInt(Math.random() * minNum, 10);
+                case 2:
+                    return parseInt(Math.random() * (maxNum - minNum) + minNum, 10);
+                default:
+                    return 0;
+            }
+        }
+    </script>
+</head>
+<body>
+<h3>测试地址</h3>
+<dl>
+    <dt>基础平台</dt>
+    <dd>用户名：</dd>
+    <dd class="dd">密码：</dd>
+    <dd id="dds" data-clipboard-target=".dd" onclick="_$copyText(this,'水电费第三方第三方第三方')">链接:水电费是的范德萨范德萨</dd>
+</dl>
+<dl>
+    <dt>基础平台</dt>
+    <dd>用户名：</dd>
+    <dd class="dd">密码：</dd>
+    <dd class="dds" data-clipboard-target=".dd" onclick="_$copyText(this,'水电费第三方第三方第三方')">链接:水电费是的范德萨范德萨</dd>
+</dl>
+<dl>
+    <dt>基础平台</dt>
+    <dd>用户名：<button>复制</button></dd>
+    <dd class="dd">密码：<button>复制</button></dd>
+    <dd class="dds" data-clipboard-target=".dd" onclick="_$copyText(this,'水电费第三方第三方第三方')">链接:水电费是的范德萨范德萨</dd>
+</dl>
+</body>
+</html>
