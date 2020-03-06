@@ -17,6 +17,17 @@ $(function () {
         var tool_list_js = data.tool_list_js;
         var tool_list_css = data.tool_list_css;
         var tool_list_name = data.tool_list_name;
+        var toolListId = data.id;
+        //上传热度埋点
+        _$ajax(
+            path_toolList_addHeat,
+            "post",
+            {"toolListId":toolListId},
+            "json",
+            function (response) {
+                _$analysisJsonSuccessResponse(response);
+            }
+        );
         if (_$isNullNonZero(tool_box_id)) {
             alert("boxId不能为空,请联系管理员");
             return;
@@ -49,7 +60,6 @@ $(function () {
                 alert("不支持的请求方法类型：" + tool_list_request_method);
                 return;
         }
-
         //1:加载当前页面到tools
         //2:跳转新的页面
         //3:直接访问url并且将返回的消息:msg进行弹窗

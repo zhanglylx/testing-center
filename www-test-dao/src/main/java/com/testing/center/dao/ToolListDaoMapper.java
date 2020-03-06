@@ -10,5 +10,5 @@ import java.util.Map;
 public interface ToolListDaoMapper extends ISqlMapper{
     List<Map> findAll();
     List<Map> findByBoxId(@Param("id") Integer boxId);
-
+    int addHeat(@Param("id") Integer toolListId);
 }

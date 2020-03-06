@@ -276,9 +276,13 @@ function _$setCssPropertyValue(keyName, value) {
  */
 function _$analysisJsonSuccessResponse(response, successFunction, errorFuncation) {
     if (response.status === 0) {
-        successFunction(response.data, response);
+        if (successFunction) {
+            successFunction(response.data, response);
+        }
     } else {
-        if (errorFuncation !== null) setTimeout(errorFuncation, 0);
+        if (errorFuncation) {
+            setTimeout(errorFuncation, 0);
+        }
         alert(response.msg);
     }
 };

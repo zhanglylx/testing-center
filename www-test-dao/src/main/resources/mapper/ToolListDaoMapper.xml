@@ -14,6 +14,9 @@
           WHERE box.tool_box_status = 1 AND list.tool_list_status = 1 AND list.tool_box_id=#{id}
             ORDER BY list.tool_box_id;
     </select>
+    <update id="addHeat">
+        UPDATE tool_list SET tool_list_heat=tool_list_heat+1 WHERE id = #{id};
+    </update>
 </mapper>
 
 

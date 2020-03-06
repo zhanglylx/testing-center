@@ -12,6 +12,7 @@ document.write("<script src='static/scripts/plug/clipboard/clipboard.js'></scrip
 var path_toolBox_findAll = "toolBox/findAll";
 var path_toolList_findAll = "toolList/findAll";
 var path_toolList_findByBoxId = "toolList/findByBoxId";
+var path_toolList_addHeat = "toolList/addHeat";
 var path_test_address_findAllClassify = "test_address/findAllClassify";
 var path_test_address_findAddressListByClassifyId = "test_address/findAddressListByClassifyId";
 var data_navigationId = "navigationId";

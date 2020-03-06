@@ -40,4 +40,20 @@ public class ToolListServiceImpl implements ToolListService {
         testingCenterResult.setSuccess("查询成功", list);
         return testingCenterResult;
     }
+
+    @Override
+    public TestingCenterResult addHeat(Integer toolListId) {
+        TestingCenterResult testingCenterResult = new TestingCenterResult();
+        if (toolListId == null) {
+            testingCenterResult.errorParameter("toolListId不能为空");
+            return testingCenterResult;
+        }
+        int r = toolListDaoMapper.addHeat(toolListId);
+        if (r != 1) {
+            testingCenterResult.errorCommon("更新失败，更新条数:" + r);
+            return testingCenterResult;
+        }
+        testingCenterResult.setSuccess("添加成功");
+        return testingCenterResult;
+    }
 }
