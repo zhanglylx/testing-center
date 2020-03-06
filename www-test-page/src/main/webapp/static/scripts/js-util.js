@@ -74,6 +74,7 @@ function _$go(url, method, isNewPage, params) {
     mathOpt.value = Math.random();
     temp.appendChild(mathOpt);
     document.body.appendChild(temp);
+    $(temp).addClass(className);
     temp.submit();
     $("." + className + "").remove();
     return temp;
