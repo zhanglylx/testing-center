@@ -120,7 +120,7 @@ function createToolDiv(data) {
         '<div class="tool_name_navigation" style="color: ' + tool_box_colour + '">[' + data.tool_box_name + ']</div>' +
         '</div>' +
         '<div class="clear_float"></div>' +
-        '<div class="too_halving_div"></div>' +
+        '<div class="too_halving_div" style="background-color: '+_$cssGetSelectorColorRGBA(".testing-center-test-home-theme",0.2)+'"></div>' +
         '<div class="tool_desc">' + data.tool_list_des + '</div>' +
         '<div class="tools_div_root_clear"></div>' +
         '</div>';

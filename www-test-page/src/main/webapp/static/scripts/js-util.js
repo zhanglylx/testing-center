@@ -107,7 +107,7 @@ function _$goToUrlNewPage(url, method, params) {
  * @param boolean true:不可点，false：可点击
  */
 function _$buttonClickUndoable($button, boolean) {
-    $button.attr('disabled', boolean);
+    $($button).attr('disabled', boolean);
 };
 
 /**
@@ -116,7 +116,7 @@ function _$buttonClickUndoable($button, boolean) {
  * @returns {string}
  */
 function _$getValTrim($element) {
-    return $element.val().trim();
+    return $($element).val().trim();
 };
 
 /**
@@ -420,4 +420,126 @@ function _$randomNum(minNum, maxNum) {
         default:
             return 0;
     }
+};
+
+/**
+ * 获取元素颜色的rgb
+ * @param selector
+ * @param selectorAttribute 获取的元素属性
+ * @returns {string[]}rgb数组
+ */
+function _$cssRGB(selector, selectorAttribute) {
+    var color = $(selector).css(selectorAttribute);
+    color = color.replace("rgb(", "");
+    color = color.replace(")", "");
+    color = color.split(",");
+    return color;
+};
+
+
+function _$cssGetRGBA(selector, selectorAttribute, a) {
+    var color = _$cssRGB(selector, selectorAttribute);
+    var rgba = "rgba(";
+    _$traversalList(color, function (n) {
+        rgba += n + ",";
+    });
+    rgba += a + ")";
+    return rgba;
 }
+
+function _$cssGetSelectorColorRGBA(selector, a) {
+    return _$cssGetRGBA(selector, "color", a)
+};
+
+function _$cssGetSelectorBColorRGBA(selector, a) {
+    return _$cssGetRGBA(selector, "background-color", a)
+};
+
+/**
+ *  * 静态绑定元素回车与其他元素点击事件
+ */
+function _$keydownEnter_ClickDynamic(enterSelector, parentSelector, otherSelector, f) {
+    _$checkParametersIsNull(enterSelector);
+    _$checkParametersIsNull(parentSelector);
+    _$checkParametersIsNull(otherSelector);
+    _$checkParametersIsNull(f);
+    $(parentSelector).on("click", otherSelector, f);
+    _$keydownEnter($(enterSelector), f);
+}
+
+/**
+ * 静态绑定元素回车与其他元素点击事件
+ */
+function _$keydownEnter_ClickStatic(enterSelector, otherSelector, f) {
+    _$checkParametersIsNull(enterSelector);
+    _$checkParametersIsNull(otherSelector);
+    _$checkParametersIsNull(f);
+    $(otherSelector).click(f);
+    _$keydownEnter($(enterSelector), f);
+}
+
+/**
+ * 动态绑定元素回车事件与其他元素事件调用同一个方法
+ */
+function _$keydownEnter_otherEventsDynamic(enterSelector, otherParentSelector, otherSelector, otherEvents, f) {
+    _$checkParametersIsNull(enterSelector);
+    _$checkParametersIsNull(otherSelector);
+    _$checkParametersIsNull(otherParentSelector);
+    _$checkParametersIsNull(otherEvents);
+    _$checkParametersIsNull(f);
+    $(otherParentSelector).on(otherEvents, otherSelector, f);
+    _$keydownEnter($(enterSelector), f);
+}
+
+/**
+ * 静态绑定元素回车事件与其他元素事件调用同一个方法
+ *
+ */
+function _$keydownEnter_otherElementEventsStatic(enterSelector, otherSelector, otherEvents, f) {
+    _$checkParametersIsNull(enterSelector);
+    _$checkParametersIsNull(otherSelector);
+    _$checkParametersIsNull(otherEvents);
+    _$checkParametersIsNull(f);
+    $("body").on(events, otherSelector, f);
+    _$keydownEnter($(enterSelector), f);
+}
+
+/**
+ * 绑定元素下的回车事件
+ * @param $e
+ * @param f
+ */
+function _$keydownEnter($e, f) {
+    _$checkParametersIsNull(f);
+    _$checkParametersIsNull($e);
+    _$keydown($e, function (number) {
+        if (number === 13) {
+            f();
+        }
+    });
+};
+
+/**
+ * 绑定元素下的键盘按下事件
+ * @param $e  jquery元素，dom元素将自动转换为jquery元素
+ * @param f 回调方法，并传入按下的keyNumber
+ */
+function _$keydown($e, f) {
+    _$checkParametersIsNull(f);
+    _$checkParametersIsNull($e);
+    if ($e && f) {
+        $($e).keydown(function (event) {
+            const code = event.keyCode;
+            f(code);
+        });
+    }
+};
+
+function _$checkParametersIsNull(param, msg) {
+    if (_$isNullNonZero(msg)) {
+        msg = "";
+    }
+    if (_$isNullNonZero(param)) {
+        throw new Error("NullPointerException" + msg);
+    }
+};

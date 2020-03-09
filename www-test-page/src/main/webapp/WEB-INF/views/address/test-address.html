@@ -4,7 +4,6 @@
 <script>
     $(function () {
         loadClassify();
-
         $(".address_div").on("click", ".address_div_query_button", function () {
             var $this = $(this);
             var id = $this.attr("data_id");
@@ -79,5 +78,6 @@
         $dl.data(data_test_address_classifyId, id);
         return $(dl);
     }
+
 </script>
 </body>

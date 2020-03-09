@@ -22,14 +22,14 @@
 
     <script>
         $(function () {
-            var colos = ["#00a0e9", "#770088", "#aa00aa","chocolate"];
+            var colos = ["#00a0e9", "#770088", "#aa00aa", "chocolate"];
             var rand = _$randomNum(colos.length);
             _$setCssPropertyValue("--theme-colors", colos[rand]);
         });
     </script>
 </head>
 <body>
-
+<span class="testing-center-test-home-theme" style="color: var(--theme-colors)"></span>
 <div id="public_div">
     <!--    <iframe src="public-page.html" width="100%" height="100%" frameborder="no" ></iframe>-->
     <script>$("#public_div").load("static/public-html/public-page.html", function () {
