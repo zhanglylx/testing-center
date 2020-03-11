@@ -9,6 +9,12 @@
     <meta http-equiv="expires" content="0">
     <title>测试中心-在线工具</title>
     <script src="static/scripts/base-values.js"></script>
+    <script src="static/scripts/js-util.js"></script>
+    <script>
+        var colos = ["#00a0e9", "#770088", "#aa00aa", "chocolate"];
+        var rand = _$randomNum(colos.length);
+        _$setCssPropertyValue("--theme-colors", colos[rand]);
+    </script>
     <script src="static/scripts/tool.js"></script>
     <link rel="icon" href="static/image/logo.png" type="image/x-icon"/>
     <link rel="stylesheet" href="static/css/html.css">
@@ -19,14 +25,6 @@
     <link rel="stylesheet" href="static/css/tool.css">
     <link rel="stylesheet" href="static/css/navigation.css">
     　　　　
-
-    <script>
-        $(function () {
-            var colos = ["#00a0e9", "#770088", "#aa00aa", "chocolate"];
-            var rand = _$randomNum(colos.length);
-            _$setCssPropertyValue("--theme-colors", colos[rand]);
-        });
-    </script>
 </head>
 <body>
 <span class="testing-center-test-home-theme" style="color: var(--theme-colors)"></span>
@@ -61,6 +59,5 @@
     </div>
     <div class="tools_div_root_clear"></div>
 </div>
-
 </body>
 </html>

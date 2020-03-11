@@ -1,0 +1,31 @@
+.cxb_cdn_form_div {
+    height: 30px;
+    line-height: 30px;
+}
+
+.cxb_form_div_form_halvingline {
+    border: var(--theme-colors) 1px solid;
+    margin: 0 10px;
+    position: relative;
+    top: 7%;
+}
+
+.cxb_form_div_form {
+    display: inline-block;
+
+}
+
+.cxb_form_div_form_subimt_div button {
+    width: 60%;
+}
+
+.cxb_cdn_form_div p {
+    margin-left: 20px;
+}
+
+.cxb_form_div_p_halvingline {
+    font-weight: bolder;
+    color: var(--theme-colors);
+    margin-left: 4px;
+    margin-right: 4px;
+}

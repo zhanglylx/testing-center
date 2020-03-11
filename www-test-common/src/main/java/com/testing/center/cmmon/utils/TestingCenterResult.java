@@ -1,5 +1,7 @@
 package com.testing.center.cmmon.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class TestingCenterResult<T> {
     private int status;
     private String msg;
@@ -42,6 +44,21 @@ public class TestingCenterResult<T> {
         this.setStatus(0);
         this.setData(t);
         return this;
+    }
+
+    /**
+     * 自动拼接错误参数提示文案：参数[ msg ]不能为空
+     *
+     * @param msg
+     * @return
+     */
+    public TestingCenterResult<T> errorParameterDefaultNull(String msg) {
+        if (StringUtils.isBlank(msg)) {
+            msg = "";
+        } else {
+            msg = "[ " + msg + " ]";
+        }
+        return errorParameter("参数" + msg + "不能为空");
     }
 
     /**

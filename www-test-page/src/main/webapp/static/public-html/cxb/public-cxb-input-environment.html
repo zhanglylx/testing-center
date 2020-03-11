@@ -1,0 +1,20 @@
+<body>
+<div class="public-cxb-input-enviroment-div">
+    environment:
+    <input type="radio" id="public_cxb_form_cdn_raido_environment_qa" name="public_cxb_form_cdn_raido_environment"
+           value="0"
+           checked/><label for="public_cxb_form_cdn_raido_environment_qa" style="margin-right: 5px;cursor: pointer;">qa</label>
+    <input type="radio" id="public_cxb_form_cdn_raido_environment_online" name="public_cxb_form_cdn_raido_environment"
+           value="1"/><label for="public_cxb_form_cdn_raido_environment_online" style="cursor: pointer;">online</label>
+</div>
+<script>
+    /**
+     * 获取公共页中的环境选择接口
+     * @returns {number} 0为:qa  1为:online
+     */
+    function _PgetPublicEnviromentValue() {
+        return parseInt($('.public-cxb-input-enviroment-div input[name="public_cxb_form_cdn_raido_environment"]:checked').val());
+    }
+
+</script>
+</body>

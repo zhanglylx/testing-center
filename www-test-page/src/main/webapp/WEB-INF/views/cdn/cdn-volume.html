@@ -1,0 +1,68 @@
+<body>
+<div class="cxb_cdn_form_div">
+    <div class="cxb_form_div_form">
+        <span class="reqyured_fields">*</span>
+        <label>
+            bookId:
+            <input type="text" id="cxb_form_cdn_text_bookId" autofocus>
+        </label>
+    </div>
+    <span class="cxb_form_div_form_halvingline"></span>
+    <div class="cxb_form_div_form">
+        <span class="reqyured_fields">*</span>
+        <label>
+            cnid:
+            <input type="text" id="cxb_form_cdn_text_cnid">
+        </label>
+    </div>
+    <span class="cxb_form_div_form_halvingline"></span>
+    <div class="cxb_form_div_form">
+        <span class="reqyured_fields">*</span>
+        <div class="public-cxb-input-environment-cdn"></div>
+    </div>
+    <div class="cxb_form_div_form_subimt_div">
+        <button id="cxb_form_div_form_subimt_button">查询</button>
+    </div>
+    <h3>cxb接口:</h3>
+    <div class="CXB_PATH_URL_GETVOLUME_div">
+
+    </div>
+</div>
+<script>
+    _$loadHtmlGet(STATIC_HTML_CXB_PUBLIC_CXB_INPUT_ENVIRONMENT, function (html) {
+        $(".public-cxb-input-environment-cdn").html(html);
+        $(function () {
+            $("#cxb_form_cdn_text_cnid").val(CXB_REQUEST_PARAMETER_CNID);
+            //开始查询
+            _$keydownEnter_ClickStatic(
+                "#cxb_form_cdn_text_bookId",
+                "#cxb_form_div_form_subimt_button",
+                function () {
+                    _$empty(".CXB_PATH_URL_GETVOLUME_div");
+                    var bookId = _$getValTrim($("#cxb_form_cdn_text_bookId"));
+                    var isOnline = _PgetPublicEnviromentValue();
+                    var cnid = _$getValTrim($("#cxb_form_cdn_text_cnid"));
+                    //    获取创新版接口
+                    _$ajaxPostJSON(
+                        CXB_PATH_URL_GETVOLUME,
+                        {"bookId": bookId, "isOnline": isOnline, "cnid": cnid},
+                        function (response) {
+                            _$analysisJsonSuccessResponse(response, function (data) {
+                                _$traversalJSON(data, function (key, values) {
+                                    var p = "<p>" +
+                                        key + "<span class='cxb_form_div_p_halvingline'>:</span>" + values +
+                                        "</p>";
+                                    $(".CXB_PATH_URL_GETVOLUME_div").append($(p));
+                                });
+
+                            })
+                        }
+                    );
+                }
+            );
+
+        });
+    });
+
+</script>
+</body>

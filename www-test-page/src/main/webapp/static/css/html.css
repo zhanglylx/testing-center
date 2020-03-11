@@ -1,6 +1,19 @@
-*{
+* {
     padding: 0;
     margin: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.reqyured_fields {
+    color: red;
+    font-weight: bold;
+}
+
+button,input[type="radio"] {
+    cursor: pointer;
+}
+
+button:hover {
+    border-color: var(--theme-colors);
 }
 

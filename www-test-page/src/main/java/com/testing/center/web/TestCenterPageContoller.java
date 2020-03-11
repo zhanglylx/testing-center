@@ -14,4 +14,9 @@ public class TestCenterPageContoller {
     public String getAddressPage() {
         return "address/test-address";
     }
+
+    @RequestMapping("cdn/cdn-volume")
+    public String getCdnVolume() {
+        return "cdn/cdn-volume";
+    }
 }

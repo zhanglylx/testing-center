@@ -302,6 +302,10 @@ function _$isNullNonZero(object) {
     }
 };
 
+function _$isJsonObject(obj) {
+    return typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() === "[object object]" && !obj.length;
+}
+
 /**
  * 遍历list
  * @param object list对象
@@ -316,6 +320,21 @@ function _$traversalList(object, f) {
 }
 
 /**
+ * 遍历json对象
+ * @param jsonObject
+ * @param f
+ */
+function _$traversalJSON(jsonObject, f) {
+    if (!_$isJsonObject(jsonObject)) {
+        jsonObject = eval("(" + jsonObject + ")");
+    }
+    for (var j in jsonObject) {
+        f(j, jsonObject[j]);
+    }
+};
+
+
+/**
  * 动态引入css
  * @param path
  */
@@ -327,6 +346,25 @@ function _$loadCss(path) {
         type: "text/css",
         href: path
     });
+}
+
+function _$loadHtmlGet(url, successFunction, $button, errFunction) {
+    _$ajax(
+        url,
+        "get",
+        {"loadHtmlGetMath": Math.random()},
+        "HTML",
+        function (html) {
+            successFunction(html);
+        }, function (httpResponse) {
+            if (errFunction) {
+                errFunction(httpResponse.status);
+            } else {
+                alert("页面加载失败，请稍后重试或联系管理员,服务状态：" + httpResponse.status);
+            }
+            throw new Error("页面加载失败:" + httpResponse.status);
+        }, $button, false
+    );
 }
 
 /**
@@ -455,6 +493,14 @@ function _$cssGetSelectorBColorRGBA(selector, a) {
     return _$cssGetRGBA(selector, "background-color", a)
 };
 
+function _$cssGetThemeColoRGBADefault() {
+    return _$cssGetThemeColoRGBA(0.2);
+};
+
+function _$cssGetThemeColoRGBA(a) {
+    return _$cssGetSelectorColorRGBA(".testing-center-test-home-theme", a);
+};
+
 /**
  *  * 静态绑定元素回车与其他元素点击事件
  */
@@ -543,3 +589,4 @@ function _$checkParametersIsNull(param, msg) {
         throw new Error("NullPointerException" + msg);
     }
 };
+
