@@ -339,6 +339,7 @@ function _$traversalJSON(jsonObject, f) {
  * @param path
  */
 function _$loadCss(path) {
+    path += "?math=" + Math.random();
     $("head").append("<link>");
     var $css = $("head").children(":last");
     $css.attr({

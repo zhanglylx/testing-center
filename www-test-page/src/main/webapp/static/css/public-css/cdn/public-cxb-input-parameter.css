@@ -1,0 +1,46 @@
+.public_cxb_parameter_div_table {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.public_cxb_parameter_div_table_tr {
+    height: 30px;
+    line-height: 30px;
+}
+
+.public_cxb_parameter_div_table_td_key {
+    text-align: right;
+    padding-right: 10px;
+    width: 12%;
+}
+
+.public_cxb_parameter_div_table_td_value {
+    text-align: left;
+    padding-left: 10px;
+    width: 18%;
+}
+.public_cxb_parameter_div_table_td_placeholder{
+    width: 30%;
+}
+.public_cxb_parameter_div_table_td_value input[type=text] {
+    height: 23px;
+    width: 90%;
+    border: #3b4249 1px solid;
+}
+
+.public_cxb_parameter_div_table_td_value input[type=radio] {
+    cursor: pointer;
+}
+
+.public_cxb_parameter_div_table_tr_submit {
+    text-align: center;
+    height: 30px;
+}
+
+.public_cxb_parameter_div_table_tr_submit button {
+    height: 30px;
+    width: 100%;
+    font-weight: bolder;
+    font-size: 20px;
+    color: var(--theme-colors);
+}

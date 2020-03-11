@@ -21,7 +21,7 @@
     <import resource="classpath:spring/spring-cdn.xml"/>
     <import resource="classpath:spring/spring-bean.xml"/>
 
-    <bean id="dbcp" class="org.apache.commons.dbcp2.BasicDataSource">
+    <bean id="dbcp" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="#{jdbcConfig.driverClassName}"/>
         <property name="url" value="#{jdbcConfig.url}"/>
         <property name="username" value="#{jdbcConfig.userName}"/>

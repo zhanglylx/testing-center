@@ -1,0 +1,80 @@
+<body>
+<div class="public_cxb_parameter_div">
+    <table class="public_cxb_parameter_div_table" border="1" cellspacing="0" width="40%">
+        <tr class="public_cxb_parameter_div_table_tr">
+            <td class="public_cxb_parameter_div_table_td_key">
+                <label
+                        for="public_cxb_parameter_div_input_bookId">
+                    <span class="reqyured_fields" style="display: none">*</span>bookId:</label>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value">
+                <input type="text" id="public_cxb_parameter_div_input_bookId" autofocus/>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_key">
+                <label
+                        for="public_cxb_parameter_div_input_bookName">
+                    <span class="reqyured_fields" style="display: none">*</span>bookName:</label>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value">
+                <input type="text" id="public_cxb_parameter_div_input_bookName" autofocus/>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_key">
+                <label
+                        for="public_cxb_parameter_div_input_cnid"> <span class="reqyured_fields"
+                                                                         style="display: none">*</span>cnid:</label>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value">
+                <input type="text" id="public_cxb_parameter_div_input_cnid" autofocus/>
+            </td>
+        </tr>
+
+        <tr class="public_cxb_parameter_div_table_tr">
+            <td class="public_cxb_parameter_div_table_td_key">
+                <label
+                        for="public_cxb_parameter_div_input_uid"> <span class="reqyured_fields"
+                                                                        style="display: none">*</span>uid:</label>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value">
+                <input type="text" id="public_cxb_parameter_div_input_uid" autofocus/>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_key">
+                <span class="reqyured_fields" style="display: none">*</span>
+                environment:
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value">
+                <input type="radio" id="public_cxb_parameter_div_input_environment_qa"
+                       name="public_cxb_parameter_div_input_environment"
+                       value="0"
+                       checked/><label for="public_cxb_parameter_div_input_environment_qa"
+                                       style="margin-right: 5px;cursor: pointer;">qa</label>
+                <input type="radio" id="public_cxb_parameter_div_input_environment_online"
+                       name="public_cxb_parameter_div_input_environment"
+                       value="1"/><label for="public_cxb_parameter_div_input_environment_online"
+                                         style="margin-right: 5px;cursor: pointer;">online</label>
+            </td>
+            <td colspan="2" class="public_cxb_parameter_div_table_td_placeholder"></td>
+
+        </tr>
+        <tr class="public_cxb_parameter_div_table_tr_submit">
+            <td colspan="6">
+                <button><i>submit</i></button>
+            </td>
+        </tr>
+    </table>
+</div>
+<script>
+    _$loadCss("static/css/public-css/cdn/public-cxb-input-parameter.css");
+    $(function () {
+        $(".public_cxb_parameter_div_table").css("border", _$cssGetThemeColoRGBA(0.6) + " 1px solid");
+    });
+
+    /**
+     * 获取公共页中的环境选择接口
+     * @returns {number} 0为:qa  1为:online
+     */
+    function _PgetPublicEnviromentValue() {
+        return parseInt($('.public-cxb-input-enviroment-div input[name="public_cxb_form_cdn_raido_environment"]:checked').val());
+    }
+
+</script>
+</body>
