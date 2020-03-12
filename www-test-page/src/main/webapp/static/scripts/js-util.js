@@ -293,14 +293,31 @@ function _$analysisJsonSuccessResponse(response, successFunction, errorFuncation
  * @param object
  * @returns {boolean}
  */
-function _$isNullNonZero(object) {
+function _$isNullNonZero(object, f, msg) {
     if (object) {
         return false;
     } else {
-        return object !== 0;
-
+        if (object === 0) {
+            return false;
+        } else {
+            if (f) {
+                f(msg);
+            }
+            return true;
+        }
     }
 };
+
+
+/**
+ * 判断元素是否显示
+ * @param selector
+ * @returns {boolean} true：显示
+ */
+function _$isHidden(selector) {
+    return $(selector).is(":hidden");
+}
+
 
 function _$isJsonObject(obj) {
     return typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() === "[object object]" && !obj.length;

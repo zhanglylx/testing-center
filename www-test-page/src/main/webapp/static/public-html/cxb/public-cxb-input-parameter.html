@@ -2,46 +2,52 @@
 <div class="public_cxb_parameter_div">
     <table class="public_cxb_parameter_div_table" border="1" cellspacing="0" width="40%">
         <tr class="public_cxb_parameter_div_table_tr">
-            <td class="public_cxb_parameter_div_table_td_key">
+            <!--            bookid-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_bookId">
                 <label
                         for="public_cxb_parameter_div_input_bookId">
                     <span class="reqyured_fields" style="display: none">*</span>bookId:</label>
             </td>
-            <td class="public_cxb_parameter_div_table_td_value">
+            <td class="public_cxb_parameter_div_table_td_value" id="public_cxb_parameter_div_table_td_value_bookId">
                 <input type="text" id="public_cxb_parameter_div_input_bookId" autofocus/>
             </td>
-            <td class="public_cxb_parameter_div_table_td_key">
+            <!--                        bookname-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_bookName">
                 <label
                         for="public_cxb_parameter_div_input_bookName">
                     <span class="reqyured_fields" style="display: none">*</span>bookName:</label>
             </td>
-            <td class="public_cxb_parameter_div_table_td_value">
+            <td class="public_cxb_parameter_div_table_td_value" id="public_cxb_parameter_div_table_td_value_bookName">
                 <input type="text" id="public_cxb_parameter_div_input_bookName" autofocus/>
             </td>
-            <td class="public_cxb_parameter_div_table_td_key">
+            <!--            cnid-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_cnid">
                 <label
                         for="public_cxb_parameter_div_input_cnid"> <span class="reqyured_fields"
                                                                          style="display: none">*</span>cnid:</label>
             </td>
-            <td class="public_cxb_parameter_div_table_td_value">
+            <td class="public_cxb_parameter_div_table_td_value" id="public_cxb_parameter_div_table_td_value_cnid">
                 <input type="text" id="public_cxb_parameter_div_input_cnid" autofocus/>
             </td>
         </tr>
 
         <tr class="public_cxb_parameter_div_table_tr">
-            <td class="public_cxb_parameter_div_table_td_key">
+            <!--            uid-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_uid">
                 <label
                         for="public_cxb_parameter_div_input_uid"> <span class="reqyured_fields"
                                                                         style="display: none">*</span>uid:</label>
             </td>
-            <td class="public_cxb_parameter_div_table_td_value">
+            <td class="public_cxb_parameter_div_table_td_value" id="public_cxb_parameter_div_table_td_value_uid">
                 <input type="text" id="public_cxb_parameter_div_input_uid" autofocus/>
             </td>
-            <td class="public_cxb_parameter_div_table_td_key">
+            <!--            environment-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_environment">
                 <span class="reqyured_fields" style="display: none">*</span>
                 environment:
             </td>
-            <td class="public_cxb_parameter_div_table_td_value">
+            <td class="public_cxb_parameter_div_table_td_value"
+                id="public_cxb_parameter_div_table_td_value_environment">
                 <input type="radio" id="public_cxb_parameter_div_input_environment_qa"
                        name="public_cxb_parameter_div_input_environment"
                        value="0"
@@ -52,8 +58,7 @@
                        value="1"/><label for="public_cxb_parameter_div_input_environment_online"
                                          style="margin-right: 5px;cursor: pointer;">online</label>
             </td>
-            <td colspan="2" class="public_cxb_parameter_div_table_td_placeholder"></td>
-
+            <!--            <td colspan="2" class="public_cxb_parameter_div_table_td_placeholder"></td>-->
         </tr>
         <tr class="public_cxb_parameter_div_table_tr_submit">
             <td colspan="6">
@@ -63,17 +68,109 @@
     </table>
 </div>
 <script>
+    $(".public_cxb_parameter_div_table td").hide();
+    $(".public_cxb_parameter_div_table_tr_submit td").show();
     _$loadCss("static/css/public-css/cdn/public-cxb-input-parameter.css");
     $(function () {
         $(".public_cxb_parameter_div_table").css("border", _$cssGetThemeColoRGBA(0.6) + " 1px solid");
+        $("#public_cxb_parameter_div_input_cnid").val(CXB_REQUEST_PARAMETER_CNID);
     });
+
+    function _Psubmit(f) {
+        _$keydownEnter_ClickStatic(
+            $(".public_cxb_parameter_div_table input"),
+            $(".public_cxb_parameter_div_table_tr_submit"),
+            f
+        );
+    }
+
+    /**
+     * 获取显示表单的数据
+     */
+    function _PgetShowParameterData() {
+        var data = {};
+        const bookid = _PgetPublicBookIdValue();
+        const bookName = _PgetPublicBookNameValue();
+        const cnid = _PgetPublicCnidValue();
+        const uid = _PgetPublicUidValue();
+        const environment = _PgetPublicEnviromentValue();
+        if (!_$isHidden($("#public_cxb_parameter_div_input_bookId"))
+            && !_$isNullNonZero(bookid, alterNullData, "booid")) {
+            data["bookId"] = bookid;
+        }
+        if (!_$isHidden($("#public_cxb_parameter_div_input_bookName"))
+            && !_$isNullNonZero(bookName, alterNullData, "bookName")) {
+            data["bookName"] = bookName;
+        }
+        if (!_$isHidden($("#public_cxb_parameter_div_input_cnid"))
+            && !_$isNullNonZero(cnid, alterNullData, "cnid")) {
+            data["cnid"] = cnid;
+        }
+        if (!_$isHidden($("#public_cxb_parameter_div_input_uid"))
+            && !_$isNullNonZero(uid, alterNullData, "uid")) {
+            data["uid"] = uid;
+        }
+        if (!_$isHidden($('.public_cxb_parameter_div_table_td_value input[name="public_cxb_parameter_div_input_environment"]'))
+            && !_$isNullNonZero(environment, alterNullData, "environment")) {
+            data.environment = environment;
+        }
+        return data;
+    }
+
+    function alterNullData(msg) {
+        alert(msg + "不能为空")
+    }
+
+    function _PshowBookId() {
+        _Pshow("bookId");
+    }
+
+    function _PshowBookName() {
+        _Pshow("bookName");
+    }
+
+    function _PshowCnid() {
+        _Pshow("cnid");
+    }
+
+    function _PshowUid() {
+        _Pshow("uid");
+    }
+
+    function _PshowEnvironment() {
+        _Pshow("environment");
+    }
+
+    /**
+     * @private
+     */
+    function _Pshow(name) {
+        $("#public_cxb_parameter_div_table_td_key_" + name).show();
+        $("#public_cxb_parameter_div_table_td_value_" + name).show();
+    }
+
+    function _PgetPublicBookIdValue() {
+        return _$getValTrim("#public_cxb_parameter_div_input_bookId");
+    }
+
+    function _PgetPublicBookNameValue() {
+        return _$getValTrim("#public_cxb_parameter_div_input_bookName");
+    }
+
+    function _PgetPublicCnidValue() {
+        return _$getValTrim("#public_cxb_parameter_div_input_cnid");
+    }
+
+    function _PgetPublicUidValue() {
+        return _$getValTrim("#public_cxb_parameter_div_input_uid");
+    }
 
     /**
      * 获取公共页中的环境选择接口
      * @returns {number} 0为:qa  1为:online
      */
     function _PgetPublicEnviromentValue() {
-        return parseInt($('.public-cxb-input-enviroment-div input[name="public_cxb_form_cdn_raido_environment"]:checked').val());
+        return parseInt($('.public_cxb_parameter_div_table_td_value input[name="public_cxb_parameter_div_input_environment"]:checked').val());
     }
 
 </script>
