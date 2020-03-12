@@ -5,12 +5,27 @@ import sun.plugin2.message.Serializer;
 import java.io.Serializable;
 import java.util.Map;
 
-public class ServerBean implements Serializable {
+public abstract class ServerBean implements Serializable {
     private Integer _testingCenterRequestServerResponseStatusCode;
     private Object _testingCenterRequestUri;
     private String _testingCenterRequestMethod;
     private Map<String, Object> _testingCenterRequestHeaders;
     private Map<String, Object> _testingCenterRequestBody;
+    private String _testingCenterRequestMsg;
+
+    public String get_testingCenterRequestMsg() {
+        return _testingCenterRequestMsg;
+    }
+
+    public void set_testingCenterRequestMsg(String _testingCenterRequestMsg) {
+        this._testingCenterRequestMsg = _testingCenterRequestMsg;
+    }
+    public void set_testingCenterRequestMsg(String _testingCenterRequestMsg,Exception e) {
+        this._testingCenterRequestMsg = _testingCenterRequestMsg+"【"+e.getMessage()+"】";
+    }
+    public void set_testingCenterRequestMsg(Exception e) {
+        this._testingCenterRequestMsg = e.getMessage();
+    }
 
     public void setPostUriHeadersBody(Object uri, Map<String, Object> headers, Map<String, Object> body) {
         set_testingCenterRequestHeaders(headers);

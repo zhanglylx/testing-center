@@ -407,6 +407,9 @@ public class HttpUtils {
             }
             if (closeableHttpResponse.getStatusLine().getStatusCode() != 200) {
                 result = getErrCodeFormat(closeableHttpResponse.getStatusLine().getStatusCode());
+                if (!string) {
+                    result = result.toString().getBytes();
+                }
             } else {
                 if (string) {
                     result = EntityUtils.toString(closeableHttpResponse.getEntity(), StandardCharsets.UTF_8);

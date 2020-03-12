@@ -1,10 +1,10 @@
 _$loadCss("static/css/plug/json/json-format.css");
 //格式化代码函数,已经用原生方式写好了不需要改动,直接引用就好
-var formatJson = function (json, options) {
+var _jFormatJson = function (json, options) {
     var reg = null;
     var formatted = '';
     var pad = 0;
-    var  PADDING = '    ';
+    var PADDING = '    ';
     options = options || {};
     options.newlineAfterColonIfBeforeBraceOrBracket = (options.newlineAfterColonIfBeforeBraceOrBracket === true) ? true : false;
     options.spaceAfterColon = (options.spaceAfterColon === false) ? false : true;
@@ -57,21 +57,29 @@ var formatJson = function (json, options) {
         formatted += padding + node + '\r\n';
         pad += indent;
     });
-    return Process(formatted);
+    return formatted;
 };
 
+function _jFormatJsonProcess(json, options) {
+    return Process(_jFormatJson(json, options))
+}
+
+/**
+ *
+ * @param formatted
+ * @returns {string|*}
+ * @constructor
+ * @private
+ */
 function Process(formatted) {
-    console.info(formatted)
     var json = formatted;
     var html = "";
-    console.log(formatted)
     try {
         if (json == "") {
             json = '""';
         }
         var obj = eval("[" + json + "]");
         html = ProcessObject(obj[0], 0, false, false, false);
-        console.log(html)
         return "<PRE class='json_format_CodeContainer'>" + html + "</PRE>";
     } catch (e) {
         console.log(e);
@@ -80,6 +88,17 @@ function Process(formatted) {
     }
 };
 
+/**
+ *
+ * @param obj
+ * @param indent
+ * @param addComma
+ * @param isArray
+ * @param isPropertyContent
+ * @returns {string}
+ * @constructor
+ * @private
+ */
 function ProcessObject(obj, indent, addComma, isArray, isPropertyContent) {
     var html = "";
     var comma = (addComma) ? "<span class='json_format_Comma'>,</span> " : "";
@@ -138,11 +157,30 @@ function ProcessObject(obj, indent, addComma, isArray, isPropertyContent) {
     return html;
 };
 
+/**
+ *
+ * @param obj
+ * @returns {*|boolean}
+ * @constructor
+ * @private
+ */
 function IsArray(obj) {
     return obj &&
         typeof obj === 'object' && typeof obj.length === 'number' && !(obj.propertyIsEnumerable('length'));
 }
 
+/**
+ *
+ * @param literal
+ * @param quote
+ * @param comma
+ * @param indent
+ * @param isArray
+ * @param style
+ * @returns {string}
+ * @constructor
+ * @private
+ */
 function FormatLiteral(literal, quote, comma, indent, isArray, style) {
     if (typeof literal == "string") {
         literal = literal.split("<").join("&lt;").split(">").join("&gt;");
@@ -154,6 +192,14 @@ function FormatLiteral(literal, quote, comma, indent, isArray, style) {
     return str;
 }
 
+/**
+ *
+ * @param indent
+ * @param obj
+ * @returns {string}
+ * @constructor
+ * @private
+ */
 function FormatFunction(indent, obj) {
     var tabs = "";
     for (var i = 0; i < indent; i++) {
@@ -167,6 +213,15 @@ function FormatFunction(indent, obj) {
     return str;
 }
 
+/**
+ *
+ * @param indent
+ * @param data
+ * @param isPropertyContent
+ * @returns {string}
+ * @constructor
+ * @private
+ */
 function GetRow(indent, data, isPropertyContent) {
     var tabs = "";
     for (var i = 0; i < indent && !isPropertyContent; i++) {

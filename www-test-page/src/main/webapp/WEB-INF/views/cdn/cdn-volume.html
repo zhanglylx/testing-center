@@ -8,6 +8,8 @@
     <div class="CXB_PATH_URL_GETVOLUME_div">
 
     </div>
+    <h3>cdn目录:</h3>
+    <div class="CXB_PATH_URL_GETCDNVOLUME_div"></div>
 </div>
 <script>
     _$loadHtmlGet(STATIC_HTML_CXB_PUBLIC_CXB_INPUT_ENVIRONMENT, function (html) {
@@ -21,23 +23,46 @@
                     console.info(data);
                     if (data === false) return;
                     _$empty(".CXB_PATH_URL_GETVOLUME_div");
+                    _$empty(".CXB_PATH_URL_GETCDNVOLUME_div");
                     //    获取创新版接口
                     _$ajaxPostJSON(
                         CXB_PATH_URL_GETVOLUME,
                         data,
                         function (response) {
                             _$analysisJsonSuccessResponse(response, function (data) {
-                                $(".CXB_PATH_URL_GETVOLUME_div").append(formatJson(data));
-                                // _$traversalJSON(data, function (key, values) {
-                                //     var p = "<p>" +
-                                //         key + "<span class='cxb_form_div_p_halvingline'>:</span>" + values +
-                                //         "</p>";
-                                //     $(".CXB_PATH_URL_GETVOLUME_div").append($(p));
+                               console.log(data)
+                                $(".CXB_PATH_URL_GETVOLUME_div").append(_jFormatJsonProcess(data));
+                                console.log(data)
+                                console.log(data.data)
+                                getCdnVolume(data.data);
                             });
-                        })
+                        },null,$(".public_cxb_parameter_div_table_tr_submit"))
                 }
             );
         });
+
+        function getCdnVolume(data) {
+            if (!_$isJsonObject(data)) {
+                $(".CXB_PATH_URL_GETCDNVOLUME_div").text("目录不在cdn");
+                return;
+            }
+            var s3exist = data.s3exist;
+            var bookId = data.bookId;
+            var version = data.version;
+            var cdnUrl = data.cdnUrl;
+            if (s3exist === 1) {
+                _$ajaxPostJSON(
+                    CXB_PATH_URL_GETCDNVOLUME,
+                    {"bookId": bookId, "cdnUrl": cdnUrl, "version": version},
+                    function (response) {
+                        $(".CXB_PATH_URL_GETCDNVOLUME_div").append(_jFormatJsonProcess(response));
+                    }
+                );
+            } else {
+                $(".CXB_PATH_URL_GETCDNVOLUME_div").text("目录不在cdn");
+            }
+        }
+
     });
 
 </script>

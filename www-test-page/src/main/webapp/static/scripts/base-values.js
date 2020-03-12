@@ -23,7 +23,8 @@ const data_test_address_classifyId = "data_test_address_classifyId";
 //static
 const STATIC_HTML_CXB_PUBLIC_CXB_INPUT_ENVIRONMENT = "static/public-html/cxb/public-cxb-input-parameter.html";
 //CXB
-const CXB_PATH_URL_GETVOLUME = "cdn/getCdnVolume";
+const CXB_PATH_URL_GETVOLUME = "volume/getCxbVolume";
+const CXB_PATH_URL_GETCDNVOLUME = "volume/getCdnVolume";
 const CXB_REQUEST_PARAMETER_CNID = 1062;
 
 

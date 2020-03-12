@@ -2,6 +2,7 @@ package com.testing.center.service.cdn.impl;
 
 import com.testing.center.cdn.VolumeDaoMapper;
 import com.testing.center.cmmon.utils.TestingCenterResult;
+import com.testing.center.entity.cdn.volume.CdnVolume;
 import com.testing.center.entity.cdn.volume.CxbGetCdnVolume;
 import com.testing.center.service.cdn.VolumeService;
 import org.apache.commons.lang3.StringUtils;
@@ -15,7 +16,7 @@ public class VolumeServiceImpl implements VolumeService {
     private VolumeDaoMapper volumeDaoMapper;
 
     @Override
-    public TestingCenterResult<CxbGetCdnVolume> getCdnVolume(String bookId, Integer environment, Integer cnid) {
+    public TestingCenterResult<CxbGetCdnVolume> getCxbVolume(String bookId, Integer environment, Integer cnid) {
         TestingCenterResult<CxbGetCdnVolume> testingCenterResult = new TestingCenterResult<>();
         if (StringUtils.isBlank(bookId)) {
             return testingCenterResult.errorParameterDefaultNull("bookId");
@@ -28,5 +29,24 @@ public class VolumeServiceImpl implements VolumeService {
         }
         CxbGetCdnVolume volume = volumeDaoMapper.getVolume(bookId, environment, cnid);
         return testingCenterResult.setSuccess("查询成功", volume);
+    }
+
+    @Override
+    public TestingCenterResult<CdnVolume> getCdnVolume(String path, String bookId, Integer version) {
+        TestingCenterResult<CdnVolume> testingCenterResult = new TestingCenterResult<>();
+        if (StringUtils.isBlank(path)) {
+            testingCenterResult.errorParameterDefaultNull("path");
+            return testingCenterResult;
+        }
+        if (StringUtils.isBlank(bookId)) {
+            testingCenterResult.errorParameterDefaultNull("bookId");
+            return testingCenterResult;
+        }
+        if (version == null) {
+            testingCenterResult.errorParameterDefaultNull("version");
+            return testingCenterResult;
+        }
+        testingCenterResult.setSuccess("查询成功",volumeDaoMapper.getCdnVolume(path, bookId, version));
+        return testingCenterResult;
     }
 }
