@@ -1,7 +1,7 @@
 package com.testing.center.cdn;
 
-import com.testing.center.entity.cdn.volume.Volume;
+import com.testing.center.entity.cdn.volume.CxbGetCdnVolume;
 
 public interface VolumeDaoMapper {
-    Volume getVolume(String bookId, Integer isOnline, Integer cnid);
+    CxbGetCdnVolume getVolume(String bookId, Integer environment, Integer cnid);
 }

@@ -94,25 +94,25 @@
         const cnid = _PgetPublicCnidValue();
         const uid = _PgetPublicUidValue();
         const environment = _PgetPublicEnviromentValue();
-        if (!_$isHidden($("#public_cxb_parameter_div_input_bookId"))
-            && !_$isNullNonZero(bookid, alterNullData, "booid")) {
+        if (!_$isHidden($("#public_cxb_parameter_div_input_bookId"))) {
+            if (_$isNullNonZero(bookid, alterNullData, "booid")) return false;
             data["bookId"] = bookid;
         }
-        if (!_$isHidden($("#public_cxb_parameter_div_input_bookName"))
-            && !_$isNullNonZero(bookName, alterNullData, "bookName")) {
+        if (!_$isHidden($("#public_cxb_parameter_div_input_bookName"))) {
+            if (_$isNullNonZero(bookName, alterNullData, "bookName")) return false;
             data["bookName"] = bookName;
         }
-        if (!_$isHidden($("#public_cxb_parameter_div_input_cnid"))
-            && !_$isNullNonZero(cnid, alterNullData, "cnid")) {
+        if (!_$isHidden($("#public_cxb_parameter_div_input_cnid"))) {
+            if (_$isNullNonZero(cnid, alterNullData, "cnid")) return false;
             data["cnid"] = cnid;
         }
-        if (!_$isHidden($("#public_cxb_parameter_div_input_uid"))
-            && !_$isNullNonZero(uid, alterNullData, "uid")) {
+        if (!_$isHidden($("#public_cxb_parameter_div_input_uid"))) {
+            if (_$isNullNonZero(uid, alterNullData, "uid")) return false;
             data["uid"] = uid;
         }
-        if (!_$isHidden($('.public_cxb_parameter_div_table_td_value input[name="public_cxb_parameter_div_input_environment"]'))
-            && !_$isNullNonZero(environment, alterNullData, "environment")) {
-            data.environment = environment;
+        if (!_$isHidden($('.public_cxb_parameter_div_table_td_value input[name="public_cxb_parameter_div_input_environment"]'))) {
+            if (_$isNullNonZero(environment, alterNullData, "environment")) return false;
+            data["environment"] = environment;
         }
         return data;
     }

@@ -17,36 +17,26 @@
         _PshowEnvironment();
         $(function () {
             _Psubmit(function () {
-                console.info(_PgetShowParameterData());
-            });
-            // //开始查询
-            // _$keydownEnter_ClickStatic(
-            //     "#cxb_form_cdn_text_bookId",
-            //     "#cxb_form_div_form_subimt_button",
-            //     function () {
-            //         _$empty(".CXB_PATH_URL_GETVOLUME_div");
-            //         var bookId = _$getValTrim($("#cxb_form_cdn_text_bookId"));
-            //         var isOnline = _PgetPublicEnviromentValue();
-            //         var cnid = _$getValTrim($("#cxb_form_cdn_text_cnid"));
-            //         //    获取创新版接口
-            //         _$ajaxPostJSON(
-            //             CXB_PATH_URL_GETVOLUME,
-            //             {"bookId": bookId, "isOnline": isOnline, "cnid": cnid},
-            //             function (response) {
-            //                 _$analysisJsonSuccessResponse(response, function (data) {
-            //                     _$traversalJSON(data, function (key, values) {
-            //                         var p = "<p>" +
-            //                             key + "<span class='cxb_form_div_p_halvingline'>:</span>" + values +
-            //                             "</p>";
-            //                         $(".CXB_PATH_URL_GETVOLUME_div").append($(p));
-            //                     });
-            //
-            //                 })
-            //             }
-            //         );
-            //     }
-            // );
-
+                    var data = _PgetShowParameterData();
+                    console.info(data);
+                    if (data === false) return;
+                    _$empty(".CXB_PATH_URL_GETVOLUME_div");
+                    //    获取创新版接口
+                    _$ajaxPostJSON(
+                        CXB_PATH_URL_GETVOLUME,
+                        data,
+                        function (response) {
+                            _$analysisJsonSuccessResponse(response, function (data) {
+                                $(".CXB_PATH_URL_GETVOLUME_div").append(formatJson(data));
+                                // _$traversalJSON(data, function (key, values) {
+                                //     var p = "<p>" +
+                                //         key + "<span class='cxb_form_div_p_halvingline'>:</span>" + values +
+                                //         "</p>";
+                                //     $(".CXB_PATH_URL_GETVOLUME_div").append($(p));
+                            });
+                        })
+                }
+            );
         });
     });
 

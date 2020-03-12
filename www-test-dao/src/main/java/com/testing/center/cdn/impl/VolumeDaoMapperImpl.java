@@ -9,7 +9,7 @@ import com.testing.center.cdn.VolumeDaoMapper;
 import com.testing.center.cmmon.utils.ParameterInspect;
 import com.testing.center.cmmon.utils.cxb.URLEnvironment;
 import com.testing.center.cmmon.utils.http.HttpUtils;
-import com.testing.center.entity.cdn.volume.Volume;
+import com.testing.center.entity.cdn.volume.CxbGetCdnVolume;
 import org.apache.http.client.utils.URIBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,22 +27,22 @@ public class VolumeDaoMapperImpl implements VolumeDaoMapper {
     private ObjectMapper objectMapper;
 
     @Override
-    public Volume getVolume(String bookId, Integer isOnline, Integer cnid) {
+    public CxbGetCdnVolume getVolume(String bookId, Integer environment, Integer cnid) {
         ParameterInspect.stringIsBlank(bookId);
-        Objects.requireNonNull(isOnline);
+        Objects.requireNonNull(environment);
         Objects.requireNonNull(cnid);
         URIBuilder uriBuilder;
         URI uri;
         Map<String, Object> headers = new HashMap<String, Object>();
         headers.put("cnid", cnid);
         try {
-            uriBuilder = new URIBuilder(URLEnvironment.contextSwitching(url, isOnline));
+            uriBuilder = new URIBuilder(URLEnvironment.contextSwitching(url, environment));
             uriBuilder.addParameter("bookId", bookId);
             uri = uriBuilder.build();
             String response = HttpUtils.doGet(uri, headers, null);
-            Volume volume = objectMapper.readValue(response, Volume.class);
+            CxbGetCdnVolume volume = objectMapper.readValue(response, CxbGetCdnVolume.class);
             volume.set_testingCenterRequestUri(uri);
-            volume.setHeaderObjcet(headers);
+            volume.set_testingCenterRequestHeaders(headers);
             volume.setRequestMethodGet();
             return volume;
         } catch (URISyntaxException | JsonProcessingException e) {

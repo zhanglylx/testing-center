@@ -1,33 +1,31 @@
 package com.testing.center.entity;
 
-public class ServerBean {
+import sun.plugin2.message.Serializer;
+
+import java.io.Serializable;
+import java.util.Map;
+
+public class ServerBean implements Serializable {
     private Integer _testingCenterRequestServerResponseStatusCode;
     private Object _testingCenterRequestUri;
     private String _testingCenterRequestMethod;
-    private String _testingCenterRequestHeaders;
-    private String _testingCenterRequestBody;
+    private Map<String, Object> _testingCenterRequestHeaders;
+    private Map<String, Object> _testingCenterRequestBody;
 
-    public void setPostUriHeadersBody(Object uri, Object headers, Object body) {
-        setHeaderObjcet(headers);
-        setBodyObjcet(body);
+    public void setPostUriHeadersBody(Object uri, Map<String, Object> headers, Map<String, Object> body) {
+        set_testingCenterRequestHeaders(headers);
+        set_testingCenterRequestBody(body);
         setRequestMethodGet();
         set_testingCenterRequestUri(uri);
     }
 
-    public void setGetUriHeadersBody(Object uri, Object headers, Object body) {
-        setHeaderObjcet(headers);
-        setBodyObjcet(body);
+    public void setGetUriHeadersBody(Object uri, Map<String, Object> headers, Map<String, Object> body) {
+        set_testingCenterRequestHeaders(headers);
+        set_testingCenterRequestBody(body);
         setRequestMethodGet();
         set_testingCenterRequestUri(uri);
     }
 
-    public void setBodyObjcet(Object object) {
-        set_testingCenterRequestBody(object.toString());
-    }
-
-    public void setHeaderObjcet(Object object) {
-        set_testingCenterRequestHeaders(object.toString());
-    }
 
     public void setRequestMethodGet() {
         set_testingCenterRequestMethod("GET");
@@ -45,19 +43,19 @@ public class ServerBean {
         this._testingCenterRequestMethod = _testingCenterRequestMethod;
     }
 
-    public String get_testingCenterRequestHeaders() {
+    public Map<String, Object> get_testingCenterRequestHeaders() {
         return _testingCenterRequestHeaders;
     }
 
-    public void set_testingCenterRequestHeaders(String _testingCenterRequestHeaders) {
+    public void set_testingCenterRequestHeaders(Map<String, Object> _testingCenterRequestHeaders) {
         this._testingCenterRequestHeaders = _testingCenterRequestHeaders;
     }
 
-    public String get_testingCenterRequestBody() {
+    public Map<String, Object> get_testingCenterRequestBody() {
         return _testingCenterRequestBody;
     }
 
-    public void set_testingCenterRequestBody(String _testingCenterRequestBody) {
+    public void set_testingCenterRequestBody(Map<String, Object> _testingCenterRequestBody) {
         this._testingCenterRequestBody = _testingCenterRequestBody;
     }
 

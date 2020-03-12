@@ -1,5 +1,6 @@
 document.write("<script src='static/scripts/js-util.js'></script>");
 document.write("<script src='static/scripts/jquery/jquery3-4-1.js'></script>");
+document.write("<script src='static/scripts/plug/json/json-format.js'></script>");
 document.write("<script src='static/scripts/jquery/jquery.md5.js'></script>");
 document.write("<script src='static/scripts/jquery/jquery.cookie.js'></script>");
 document.write("<script src='static/scripts/ue/ueditor.config.js'></script>");

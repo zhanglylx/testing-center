@@ -1,0 +1,45 @@
+.json_format_ObjectBrace {
+    color: #00AA00;
+    font-weight: bold;
+}
+
+.json_format_ArrayBrace {
+    color: #0033FF;
+    font-weight: bold;
+}
+
+.json_format_PropertyName {
+    color: #CC0000;
+    font-weight: bold;
+}
+
+.json_format_String {
+    color: #007777;
+}
+
+.json_format_Number {
+    color: #AA00AA;
+}
+
+.json_format_Boolean {
+    color: #0000FF;
+}
+
+.json_format_Function {
+    color: #AA6633;
+    text-decoration: underline;
+}
+
+.json_format_Null {
+    color: #0000FF;
+}
+
+.json_format_Comma {
+    color: #000000;
+    font-weight: bold;
+}
+
+PRE.json_format_CodeContainer {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

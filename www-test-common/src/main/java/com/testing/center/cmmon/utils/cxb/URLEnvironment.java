@@ -7,7 +7,7 @@ public class URLEnvironment {
      * 切换线上,默认为qa环境，如果switchOnline为qa，将不做任何转换直接返回
      *
      * @param url
-     * @param switchOnline 0:qa,1:线上
+     * @param switchOnline 0:qa 直接返回,1:线上，替换-qa
      * @return
      */
     public static String contextSwitching(String url, Integer switchOnline) {

@@ -2,7 +2,7 @@ package com.testing.center.service.cdn.impl;
 
 import com.testing.center.cdn.VolumeDaoMapper;
 import com.testing.center.cmmon.utils.TestingCenterResult;
-import com.testing.center.entity.cdn.volume.Volume;
+import com.testing.center.entity.cdn.volume.CxbGetCdnVolume;
 import com.testing.center.service.cdn.VolumeService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -15,18 +15,18 @@ public class VolumeServiceImpl implements VolumeService {
     private VolumeDaoMapper volumeDaoMapper;
 
     @Override
-    public TestingCenterResult<Volume> getCdnVolume(String bookId, Integer isOnline, Integer cnid) {
-        TestingCenterResult<Volume> testingCenterResult = new TestingCenterResult<>();
+    public TestingCenterResult<CxbGetCdnVolume> getCdnVolume(String bookId, Integer environment, Integer cnid) {
+        TestingCenterResult<CxbGetCdnVolume> testingCenterResult = new TestingCenterResult<>();
         if (StringUtils.isBlank(bookId)) {
             return testingCenterResult.errorParameterDefaultNull("bookId");
         }
-        if (isOnline == null) {
+        if (environment == null) {
             return testingCenterResult.errorParameterDefaultNull("isOnline");
         }
         if (cnid == null) {
             return testingCenterResult.errorParameterDefaultNull("cnid");
         }
-        Volume volume = volumeDaoMapper.getVolume(bookId, isOnline, cnid);
+        CxbGetCdnVolume volume = volumeDaoMapper.getVolume(bookId, environment, cnid);
         return testingCenterResult.setSuccess("查询成功", volume);
     }
 }

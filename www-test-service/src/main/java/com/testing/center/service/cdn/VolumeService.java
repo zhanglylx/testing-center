@@ -1,8 +1,8 @@
 package com.testing.center.service.cdn;
 
 import com.testing.center.cmmon.utils.TestingCenterResult;
-import com.testing.center.entity.cdn.volume.Volume;
+import com.testing.center.entity.cdn.volume.CxbGetCdnVolume;
 
 public interface VolumeService {
-    TestingCenterResult<Volume> getCdnVolume(String bookId, Integer isOnline, Integer cnid);
+    TestingCenterResult<CxbGetCdnVolume> getCdnVolume(String bookId, Integer environment, Integer cnid);
 }

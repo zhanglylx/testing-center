@@ -3,12 +3,13 @@ package com.testing.center.entity.cdn.volume;
 import com.testing.center.entity.ServerBean;
 
 import java.util.List;
+import java.util.Map;
 
-public class Volume extends ServerBean {
+public class CxbGetCdnVolume extends ServerBean {
     private Long date;
     private Integer error_code;
     private String error_msg;
-    private List<BookChapters> data;
+    private CxbGetCdnVolumeData data;
 
     @Override
     public String toString() {
@@ -45,11 +46,11 @@ public class Volume extends ServerBean {
     }
 
 
-    public List<BookChapters> getData() {
+    public CxbGetCdnVolumeData getData() {
         return data;
     }
 
-    public void setData(List<BookChapters> data) {
+    public void setData(CxbGetCdnVolumeData data) {
         this.data = data;
     }
 
