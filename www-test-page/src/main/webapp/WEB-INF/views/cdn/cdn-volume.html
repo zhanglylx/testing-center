@@ -8,7 +8,7 @@
     <div class="CXB_PATH_URL_GETVOLUME_div">
 
     </div>
-    <h3>cdn目录:</h3>
+    <h3>cdn目录<span style="color: var(--theme-colors)">文件内容较大，加载时间长，请耐心等待</span>:</h3>
     <div class="CXB_PATH_URL_GETCDNVOLUME_div"></div>
 </div>
 <script>
@@ -55,6 +55,7 @@
                     CXB_PATH_URL_GETCDNVOLUME,
                     {"bookId": bookId, "cdnUrl": cdnUrl, "version": version, "environment": environment},
                     function (response) {
+                        _$toastText("文件内容较大，加载时间长，请耐心等待");
                         $(".CXB_PATH_URL_GETCDNVOLUME_div").append(_jFormatJsonProcess(response));
                     }
                 );
