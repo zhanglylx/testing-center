@@ -32,7 +32,7 @@ public class VolumeServiceImpl implements VolumeService {
     }
 
     @Override
-    public TestingCenterResult<CdnVolume> getCdnVolume(String path, String bookId, Integer version) {
+    public TestingCenterResult<CdnVolume> getCdnVolume(String path, String bookId, Integer version, Integer environment) {
         TestingCenterResult<CdnVolume> testingCenterResult = new TestingCenterResult<>();
         if (StringUtils.isBlank(path)) {
             testingCenterResult.errorParameterDefaultNull("path");
@@ -46,7 +46,11 @@ public class VolumeServiceImpl implements VolumeService {
             testingCenterResult.errorParameterDefaultNull("version");
             return testingCenterResult;
         }
-        testingCenterResult.setSuccess("查询成功",volumeDaoMapper.getCdnVolume(path, bookId, version));
+        if (environment == null) {
+            testingCenterResult.errorParameterDefaultNull("environment");
+            return testingCenterResult;
+        }
+        testingCenterResult.setSuccess("查询成功", volumeDaoMapper.getCdnVolume(path, bookId, version,environment));
         return testingCenterResult;
     }
 }

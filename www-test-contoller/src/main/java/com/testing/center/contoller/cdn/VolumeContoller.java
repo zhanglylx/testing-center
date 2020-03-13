@@ -31,7 +31,8 @@ public class VolumeContoller {
     public TestingCenterResult<CdnVolume> getCdnVolume(
             @RequestParam("cdnUrl") String cdnUrl,
             @RequestParam("bookId") String bookId,
-            @RequestParam("version") Integer version) {
-        return volumeService.getCdnVolume(cdnUrl, bookId, version);
+            @RequestParam("version") Integer version,
+            @RequestParam("environment") Integer environment) {
+        return volumeService.getCdnVolume(cdnUrl, bookId, version,environment);
     }
 }

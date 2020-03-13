@@ -19,29 +19,29 @@
         _PshowEnvironment();
         $(function () {
             _Psubmit(function () {
-                    var data = _PgetShowParameterData();
-                    console.info(data);
-                    if (data === false) return;
+                    var dataParameters = _PgetShowParameterData();
+                    console.info(dataParameters);
+                    if (dataParameters === false) return;
                     _$empty(".CXB_PATH_URL_GETVOLUME_div");
                     _$empty(".CXB_PATH_URL_GETCDNVOLUME_div");
                     //    获取创新版接口
                     _$ajaxPostJSON(
                         CXB_PATH_URL_GETVOLUME,
-                        data,
+                        dataParameters,
                         function (response) {
                             _$analysisJsonSuccessResponse(response, function (data) {
-                               console.log(data)
+                                console.log(data)
                                 $(".CXB_PATH_URL_GETVOLUME_div").append(_jFormatJsonProcess(data));
                                 console.log(data)
                                 console.log(data.data)
-                                getCdnVolume(data.data);
+                                getCdnVolume(data.data, dataParameters.environment);
                             });
-                        },null,$(".public_cxb_parameter_div_table_tr_submit"))
+                        }, null, $(".public_cxb_parameter_div_table_tr_submit"))
                 }
             );
         });
 
-        function getCdnVolume(data) {
+        function getCdnVolume(data, environment) {
             if (!_$isJsonObject(data)) {
                 $(".CXB_PATH_URL_GETCDNVOLUME_div").text("目录不在cdn");
                 return;
@@ -53,7 +53,7 @@
             if (s3exist === 1) {
                 _$ajaxPostJSON(
                     CXB_PATH_URL_GETCDNVOLUME,
-                    {"bookId": bookId, "cdnUrl": cdnUrl, "version": version},
+                    {"bookId": bookId, "cdnUrl": cdnUrl, "version": version, "environment": environment},
                     function (response) {
                         $(".CXB_PATH_URL_GETCDNVOLUME_div").append(_jFormatJsonProcess(response));
                     }

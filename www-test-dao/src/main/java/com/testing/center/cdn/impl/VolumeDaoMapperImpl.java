@@ -73,12 +73,13 @@ public class VolumeDaoMapperImpl implements VolumeDaoMapper {
     }
 
     @Override
-    public CdnVolume getCdnVolume(String path, String bookId, Integer version) {
+    public CdnVolume getCdnVolume(String path, String bookId, Integer version,Integer environment) {
         ParameterInspect.stringIsBlank(path);
         ParameterInspect.stringIsBlank(bookId);
         Objects.requireNonNull(version);
+        Objects.requireNonNull(environment);
         try {
-            URIBuilder uriBuilder = new URIBuilder(this.cdnGetCdnVolumeUrl + path);
+            URIBuilder uriBuilder = new URIBuilder(URLEnvironment.contextSwitching(this.cdnGetCdnVolumeUrl,environment) + path);
             NetworkHeaders networkHeader = new NetworkHeaders();
             byte[] bytes = HttpUtils.doGetByte(uriBuilder.build(), null, networkHeader);
             CdnVolume cdnVolume;

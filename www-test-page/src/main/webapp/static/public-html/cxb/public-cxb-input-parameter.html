@@ -43,8 +43,7 @@
             </td>
             <!--            environment-->
             <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_environment">
-                <span class="reqyured_fields" style="display: none">*</span>
-                environment:
+                <span class="reqyured_fields" style="display: none">*</span>environment:
             </td>
             <td class="public_cxb_parameter_div_table_td_value"
                 id="public_cxb_parameter_div_table_td_value_environment">
@@ -94,58 +93,66 @@
         const cnid = _PgetPublicCnidValue();
         const uid = _PgetPublicUidValue();
         const environment = _PgetPublicEnviromentValue();
-        if (!_$isHidden($("#public_cxb_parameter_div_input_bookId"))) {
-            if (_$isNullNonZero(bookid, alterNullData, "booid")) return false;
-            data["bookId"] = bookid;
-        }
-        if (!_$isHidden($("#public_cxb_parameter_div_input_bookName"))) {
-            if (_$isNullNonZero(bookName, alterNullData, "bookName")) return false;
-            data["bookName"] = bookName;
-        }
-        if (!_$isHidden($("#public_cxb_parameter_div_input_cnid"))) {
-            if (_$isNullNonZero(cnid, alterNullData, "cnid")) return false;
-            data["cnid"] = cnid;
-        }
-        if (!_$isHidden($("#public_cxb_parameter_div_input_uid"))) {
-            if (_$isNullNonZero(uid, alterNullData, "uid")) return false;
-            data["uid"] = uid;
-        }
-        if (!_$isHidden($('.public_cxb_parameter_div_table_td_value input[name="public_cxb_parameter_div_input_environment"]'))) {
-            if (_$isNullNonZero(environment, alterNullData, "environment")) return false;
-            data["environment"] = environment;
-        }
+        var keys = {"bookId": bookid, "bookName": bookName, "cnid": cnid, "uid": uid, "environment": environment};
+        _$traversalJSON(keys, function (key, value) {
+            data = StitchingParameters(data, key, value);
+            if (data === false) return false;
+        });
         return data;
+    }
+
+    /**
+     * 特别注意，有一些参数需要不同的的
+     * @private
+     * @return {boolean|object}
+     */
+    function StitchingParameters(object, key, value) {
+        if (!_$isHidden($("#public_cxb_parameter_div_input_" + key))) {
+            if (!_$isHidden("#public_cxb_parameter_div_table_td_key_" + key + " .reqyured_fields")) {
+                if (_$isNullNonZero(value, alterNullData, key)) {
+                    return false;
+                }
+            }
+            if (!_$isNullNonZero(value)) {
+                object[key] = value;
+            }
+        }
+        return object;
     }
 
     function alterNullData(msg) {
         alert(msg + "不能为空")
     }
 
-    function _PshowBookId() {
-        _Pshow("bookId");
+    function _PshowBookId(reqyured_fields) {
+        _Pshow("bookId", reqyured_fields);
     }
 
-    function _PshowBookName() {
-        _Pshow("bookName");
+    function _PshowBookName(reqyured_fields) {
+        _Pshow("bookName", reqyured_fields);
     }
 
-    function _PshowCnid() {
-        _Pshow("cnid");
+    function _PshowCnid(reqyured_fields) {
+        _Pshow("cnid", reqyured_fields);
     }
 
-    function _PshowUid() {
-        _Pshow("uid");
+    function _PshowUid(reqyured_fields) {
+        _Pshow("uid", reqyured_fields);
     }
 
-    function _PshowEnvironment() {
-        _Pshow("environment");
+    function _PshowEnvironment(reqyured_fields) {
+        _Pshow("environment", reqyured_fields);
     }
 
     /**
      * @private
      */
-    function _Pshow(name) {
-        $("#public_cxb_parameter_div_table_td_key_" + name).show();
+    function _Pshow(name, reqyured_fields) {
+        var key = "#public_cxb_parameter_div_table_td_key_" + name;
+        $(key).show();
+        if (reqyured_fields !== false) {
+            $(key).find(".reqyured_fields").show();
+        }
         $("#public_cxb_parameter_div_table_td_value_" + name).show();
     }
 
