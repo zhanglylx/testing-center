@@ -1,0 +1,33 @@
+<body>
+<div class="ad_lua_funnel_div">
+</div>
+<div class="ad_lua_funnel_div_result"></div>
+<script>
+    _$loadHtmlGet(STATIC_HTML_CXB_PUBLIC_CXB_INPUT_ENVIRONMENT, function (html) {
+        $(".ad_lua_funnel_div").append(html);
+        _PshowEnvironment();
+        _PshowAdGG();
+        _PshowCnid();
+        _PshowVersion();
+        _PshowUid();
+        _PshowAppname();
+        _PshowPackname();
+        _PshowNet();
+        _Psubmit(function () {
+            var data = _PgetShowParameterData();
+            if (data === false) return;
+            _$empty(".ad_lua_funnel_div_result");
+            _$ajaxPostJSON(
+                CXB_PATH_URL_AD_LUA_FUNNEL,
+                data,
+                function (response) {
+                    _$analysisJsonSuccessResponse(response, function (data) {
+                        _$toastText("正在渲染中，请耐心等待");
+                        $(".ad_lua_funnel_div_result").append(_jFormatJsonProcess(data));
+                    });
+                }
+            );
+        });
+    });
+</script>
+</body>

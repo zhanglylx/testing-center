@@ -25,7 +25,9 @@ const STATIC_HTML_CXB_PUBLIC_CXB_INPUT_ENVIRONMENT = "static/public-html/cxb/pub
 //CXB
 const CXB_PATH_URL_GETVOLUME = "volume/getCxbVolume";
 const CXB_PATH_URL_GETCDNVOLUME = "volume/getCdnVolume";
-const CXB_REQUEST_PARAMETER_CNID = 1062;
+const CXB_PATH_URL_AD_LUA_FUNNEL = "ad/adLuaFunnel";
+const CXB_DEFAULT_REQUEST_PARAMETER_CNID = 1062;
+const CXB_DEFAULT_REQUEST_PARAMETER_ADGG = "GG-";
 
 
 

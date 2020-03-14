@@ -1,9 +1,9 @@
-package com.testing.center.contoller.cdn;
+package com.testing.center.contoller.cxb.cdn;
 
 import com.testing.center.cmmon.utils.TestingCenterResult;
-import com.testing.center.entity.cdn.volume.CdnVolume;
-import com.testing.center.entity.cdn.volume.CxbGetCdnVolume;
-import com.testing.center.service.cdn.VolumeService;
+import com.testing.center.entity.cxb.cdn.volume.CdnVolume;
+import com.testing.center.entity.cxb.cdn.volume.CxbGetCdnVolume;
+import com.testing.center.service.cxb.cdn.VolumeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

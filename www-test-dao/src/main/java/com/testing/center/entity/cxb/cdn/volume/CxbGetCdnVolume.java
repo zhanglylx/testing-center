@@ -1,9 +1,6 @@
-package com.testing.center.entity.cdn.volume;
+package com.testing.center.entity.cxb.cdn.volume;
 
 import com.testing.center.entity.ServerBean;
-
-import java.util.List;
-import java.util.Map;
 
 public class CxbGetCdnVolume extends ServerBean {
     private Long date;

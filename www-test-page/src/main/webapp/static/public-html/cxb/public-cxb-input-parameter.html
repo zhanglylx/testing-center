@@ -57,7 +57,89 @@
                        value="1"/><label for="public_cxb_parameter_div_input_environment_online"
                                          style="margin-right: 5px;cursor: pointer;">online</label>
             </td>
+            <!--            广告位id-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_adGG">
+                <span class="reqyured_fields" style="display: none">*</span><label
+                    for="public_cxb_parameter_div_input_adGG">GG:</label>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value"
+                id="public_cxb_parameter_div_table_td_value_adGG">
+                <input type="text" id="public_cxb_parameter_div_input_adGG" placeholder="默认格式：GG-" autofocus/>
+            </td>
             <!--            <td colspan="2" class="public_cxb_parameter_div_table_td_placeholder"></td>-->
+        </tr>
+        <tr class="public_cxb_parameter_div_table_tr">
+            <!--            version-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_version">
+                <label
+                        for="public_cxb_parameter_div_input_version">
+                    <span class="reqyured_fields" style="display: none">*</span>version:</label>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value" id="public_cxb_parameter_div_table_td_value_version">
+                <input type="text" id="public_cxb_parameter_div_input_version" placeholder="格式:x.x.x" autofocus/>
+            </td>
+            <!--            appname-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_appname">
+                <span class="reqyured_fields" style="display: none">*</span>appname:
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value" id="public_cxb_parameter_div_table_td_value_appname">
+                <input type="radio" id="public_cxb_parameter_div_input_appname_aks"
+                       name="public_cxb_parameter_div_input_appname"
+                       value="0"
+                       checked/><span
+                    style="margin-right: 5px; cursor: pointer;">aks</span>
+                <input type="radio" id="public_cxb_parameter_div_input_appname_mfzs"
+                       name="public_cxb_parameter_div_input_appname"
+                       value="1"/><span
+                    style="margin-right: 5px; cursor: pointer;">mfzs</span>
+                <input type="radio" id="public_cxb_parameter_div_input_appname_cxb"
+                       name="public_cxb_parameter_div_input_appname"
+                       value="2"/><span
+                    style="margin-right: 5px; cursor: pointer;">cxb</span>
+            </td>
+            <!--            packname-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_packname">
+                <span class="reqyured_fields" style="display: none">*</span>packname:
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value" id="public_cxb_parameter_div_table_td_value_packname">
+                <p>
+                    <input type="radio" id="public_cxb_parameter_div_input_packname_aks"
+                           name="public_cxb_parameter_div_input_packname"
+                           value="0"
+                           checked/><span
+                        style="margin-right: 5px; cursor: pointer;">com.mfyueduqi.book</span>
+                </p>
+                <p>
+                    <input type="radio" id="public_cxb_parameter_div_input_packname_mfzs"
+                           name="public_cxb_parameter_div_input_packname"
+                           value="1"/><span
+                        style="margin-right: 5px; cursor: pointer;">com.mianfeizs.book</span>
+                </p>
+                <p>
+                    <input type="radio" id="public_cxb_parameter_div_input_packname_cxb"
+                           name="public_cxb_parameter_div_input_packname"
+                           value="2"/><span
+                        style="margin-right: 5px; cursor: pointer;">com.mianfeia.book</span>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <!--            environment-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_net">
+                <span class="reqyured_fields" style="display: none">*</span>environment:
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value"
+                id="public_cxb_parameter_div_table_td_value_net">
+                <input type="radio" id="public_cxb_parameter_div_input_net_wifi"
+                       name="public_cxb_parameter_div_input_net"
+                       value="0"
+                       checked/><label for="public_cxb_parameter_div_input_net_move"
+                                       style="margin-right: 5px;cursor: pointer;">wifi</label>
+                <input type="radio" id="public_cxb_parameter_div_input_net_move"
+                       name="public_cxb_parameter_div_input_net"
+                       value="1"/><label for="public_cxb_parameter_div_input_net_move"
+                                         style="margin-right: 5px;cursor: pointer;">move</label>
+            </td>
         </tr>
         <tr class="public_cxb_parameter_div_table_tr_submit">
             <td colspan="6">
@@ -72,7 +154,28 @@
     _$loadCss("static/css/public-css/cdn/public-cxb-input-parameter.css");
     $(function () {
         $(".public_cxb_parameter_div_table").css("border", _$cssGetThemeColoRGBA(0.6) + " 1px solid");
-        $("#public_cxb_parameter_div_input_cnid").val(CXB_REQUEST_PARAMETER_CNID);
+        $("#public_cxb_parameter_div_input_cnid").val(CXB_DEFAULT_REQUEST_PARAMETER_CNID);
+        $("#public_cxb_parameter_div_input_adGG").val(CXB_DEFAULT_REQUEST_PARAMETER_ADGG);
+        //将appname与packname进行关联
+        $("#public_cxb_parameter_div_table_td_value_packname input").click(function () {
+            $("#public_cxb_parameter_div_table_td_value_appname input").attr("checked", false);
+            const n = _PgetPulibcRadio("packname");
+            var f = ("#public_cxb_parameter_div_table_td_value_appname input:eq(" + n + ")");
+            $(f).attr("checked", true);
+        });
+        $("#public_cxb_parameter_div_table_td_value_appname input").click(function () {
+            $("#public_cxb_parameter_div_table_td_value_packname input").attr("checked", false);
+            const n = _PgetPulibcRadio("appname");
+            var f = ("#public_cxb_parameter_div_table_td_value_packname input:eq(" + n + ")");
+            $(f).attr("checked", true);
+        });
+        $("#public_cxb_parameter_div_table_td_value_appname span").click(function () {
+            $(this).prev().click();
+        });
+        $("#public_cxb_parameter_div_table_td_value_packname span").click(function () {
+            $(this).prev().click();
+        });
+        //将appname与packname关联结束
     });
 
     function _Psubmit(f) {
@@ -93,7 +196,23 @@
         const cnid = _PgetPublicCnidValue();
         const uid = _PgetPublicUidValue();
         const environment = _PgetPublicEnviromentValue();
-        var keys = {"bookId": bookid, "bookName": bookName, "cnid": cnid, "uid": uid, "environment": environment};
+        const adGG = _PgetPublicAdGGValue();
+        const version = _PgetPublicVersionValue();
+        const appname = _PgetPublicAppnameValue();
+        const packname = _PgetPublicPacknameValue();
+        const net = _PgetPulibcNetValue();
+        var keys = {
+            "bookId": bookid,
+            "bookName": bookName,
+            "cnid": cnid,
+            "uid": uid,
+            "environment": environment,
+            "adGG": adGG,
+            "version": version,
+            "appname": appname,
+            "packname": packname,
+            "net": net
+        };
         _$traversalJSON(keys, function (key, value) {
             data = StitchingParameters(data, key, value);
             if (data === false) return false;
@@ -144,6 +263,26 @@
         _Pshow("environment", reqyured_fields);
     }
 
+    function _PshowAdGG(reqyured_fields) {
+        _Pshow("adGG", reqyured_fields);
+    }
+
+    function _PshowVersion(reqyured_fields) {
+        _Pshow("version", reqyured_fields);
+    }
+
+    function _PshowAppname(reqyured_fields) {
+        _Pshow("appname", reqyured_fields);
+    }
+
+    function _PshowPackname(reqyured_fields) {
+        _Pshow("packname", reqyured_fields);
+    }
+
+    function _PshowNet(reqyured_fields) {
+        _Pshow("net", reqyured_fields);
+    }
+
     /**
      * @private
      */
@@ -172,12 +311,78 @@
         return _$getValTrim("#public_cxb_parameter_div_input_uid");
     }
 
+    function _PgetPublicAdGGValue() {
+        return _$getValTrim("#public_cxb_parameter_div_input_adGG");
+    }
+
+    function _PgetPublicVersionValue() {
+        return _$getValTrim("#public_cxb_parameter_div_input_version");
+    }
+
     /**
      * 获取公共页中的环境选择接口
      * @returns {number} 0为:qa  1为:online
      */
     function _PgetPublicEnviromentValue() {
-        return parseInt($('.public_cxb_parameter_div_table_td_value input[name="public_cxb_parameter_div_input_environment"]:checked').val());
+        return parseInt(_PgetPulibcRadio("environment"));
+    }
+
+    /**
+     * 获取公共页中的appname选择接口
+     * @returns {string}
+     */
+    function _PgetPublicAppnameValue() {
+        const a = parseInt(_PgetPulibcRadio("appname"));
+        switch (a) {
+            case 0:
+                return "aks";
+            case 1:
+                return "mfzs";
+            case 2:
+                return "cxb";
+            default :
+                return null;
+        }
+    }
+
+    /**
+     * 获取公共页中的appname选择接口
+     * @returns {string}
+     */
+    function _PgetPublicPacknameValue() {
+        const a = parseInt(_PgetPulibcRadio("packname"));
+        switch (a) {
+            case 0:
+                return "com.mfyueduqi.book";
+            case 1:
+                return "com.mianfeizs.book";
+            case 2:
+                return "com.mianfeia.book";
+            default :
+                return null;
+        }
+    }
+
+    function _PgetPulibcNetValue() {
+        const a = parseInt(_PgetPulibcRadio("net"));
+        switch (a) {
+            case 0:
+                return "wifi";
+            case 1:
+                return "move";
+            default :
+                return null;
+        }
+    }
+
+    /**
+     *
+     * @param name
+     * @private
+     */
+    function _PgetPulibcRadio(name) {
+        var n = "public_cxb_parameter_div_input_" + name;
+        return $('.public_cxb_parameter_div_table_td_value input[name=' + n + ']:checked').val();
     }
 
 </script>

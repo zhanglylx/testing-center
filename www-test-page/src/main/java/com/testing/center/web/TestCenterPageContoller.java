@@ -19,4 +19,9 @@ public class TestCenterPageContoller {
     public String getCdnVolume() {
         return "cdn/cdn-volume";
     }
+
+    @RequestMapping("ad/ad-lua-funnel")
+    public String getAdLuaFunnel() {
+        return "ad/ad-lua-funnel";
+    }
 }

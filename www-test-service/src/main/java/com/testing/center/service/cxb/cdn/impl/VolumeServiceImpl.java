@@ -1,10 +1,10 @@
-package com.testing.center.service.cdn.impl;
+package com.testing.center.service.cxb.cdn.impl;
 
-import com.testing.center.cdn.VolumeDaoMapper;
+import com.testing.center.cxb.cdn.VolumeDaoMapper;
 import com.testing.center.cmmon.utils.TestingCenterResult;
-import com.testing.center.entity.cdn.volume.CdnVolume;
-import com.testing.center.entity.cdn.volume.CxbGetCdnVolume;
-import com.testing.center.service.cdn.VolumeService;
+import com.testing.center.entity.cxb.cdn.volume.CdnVolume;
+import com.testing.center.entity.cxb.cdn.volume.CxbGetCdnVolume;
+import com.testing.center.service.cxb.cdn.VolumeService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.testing.center.entity.cdn.volume;
+package com.testing.center.entity.cxb.cdn.volume;
 
 import java.io.Serializable;
 

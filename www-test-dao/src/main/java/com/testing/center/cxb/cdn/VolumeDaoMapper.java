@@ -1,7 +1,7 @@
-package com.testing.center.cdn;
+package com.testing.center.cxb.cdn;
 
-import com.testing.center.entity.cdn.volume.CdnVolume;
-import com.testing.center.entity.cdn.volume.CxbGetCdnVolume;
+import com.testing.center.entity.cxb.cdn.volume.CdnVolume;
+import com.testing.center.entity.cxb.cdn.volume.CxbGetCdnVolume;
 
 public interface VolumeDaoMapper {
     CxbGetCdnVolume getVolume(String bookId, Integer environment, Integer cnid);

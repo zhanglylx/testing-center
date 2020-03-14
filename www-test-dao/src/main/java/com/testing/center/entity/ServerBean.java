@@ -1,5 +1,6 @@
 package com.testing.center.entity;
 
+import com.testing.center.cmmon.utils.http.NetworkHeaders;
 import sun.plugin2.message.Serializer;
 
 import java.io.Serializable;
@@ -92,5 +93,8 @@ public abstract class ServerBean implements Serializable {
 
     public void set_testingCenterRequestServerResponseStatusCode(Integer _testingCenterRequestServerResponseStatusCode) {
         this._testingCenterRequestServerResponseStatusCode = _testingCenterRequestServerResponseStatusCode;
+    }
+    public void set_testingCenterRequestServerResponseStatusCode(NetworkHeaders networkHeaders) {
+        set_testingCenterRequestServerResponseStatusCode(networkHeaders.getResponseCode());
     }
 }

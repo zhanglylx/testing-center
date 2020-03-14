@@ -1,8 +1,6 @@
-package com.testing.center.entity.cdn.volume;
+package com.testing.center.entity.cxb.cdn.volume;
 
-import com.testing.center.cmmon.utils.ZLYJSON.ZLYJSONObject;
 import com.testing.center.entity.ServerBean;
-import net.sf.json.JSONObject;
 
 import java.util.List;
 

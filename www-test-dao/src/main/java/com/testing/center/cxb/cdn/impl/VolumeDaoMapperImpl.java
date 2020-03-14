@@ -1,22 +1,20 @@
-package com.testing.center.cdn.impl;
+package com.testing.center.cxb.cdn.impl;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.testing.center.cdn.VolumeDaoMapper;
+import com.testing.center.cxb.cdn.VolumeDaoMapper;
 import com.testing.center.cmmon.utils.EncryptionUtils;
 import com.testing.center.cmmon.utils.ParameterInspect;
 import com.testing.center.cmmon.utils.cdn.Encryptor;
 import com.testing.center.cmmon.utils.cxb.URLEnvironment;
 import com.testing.center.cmmon.utils.http.HttpUtils;
 import com.testing.center.cmmon.utils.http.NetworkHeaders;
-import com.testing.center.entity.cdn.volume.CdnVolume;
-import com.testing.center.entity.cdn.volume.CxbGetCdnVolume;
-import net.sf.json.JSONObject;
+import com.testing.center.entity.cxb.cdn.volume.CdnVolume;
+import com.testing.center.entity.cxb.cdn.volume.CxbGetCdnVolume;
 import org.apache.http.client.utils.URIBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
