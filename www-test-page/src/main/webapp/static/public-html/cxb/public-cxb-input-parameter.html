@@ -156,18 +156,18 @@
         $(".public_cxb_parameter_div_table").css("border", _$cssGetThemeColoRGBA(0.6) + " 1px solid");
         $("#public_cxb_parameter_div_input_cnid").val(CXB_DEFAULT_REQUEST_PARAMETER_CNID);
         $("#public_cxb_parameter_div_input_adGG").val(CXB_DEFAULT_REQUEST_PARAMETER_ADGG);
-        $("#public_cxb_parameter_div_input_adGG").attr("placeholder", "格式:"+CXB_DEFAULT_REQUEST_PARAMETER_ADGG+"XX");
+        $("#public_cxb_parameter_div_input_adGG").attr("placeholder", "格式:" + CXB_DEFAULT_REQUEST_PARAMETER_ADGG + "XX");
         $("#public_cxb_parameter_div_input_uid").val(CXB_DEFAULT_REQUEST_PARAMETER_UID);
         //将appname与packname进行关联
         $("#public_cxb_parameter_div_table_td_value_packname input").click(function () {
             $("#public_cxb_parameter_div_table_td_value_appname input").attr("checked", false);
-            const n = _PgetPulibcRadio("packname");
+            const n = parseInt(_PgetPulibcRadio("packname"));
             var f = ("#public_cxb_parameter_div_table_td_value_appname input:eq(" + n + ")");
             $(f).attr("checked", true);
         });
         $("#public_cxb_parameter_div_table_td_value_appname input").click(function () {
             $("#public_cxb_parameter_div_table_td_value_packname input").attr("checked", false);
-            const n = _PgetPulibcRadio("appname");
+            const n = parseInt(_PgetPulibcRadio("appname"));
             var f = ("#public_cxb_parameter_div_table_td_value_packname input:eq(" + n + ")");
             $(f).attr("checked", true);
         });
