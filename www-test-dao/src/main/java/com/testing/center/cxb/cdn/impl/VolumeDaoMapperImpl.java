@@ -5,6 +5,8 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testing.center.cxb.cdn.VolumeDaoMapper;
 import com.testing.center.cmmon.utils.EncryptionUtils;
@@ -52,32 +54,25 @@ public class VolumeDaoMapperImpl implements VolumeDaoMapper {
             uri = uriBuilder.build();
             String response = HttpUtils.doGet(uri, headers, null);
             CxbGetCdnVolume volume;
-            try {
-                volume = objectMapper.readValue(response, CxbGetCdnVolume.class);
-            } catch (Exception e) {
-                volume = new CxbGetCdnVolume();
-                volume.set_testingCenterRequestMsg(e);
-            }
+            volume = objectMapper.readValue(response, CxbGetCdnVolume.class);
             volume.set_testingCenterRequestUri(uri);
             volume.set_testingCenterRequestHeaders(headers);
             volume.setRequestMethodGet();
             return volume;
-        } catch (URISyntaxException e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            CxbGetCdnVolume volume = new CxbGetCdnVolume();
-            volume.set_testingCenterRequestMsg(e);
-            return volume;
+            throw new RuntimeException(e);
         }
     }
 
     @Override
-    public CdnVolume getCdnVolume(String path, String bookId, Integer version,Integer environment) {
+    public CdnVolume getCdnVolume(String path, String bookId, Integer version, Integer environment) {
         ParameterInspect.stringIsBlank(path);
         ParameterInspect.stringIsBlank(bookId);
         Objects.requireNonNull(version);
         Objects.requireNonNull(environment);
         try {
-            URIBuilder uriBuilder = new URIBuilder(URLEnvironment.contextSwitching(this.cdnGetCdnVolumeUrl,environment) + path);
+            URIBuilder uriBuilder = new URIBuilder(URLEnvironment.contextSwitching(this.cdnGetCdnVolumeUrl, environment) + path);
             NetworkHeaders networkHeader = new NetworkHeaders();
             byte[] bytes = HttpUtils.doGetByte(uriBuilder.build(), null, networkHeader);
             CdnVolume cdnVolume;

@@ -21,11 +21,13 @@ public abstract class ServerBean implements Serializable {
     public void set_testingCenterRequestMsg(String _testingCenterRequestMsg) {
         this._testingCenterRequestMsg = _testingCenterRequestMsg;
     }
-    public void set_testingCenterRequestMsg(String _testingCenterRequestMsg,Exception e) {
-        this._testingCenterRequestMsg = _testingCenterRequestMsg+"【"+e.getMessage()+"】";
+
+    public void set_testingCenterRequestMsg(String _testingCenterRequestMsg, Exception e) {
+        this._testingCenterRequestMsg = _testingCenterRequestMsg + "【" + e.getLocalizedMessage() + "】";
     }
+
     public void set_testingCenterRequestMsg(Exception e) {
-        this._testingCenterRequestMsg = e.getMessage();
+        set_testingCenterRequestMsg("发生了不可预知的错误", e);
     }
 
     public void setPostUriHeadersBody(Object uri, Map<String, Object> headers, Map<String, Object> body) {
@@ -75,9 +77,9 @@ public abstract class ServerBean implements Serializable {
         this._testingCenterRequestBody = _testingCenterRequestBody;
     }
 
-    public ServerBean() {
-        this._testingCenterRequestServerResponseStatusCode = 200;
-    }
+//    public ServerBean() {
+//        this._testingCenterRequestServerResponseStatusCode = 200;
+//    }
 
     public Object get_testingCenterRequestUri() {
         return _testingCenterRequestUri;
@@ -93,8 +95,5 @@ public abstract class ServerBean implements Serializable {
 
     public void set_testingCenterRequestServerResponseStatusCode(Integer _testingCenterRequestServerResponseStatusCode) {
         this._testingCenterRequestServerResponseStatusCode = _testingCenterRequestServerResponseStatusCode;
-    }
-    public void set_testingCenterRequestServerResponseStatusCode(NetworkHeaders networkHeaders) {
-        set_testingCenterRequestServerResponseStatusCode(networkHeaders.getResponseCode());
     }
 }
