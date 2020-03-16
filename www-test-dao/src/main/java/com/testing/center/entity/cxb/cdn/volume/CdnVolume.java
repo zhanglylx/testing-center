@@ -3,10 +3,11 @@ package com.testing.center.entity.cxb.cdn.volume;
 import com.testing.center.entity.ServerBean;
 
 import java.util.List;
+import java.util.Map;
 
 public class CdnVolume extends ServerBean {
     private String error_code;
-    private List<CdnVolumeInfo> list;
+    private List<Map> list;
 
     public String getError_code() {
         return error_code;
@@ -16,11 +17,11 @@ public class CdnVolume extends ServerBean {
         this.error_code = error_code;
     }
 
-    public List<CdnVolumeInfo> getList() {
+    public List<Map> getList() {
         return list;
     }
 
-    public void setList(List<CdnVolumeInfo> list) {
+    public void setList(List<Map> list) {
         this.list = list;
     }
 }
