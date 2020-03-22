@@ -26,7 +26,7 @@
         <entry key="getAdQa"
                value="http://lua-ad-qa.cread.com/getAd"></entry>
         <entry key="getAdOnline"
-               value="http://lua-ad-qa.cread.com/getAd"></entry>
+               value="http://ad.cread.com/getAd"></entry>
     </util:map>
 </beans>
 

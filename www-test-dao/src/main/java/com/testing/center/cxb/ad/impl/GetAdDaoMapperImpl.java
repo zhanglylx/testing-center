@@ -70,12 +70,12 @@ public class GetAdDaoMapperImpl implements GetAdDaoMapper {
                 Map map = objectMapper.readValue(r, Map.class);
                 map.put("_testingCenterRequestUri", uriBuilder.build());
                 if (map.size() == 1) {
-                    getAd.set_testingCenterRequestMsg("共计：" + index + " 层漏斗");
+                    getAd.set_testingCenterRequestMsg("共计 " + index + " 层漏斗");
                     list.add(map);
                     getAd.setList(list);
                     return getAd;
                 }
-                map.put("_testingCenterRequestMsg", "第:【 " + (index + 1) + " 】层");
+                map.put("_testingCenterRequestMsg", "第【 " + (index + 1) + " 】层");
                 currId = (Integer) map.get("id");
 
                 if (index == 0) {
@@ -83,7 +83,7 @@ public class GetAdDaoMapperImpl implements GetAdDaoMapper {
                 } else {
                     if (((Integer) map.get("id")).equals(id)) {
                         getAd.setList(list);
-                        getAd.set_testingCenterRequestMsg("共计:【 " + (index) + " 】层漏斗，" + adnames.toString());
+                        getAd.set_testingCenterRequestMsg("共计【 " + (index) + " 】层漏斗，" + adnames.toString());
                         return getAd;
                     }
                 }

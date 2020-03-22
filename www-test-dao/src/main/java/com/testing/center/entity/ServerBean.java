@@ -77,9 +77,9 @@ public abstract class ServerBean implements Serializable {
         this._testingCenterRequestBody = _testingCenterRequestBody;
     }
 
-//    public ServerBean() {
-//        this._testingCenterRequestServerResponseStatusCode = 200;
-//    }
+    public ServerBean() {
+        this._testingCenterRequestServerResponseStatusCode = 200;
+    }
 
     public Object get_testingCenterRequestUri() {
         return _testingCenterRequestUri;
