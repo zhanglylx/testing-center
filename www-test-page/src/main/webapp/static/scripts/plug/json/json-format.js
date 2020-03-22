@@ -1,6 +1,7 @@
 _$loadCss("static/css/plug/json/json-format.css");
 //格式化代码函数,已经用原生方式写好了不需要改动,直接引用就好
 var _jFormatJson = function (json, options) {
+
     var reg = null;
     var formatted = '';
     var pad = 0;
@@ -18,8 +19,10 @@ var _jFormatJson = function (json, options) {
     json = json.replace(reg, '\r\n$1\r\n');
     reg = /([\[\]])/g;
     json = json.replace(reg, '\r\n$1\r\n');
-    reg = /(\,)/g;
-    json = json.replace(reg, '$1\r\n');
+    reg = /(\,\{)/g;
+    json = json.replace(reg, ',\r\n{');
+    reg = /(\,\")/g;
+    json = json.replace(reg, ',\r\n"');
     reg = /(\r\n\r\n)/g;
     json = json.replace(reg, '\r\n');
     reg = /\r\n\,/g;
@@ -78,8 +81,13 @@ function Process(formatted) {
         if (json == "") {
             json = '""';
         }
+        try{
         var obj = eval("[" + json + "]");
-        html = ProcessObject(obj[0], 0, false, false, false);
+            html = ProcessObject(obj[0], 0, false, false, false);
+        }catch (e) {
+            html = ProcessObject(json, 0, false, false, false);
+        }
+
         return "<PRE class='json_format_CodeContainer'>" + html + "</PRE>";
     } catch (e) {
         console.log(e);
