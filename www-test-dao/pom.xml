@@ -28,10 +28,17 @@
             <version>5.2.2.RELEASE</version>
         </dependency>
 <!--        在tomcat关闭时，因为会发现出现close关闭数据库连接失败情况，所以将jar拷贝到了tomcat的lib目录下，这时关闭时，没有出现报错-->
+<!--        mysql和 javax 在test时需要取消注释-->
 <!--        <dependency>-->
 <!--            <groupId>mysql</groupId>-->
 <!--            <artifactId>mysql-connector-java</artifactId>-->
 <!--            <version>8.0.17</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>javax</groupId>-->
+<!--            <artifactId>javaee-api</artifactId>-->
+<!--            <version>8.0.1</version>-->
+<!--            <scope>provided</scope>-->
 <!--        </dependency>-->
         <dependency>
             <groupId>org.apache.commons</groupId>
