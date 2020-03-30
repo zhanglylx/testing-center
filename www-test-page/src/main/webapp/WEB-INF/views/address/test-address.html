@@ -12,32 +12,33 @@
                 {"classifyId": id},
                 function (response) {
                     _$analysisJsonSuccessResponse(response, function (data) {
-                         $this.parent().find(".address_dd_div").remove();
+                        $this.parent().find(".address_dd_div").remove();
                         _$traversalList(data, function (list) {
-                            var $dd = createAddressDd(list.id, list.test_address_list_account, list.test_address_list_password,list.test_address_list_url);
+                            var $dd = createAddressDd(list.id, list.test_address_list_name, list.test_address_list_account, list.test_address_list_password, list.test_address_list_url);
                             $this.parent().append($dd);
                         });
                     });
                 }
             );
         });
-        $(".address_div").on("click",".address_div_copy_button",function () {
+        $(".address_div").on("click", ".address_div_copy_button", function () {
             _$copyText(".address_div .address_div_copy_button");
         });
     });
 
-    function createAddressDd(listId, account, password, url) {
-        if(_$isNullNonZero(account)){
+    function createAddressDd(listId, listName, account, password, url) {
+        if (_$isNullNonZero(account)) {
             account = "无";
         }
-        if(_$isNullNonZero(password)){
+        if (_$isNullNonZero(password)) {
             password = "无";
         }
         var number = new Date().getTime();
-        var accountNumber ="account"+ number + "" + listId + "account";
-        number =new Date().getTime();
-        var passwordNumber ="password"+ number + "" + listId + "password";
+        var accountNumber = "account" + number + "" + listId + "account";
+        number = new Date().getTime();
+        var passwordNumber = "password" + number + "" + listId + "password";
         var dd = '<div class="address_dd_div">' +
+            '<dd><p class="address_dd_div_dd_listName">' + listName + '</p></dd>' +
             ' <dd>用户名：<i id="' + accountNumber + '">' + account + '</i>' +
             '  <button class="address_div_copy_button" data-clipboard-target="#' + accountNumber + '">复制</button>' +
             '  </dd>' +

@@ -28,6 +28,9 @@
 .address_div_copy_button{
     color: var(--theme-colors);
     margin-left: 5px;
-
+}
+.address_dd_div_dd_listName{
+    font-size: 17px;
+    color: var(--theme-colors);
 }
 
