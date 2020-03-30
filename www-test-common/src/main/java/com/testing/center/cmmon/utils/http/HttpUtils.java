@@ -242,7 +242,7 @@ public class HttpUtils {
                     Map<String, String> mapParam = (Map<String, String>) param;
                     List<NameValuePair> paramList = new ArrayList<>();
                     for (String key : mapParam.keySet()) {
-                        paramList.add(new BasicNameValuePair(key, mapParam.get(key)));
+                        paramList.add(new BasicNameValuePair(key, String.valueOf(mapParam.get(key))));
                     }
                     // 模拟表单
                     httpPost.setEntity(new UrlEncodedFormEntity(paramList, StandardCharsets.UTF_8));
@@ -346,7 +346,7 @@ public class HttpUtils {
         List<Header> headers = new ArrayList<>();
         if (null != requestHead) {
             for (Map.Entry<String, Object> entry : requestHead.entrySet()) {
-                headers.add(new BasicHeader(entry.getKey(), entry.getValue().toString()));
+                headers.add(new BasicHeader(entry.getKey(), String.valueOf(entry.getValue())));
             }
         }
 
