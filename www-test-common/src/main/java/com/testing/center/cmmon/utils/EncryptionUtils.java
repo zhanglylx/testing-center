@@ -12,6 +12,7 @@ import java.security.MessageDigest;
  * 加密工具类
  */
 public class EncryptionUtils {
+
     public static byte[] getMd5Byte(Object... str) {
         MessageDigest md5 = null;
         try {
@@ -37,10 +38,6 @@ public class EncryptionUtils {
         return getAlgorithmStr(false, "SHA-256", StandardCharsets.UTF_8, str);
     }
 
-    public static void main(String[] args) {
-        System.out.println(getSHA256Str(123).length());
-        System.out.println(getMD5Str(123).length());
-    }
 
     /**
      * 获取指定算法的字符串
