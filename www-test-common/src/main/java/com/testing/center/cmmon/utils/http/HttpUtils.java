@@ -239,7 +239,7 @@ public class HttpUtils {
             // 创建参数列表
             if (param != null) {
                 if (param instanceof Map) {
-                    Map<String, String> mapParam = (Map<String, String>) param;
+                    Map<String, Object> mapParam = (Map<String, Object>) param;
                     List<NameValuePair> paramList = new ArrayList<>();
                     for (String key : mapParam.keySet()) {
                         paramList.add(new BasicNameValuePair(key, String.valueOf(mapParam.get(key))));
