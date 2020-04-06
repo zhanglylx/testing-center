@@ -3,12 +3,14 @@ package com.testing.center.contoller;
 import com.testing.center.cmmon.utils.TestingCenterResult;
 import com.testing.center.service.ToolListService;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.Min;
 import java.util.List;
 import java.util.Map;
 
