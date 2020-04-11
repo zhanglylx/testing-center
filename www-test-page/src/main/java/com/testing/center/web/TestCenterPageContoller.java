@@ -24,4 +24,9 @@ public class TestCenterPageContoller {
     public String getAdLuaFunnel() {
         return "ad/ad-lua-funnel";
     }
+
+    @RequestMapping("bookResourceCentre/bookManagement/addChannelBooks")
+    public String getAddChannelBooks() {
+        return "book_resource_centre/add-channel-books";
+    }
 }

@@ -1,0 +1,21 @@
+<body>
+<label>
+    <input type="radio" name="book_resource_centre_add_channel_books_radio" value="7000" checked>7000</label>
+<label>
+    <input type="radio" name="book_resource_centre_add_channel_books_radio" value="3000">3000
+</label>
+<textarea class="book_resource_centre_add_channel_books_textarea" rows="5"
+          placeholder='请输入bookId，多个id使用","分割，支持中文逗号'
+          style="width: 100% ;border: 1px var(--theme-colors) solid"></textarea>
+<button id="book_resource_centre_add_channel_books_button" style="width: 100%">提交</button>
+<script>
+    $(function () {
+        $("#book_resource_centre_add_channel_books_button").click(function () {
+            const books = _$getValTrim(".book_resource_centre_add_channel_books_textarea");
+            const channel = $("input[name='book_resource_centre_add_channel_books_radio']:checked").val();
+            console.log(books)
+            console.log(channel)
+        });
+    });
+</script>
+</body>

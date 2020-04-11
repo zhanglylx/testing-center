@@ -14,8 +14,12 @@ import com.testing.center.entity.ServerBean;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Repository;
 
+@Repository("bookAddChannelDaoMapper")
 public class BookAddChannelDaoMapperImpl implements BookAddChannelDaoMapper {
+    @Value("${book_resource_centre.bookAddChannel}")
     private String bookAddChannelUrl;
 
     @Override

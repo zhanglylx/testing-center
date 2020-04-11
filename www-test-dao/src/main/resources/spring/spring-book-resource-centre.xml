@@ -18,32 +18,12 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
-    <import resource="classpath:spring/spring-cdn.xml"/>
-    <import resource="classpath:spring/spring-bean.xml"/>
-    <import resource="classpath:spring/spring-ad.xml"/>
-    <import resource="classpath:spring/spring-book-resource-centre.xml"/>
-
-    <bean id="dbcp" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="#{jdbcConfig.driverClassName}"/>
-        <property name="url" value="#{jdbcConfig.url}"/>
-        <property name="username" value="#{jdbcConfig.userName}"/>
-        <property name="password" value="#{jdbcConfig.password}"/>
-        <property name="initialSize" value="#{jdbcConfig.initialSize}"/>
-        <property name="maxTotal" value="#{jdbcConfig.maxTotal}"/>
-        <property name="maxWaitMillis" value="#{jdbcConfig.maxWaitMillis}"/>
-        <property name="maxIdle" value="#{jdbcConfig.maxIdle}"/>
-        <property name="minIdle" value="#{jdbcConfig.minIdle}"/>
-    </bean>
-    <util:properties id="jdbcConfig" location="classpath:db/jdbc.properties"/>
-    <!--    &lt;!&ndash;    配置SqlSessionFactory&ndash;&gt;-->
-    <bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dbcp"/>
-        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
-    </bean>
-    <!--    配置mapper扫描-->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.testing.center.dao"/>
-    </bean>
+    <!--    配置组件扫描-->
+    <context:component-scan base-package="com.testing.center.book_resource_centre"/>
+    <util:map id="book_resource_centre">
+        <entry key="bookAddChannel"
+               value="http://lua-ad-qa.cread.com/getAd"/>
+    </util:map>
 </beans>
 
 
