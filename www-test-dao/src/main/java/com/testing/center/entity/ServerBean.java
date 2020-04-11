@@ -78,7 +78,7 @@ public class ServerBean implements Serializable {
     }
 
     public ServerBean() {
-        this._testingCenterRequestServerResponseStatusCode = 200;
+
     }
 
     public Object get_testingCenterRequestUri() {
@@ -95,5 +95,9 @@ public class ServerBean implements Serializable {
 
     public void set_testingCenterRequestServerResponseStatusCode(Integer _testingCenterRequestServerResponseStatusCode) {
         this._testingCenterRequestServerResponseStatusCode = _testingCenterRequestServerResponseStatusCode;
+    }
+
+    public void set_responseStatusCode(NetworkHeaders networkHeaders) {
+        this.set_testingCenterRequestServerResponseStatusCode(networkHeaders.getResponseCode());
     }
 }
