@@ -67,9 +67,12 @@ public class GetAdDaoMapperImpl implements GetAdDaoMapper {
                 uriBuilder.addParameter("net", net.toString());
                 uriBuilder.addParameter("currId", currId.toString());
                 r = HttpUtils.doGet(uriBuilder.build(), null, networkHeaders);
+
                 if (networkHeaders.getResponseCode() != 200) {
                     getAd.set_testingCenterRequestServerResponseStatusCode(networkHeaders.getResponseCode());
                     return getAd;
+                } else {
+                    getAd.set_testingCenterRequestServerResponseStatusCode(200);
                 }
                 Map map = objectMapper.readValue(r, Map.class);
                 map.put("_testingCenterRequestUri", uriBuilder.build());

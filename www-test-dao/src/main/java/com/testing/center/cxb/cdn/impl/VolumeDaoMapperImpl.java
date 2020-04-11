@@ -58,6 +58,7 @@ public class VolumeDaoMapperImpl implements VolumeDaoMapper {
             volume.set_testingCenterRequestUri(uri);
             volume.set_testingCenterRequestHeaders(headers);
             volume.setRequestMethodGet();
+            volume.set_testingCenterRequestServerResponseStatusCode(200);
             return volume;
         } catch (Exception e) {
             e.printStackTrace();
