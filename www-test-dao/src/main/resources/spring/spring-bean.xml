@@ -19,7 +19,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 <!--        jackson-->
-    <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"></bean>
+    <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
 </beans>
 
 

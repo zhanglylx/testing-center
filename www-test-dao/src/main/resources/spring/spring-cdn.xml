@@ -21,13 +21,13 @@
     <!--    配置组件扫描-->
     <context:component-scan base-package="com.testing.center.cxb.cdn"/>
     <!--    配置mvc注解扫描-->
-<!--    <mvc:annotation-driven/>-->
+    <!--    <mvc:annotation-driven/>-->
     <util:map id="volume_url">
         <entry key="service_getCDNVolume"
-               value="http://readbook-service-freebook-qa.cread.com/cx/itf/getCDNVolume"></entry>
-        <entry key="cdn_getCDNVolume" value="http://book-resources-qa.cread.com/"></entry>
-        <entry key="cdn_volume_salt" value="3u5k41jj94mijuef3b8ljbo19o"></entry>
-        <entry key="cdn_encoding" value="GB18030"></entry>
+               value="http://readbook-service-freebook-qa.cread.com/cx/itf/getCDNVolume"/>
+        <entry key="cdn_getCDNVolume" value="http://book-resources-qa.cread.com/"/>
+        <entry key="cdn_volume_salt" value="3u5k41jj94mijuef3b8ljbo19o"/>
+        <entry key="cdn_encoding" value="GB18030"/>
     </util:map>
 </beans>
 

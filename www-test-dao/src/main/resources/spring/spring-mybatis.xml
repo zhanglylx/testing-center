@@ -34,7 +34,7 @@
         <property name="minIdle" value="#{jdbcConfig.minIdle}"/>
     </bean>
     <util:properties id="jdbcConfig" location="classpath:db/jdbc.properties"/>
-    <!--    配置SqlSessionFactory-->
+<!--    &lt;!&ndash;    配置SqlSessionFactory&ndash;&gt;-->
     <bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dbcp"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
