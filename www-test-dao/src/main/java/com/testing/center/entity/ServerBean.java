@@ -6,7 +6,7 @@ import sun.plugin2.message.Serializer;
 import java.io.Serializable;
 import java.util.Map;
 
-public abstract class ServerBean implements Serializable {
+public class ServerBean implements Serializable {
     private Integer _testingCenterRequestServerResponseStatusCode;
     private Object _testingCenterRequestUri;
     private String _testingCenterRequestMethod;
