@@ -22,7 +22,7 @@
     <context:component-scan base-package="com.testing.center.book_resource_centre"/>
     <util:map id="book_resource_centre">
         <entry key="bookAddChannel"
-               value="http://lua-ad-qa.cread.com/getAd"/>
+               value="http://book-admin-freebook-qa.cread.com/book/professionalBook/add"/>
     </util:map>
 </beans>
 
