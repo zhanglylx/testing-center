@@ -100,4 +100,16 @@ public class ServerBean implements Serializable {
     public void set_responseStatusCode(NetworkHeaders networkHeaders) {
         this.set_testingCenterRequestServerResponseStatusCode(networkHeaders.getResponseCode());
     }
+
+    @Override
+    public String toString() {
+        return "ServerBean{" +
+                "_testingCenterRequestServerResponseStatusCode=" + _testingCenterRequestServerResponseStatusCode +
+                ", _testingCenterRequestUri=" + _testingCenterRequestUri +
+                ", _testingCenterRequestMethod='" + _testingCenterRequestMethod + '\'' +
+                ", _testingCenterRequestHeaders=" + _testingCenterRequestHeaders +
+                ", _testingCenterRequestBody=" + _testingCenterRequestBody +
+                ", _testingCenterRequestMsg='" + _testingCenterRequestMsg + '\'' +
+                '}';
+    }
 }
