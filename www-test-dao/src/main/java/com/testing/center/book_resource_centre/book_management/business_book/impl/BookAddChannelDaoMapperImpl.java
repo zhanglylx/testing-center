@@ -1,4 +1,5 @@
 package com.testing.center.book_resource_centre.book_management.business_book.impl;
+import	java.util.HashMap;
 
 import java.util.*;
 
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository("bookAddChannelDaoMapper")
 public class BookAddChannelDaoMapperImpl implements BookAddChannelDaoMapper {
-    @Value("${book_resource_centre.bookAddChannel}")
+    @Value("#{book_resource_centre.bookAddChannel}")
     private String bookAddChannelUrl;
 
     @Override
@@ -44,6 +45,8 @@ public class BookAddChannelDaoMapperImpl implements BookAddChannelDaoMapper {
         Map<String, ServerBean> failing = new HashMap<>();
         ServerBean serverBean;
         NetworkHeaders networkHeaders = new NetworkHeaders();
+        Map<String,Object> headers = new HashMap<> ();
+        headers.put("Cookie","JSESSIONID=110e6366-dccd-419e-b146-7e89a118545a");
         for (String b : book) {
             bodyMap.put("bookIds", b.trim());
             serverBean = new ServerBean();
@@ -51,7 +54,7 @@ public class BookAddChannelDaoMapperImpl implements BookAddChannelDaoMapper {
             serverBean.setRequestMethodPost();
             serverBean.set_testingCenterRequestUri(bookAddChannelUrl);
             try {
-                response = HttpUtils.doPost(bookAddChannelUrl, bodyMap, null, networkHeaders);
+                response = HttpUtils.doPost(bookAddChannelUrl, bodyMap, headers, networkHeaders);
                 serverBean.set_responseStatusCode(networkHeaders);
                 jsonObject = ZLYJSONObject.fromObject(response);
                 serverBean.set_testingCenterRequestMsg(jsonObject.getString("msg"));
