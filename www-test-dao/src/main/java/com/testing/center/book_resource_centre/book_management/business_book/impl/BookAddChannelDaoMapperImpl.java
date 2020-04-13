@@ -1,5 +1,6 @@
 package com.testing.center.book_resource_centre.book_management.business_book.impl;
-import	java.util.HashMap;
+
+import java.util.HashMap;
 
 import java.util.*;
 
@@ -45,8 +46,8 @@ public class BookAddChannelDaoMapperImpl implements BookAddChannelDaoMapper {
         Map<String, ServerBean> failing = new HashMap<>();
         ServerBean serverBean;
         NetworkHeaders networkHeaders = new NetworkHeaders();
-        Map<String,Object> headers = new HashMap<> ();
-        headers.put("Cookie","JSESSIONID=110e6366-dccd-419e-b146-7e89a118545a");
+        Map<String, Object> headers = new HashMap<>();
+//        headers.put("Cookie", "JSESSIONID=110e6366-dccd-419e-b146-7e89a118545a");
         for (String b : book) {
             bodyMap.put("bookIds", b.trim());
             serverBean = new ServerBean();
@@ -56,6 +57,11 @@ public class BookAddChannelDaoMapperImpl implements BookAddChannelDaoMapper {
             try {
                 response = HttpUtils.doPost(bookAddChannelUrl, bodyMap, headers, networkHeaders);
                 serverBean.set_responseStatusCode(networkHeaders);
+                if (networkHeaders.getResponseCode() == 302) {
+                    serverBean.set_testingCenterRequestMsg("登录失效啦");
+                    failing.put(b, serverBean);
+                    break;
+                }
                 jsonObject = ZLYJSONObject.fromObject(response);
                 serverBean.set_testingCenterRequestMsg(jsonObject.getString("msg"));
                 if (jsonObject.getInt("code") == 0) {
