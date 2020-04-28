@@ -21,8 +21,6 @@
     <import resource="classpath*:spring/spring-mybatis.xml"/>
     <!--    配置组件扫描-->
     <context:component-scan base-package="com.testing.center.contoller"/>
-    <!--只要开启此bean，在contoller上直接使用@Validated加直接性的参数效验才能生效，此项目在GlobalExceptionHandler类中通过注解bean已添加-->
-    <!--    <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor"/>-->
 
 
 </beans>
