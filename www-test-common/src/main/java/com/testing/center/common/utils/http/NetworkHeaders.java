@@ -1,4 +1,4 @@
-package com.testing.center.cmmon.utils.http;
+package com.testing.center.common.utils.http;
 
 
 import org.apache.http.client.methods.HttpRequestBase;

@@ -1,4 +1,4 @@
-package com.testing.center.cmmon.utils.ZLYJSON;
+package com.testing.center.common.utils.ZLYJSON;
 
 import net.sf.json.JSONArray;
 

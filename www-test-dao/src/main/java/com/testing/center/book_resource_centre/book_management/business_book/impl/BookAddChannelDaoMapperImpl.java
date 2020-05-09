@@ -4,16 +4,12 @@ import java.util.HashMap;
 
 import java.util.*;
 
-import java.util.HashMap;
-
 import com.testing.center.book_resource_centre.book_management.business_book.BookAddChannelDaoMapper;
 import com.testing.center.book_resource_centre.book_management.business_book.entity.BookAddChannel;
-import com.testing.center.cmmon.utils.TestingCenterResult;
-import com.testing.center.cmmon.utils.ZLYJSON.ZLYJSONObject;
-import com.testing.center.cmmon.utils.http.HttpUtils;
-import com.testing.center.cmmon.utils.http.NetworkHeaders;
+import com.testing.center.common.utils.ZLYJSON.ZLYJSONObject;
+import com.testing.center.common.utils.http.HttpUtils;
+import com.testing.center.common.utils.http.NetworkHeaders;
 import com.testing.center.entity.ServerBean;
-import net.sf.json.JSONObject;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;

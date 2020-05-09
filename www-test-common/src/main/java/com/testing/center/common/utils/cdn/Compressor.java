@@ -1,11 +1,8 @@
-package com.testing.center.cmmon.utils.cdn;
+package com.testing.center.common.utils.cdn;
 
-
-import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.zip.DeflaterOutputStream;
@@ -21,7 +18,9 @@ public class Compressor {
     public Compressor(Charset _encoding) {
         this._encoding = _encoding;
     }
-
+    public Compressor() {
+        this._encoding = Charset.forName("GB18030");
+    }
     public byte[] encode(String text) throws IOException {
         try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             try (DeflaterOutputStream zip = new DeflaterOutputStream(out)) {

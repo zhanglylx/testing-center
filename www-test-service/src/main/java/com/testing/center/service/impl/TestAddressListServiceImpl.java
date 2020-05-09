@@ -1,6 +1,6 @@
 package com.testing.center.service.impl;
 
-import com.testing.center.cmmon.utils.TestingCenterResult;
+import com.testing.center.common.utils.TestingCenterResult;
 import com.testing.center.dao.TestAddressListDaoMapper;
 import com.testing.center.service.TestAddressListService;
 import org.springframework.stereotype.Service;

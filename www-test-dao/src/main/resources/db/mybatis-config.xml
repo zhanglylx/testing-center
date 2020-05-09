@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+        <setting name="logImpl" value="SLF4J"/>
+        <!-- 在所有的SQL映射路径上加上“dao”这个前缀 -->
+        <setting name="logPrefix" value="dao."/>
+    </settings>
+<!--    <typeAliases>-->
+<!--        &lt;!&ndash; 配置包的别名，通常在使用类时需要使用类的全限定名称，使用该配置后只要直接使用类名即可 &ndash;&gt;-->
+<!--        <package name="cm.mbs.entity"/>-->
+<!--    </typeAliases>-->
+</configuration>

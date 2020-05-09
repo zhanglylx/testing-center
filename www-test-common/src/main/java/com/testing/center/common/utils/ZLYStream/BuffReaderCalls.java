@@ -1,6 +1,4 @@
-package com.testing.center.cmmon.utils.ZLYStream;
-
-import java.io.BufferedReader;
+package com.testing.center.common.utils.ZLYStream;
 
 public interface BuffReaderCalls {
     /**

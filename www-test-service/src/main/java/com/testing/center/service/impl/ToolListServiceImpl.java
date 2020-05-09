@@ -1,9 +1,8 @@
 package com.testing.center.service.impl;
 
-import com.testing.center.cmmon.utils.TestingCenterResult;
+import com.testing.center.common.utils.TestingCenterResult;
 import com.testing.center.dao.ToolListDaoMapper;
 import com.testing.center.service.ToolListService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

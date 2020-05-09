@@ -1,7 +1,7 @@
 package com.testing.center.service.cxb.cdn.impl;
 
 import com.testing.center.cxb.cdn.VolumeDaoMapper;
-import com.testing.center.cmmon.utils.TestingCenterResult;
+import com.testing.center.common.utils.TestingCenterResult;
 import com.testing.center.entity.cxb.cdn.volume.CdnVolume;
 import com.testing.center.entity.cxb.cdn.volume.CxbGetCdnVolume;
 import com.testing.center.service.cxb.cdn.VolumeService;

@@ -1,6 +1,6 @@
 package com.testing.center.contoller;
 
-import com.testing.center.cmmon.utils.TestingCenterResult;
+import com.testing.center.common.utils.TestingCenterResult;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -10,7 +10,6 @@ import org.springframework.validation.beanvalidation.MethodValidationPostProcess
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.ConstraintViolationException;
-import javax.xml.bind.ValidationException;
 
 @ControllerAdvice
 @Component

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 加载redis配置文件 -->
+    <context:property-placeholder location="classpath:redis/redis.properties"/>
+    <!-- redis连接池的配置 -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis.pool.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis.pool.maxWait}"/>
+    </bean>
+
+    <!-- redis的连接池pool -->
+    <bean id = "jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg index="0" ref="jedisPoolConfig" name="poolConfig" />
+        <constructor-arg index="1" value="${redis.host}" type="java.lang.String" name="host"/>
+        <constructor-arg index="2" value="${redis.port}" type="int" name="port"/>
+    </bean>
+
+
+    <!-- redis连接池的配置 -->
+    <bean id="jedisPoolConfig2" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis2.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis2.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis2.pool.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis2.pool.maxWait}"/>
+    </bean>
+
+    <!-- redis的连接池pool -->
+    <bean id = "jedisPool2" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg index="0" ref="jedisPoolConfig2" name="poolConfig" />
+        <constructor-arg index="1" value="${redis2.host}" type="java.lang.String" name="host"/>
+        <constructor-arg index="2" value="${redis2.port}" type="int" name="port"/>
+    </bean>
+
+
+<!--    &lt;!&ndash; redis连接池的配置 &ndash;&gt;-->
+<!--    <bean id="jedisPoolConfig3" class="redis.clients.jedis.JedisPoolConfig">-->
+<!--        <property name="maxTotal" value="${redis3.pool.maxTotal}"/>-->
+<!--        <property name="maxIdle" value="${redis3.pool.maxIdle}"/>-->
+<!--        <property name="minIdle" value="${redis3.pool.minIdle}"/>-->
+<!--        <property name="maxWaitMillis" value="${redis3.pool.maxWait}"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; redis的连接池pool &ndash;&gt;-->
+<!--    <bean id = "jedisPool3" class="redis.clients.jedis.JedisPool" destroy-method="destroy">-->
+<!--        <constructor-arg index="0" ref="jedisPoolConfig3" name="poolConfig" />-->
+<!--        <constructor-arg index="1" value="${redis3.host}" type="java.lang.String" name="host"/>-->
+<!--        <constructor-arg index="2" value="${redis3.port}" type="int" name="port"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; redis连接池的配置 &ndash;&gt;-->
+<!--    <bean id="jedisPoolConfig4" class="redis.clients.jedis.JedisPoolConfig">-->
+<!--        <property name="maxTotal" value="${redis4.pool.maxTotal}"/>-->
+<!--        <property name="maxIdle" value="${redis4.pool.maxIdle}"/>-->
+<!--        <property name="minIdle" value="${redis4.pool.minIdle}"/>-->
+<!--        <property name="maxWaitMillis" value="${redis4.pool.maxWait}"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; redis的连接池pool &ndash;&gt;-->
+<!--    <bean id = "jedisPool4" class="redis.clients.jedis.JedisPool" destroy-method="destroy">-->
+<!--        <constructor-arg index="0" ref="jedisPoolConfig4" name="poolConfig" />-->
+<!--        <constructor-arg index="1" value="${redis4.host}" type="java.lang.String" name="host"/>-->
+<!--        <constructor-arg index="2" value="${redis4.port}" type="int" name="port"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; redis连接池的配置 &ndash;&gt;-->
+<!--    <bean id="jedisPoolConfig5" class="redis.clients.jedis.JedisPoolConfig">-->
+<!--        <property name="maxTotal" value="${redis5.pool.maxTotal}"/>-->
+<!--        <property name="maxIdle" value="${redis5.pool.maxIdle}"/>-->
+<!--        <property name="minIdle" value="${redis5.pool.minIdle}"/>-->
+<!--        <property name="maxWaitMillis" value="${redis5.pool.maxWait}"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; redis的连接池pool &ndash;&gt;-->
+<!--    <bean id = "jedisPool5" class="redis.clients.jedis.JedisPool" destroy-method="destroy">-->
+<!--        <constructor-arg index="0" ref="jedisPoolConfig5" name="poolConfig" />-->
+<!--        <constructor-arg index="1" value="${redis5.host}" type="java.lang.String" name="host"/>-->
+<!--        <constructor-arg index="2" value="${redis5.port}" type="int" name="port"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; redis连接池的配置 &ndash;&gt;-->
+<!--    <bean id="jedisPoolConfig6" class="redis.clients.jedis.JedisPoolConfig">-->
+<!--        <property name="maxTotal" value="${redis6.pool.maxTotal}"/>-->
+<!--        <property name="maxIdle" value="${redis6.pool.maxIdle}"/>-->
+<!--        <property name="minIdle" value="${redis6.pool.minIdle}"/>-->
+<!--        <property name="maxWaitMillis" value="${redis6.pool.maxWait}"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; redis的连接池pool &ndash;&gt;-->
+<!--    <bean id = "jedisPool6" class="redis.clients.jedis.JedisPool" destroy-method="destroy">-->
+<!--        <constructor-arg index="0" ref="jedisPoolConfig6" name="poolConfig" />-->
+<!--        <constructor-arg index="1" value="${redis6.host}" type="java.lang.String" name="host"/>-->
+<!--        <constructor-arg index="2" value="${redis6.port}" type="int" name="port"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; redis连接池的配置 &ndash;&gt;-->
+<!--    <bean id="jedisPoolConfig7" class="redis.clients.jedis.JedisPoolConfig">-->
+<!--        <property name="maxTotal" value="${redis7.pool.maxTotal}"/>-->
+<!--        <property name="maxIdle" value="${redis7.pool.maxIdle}"/>-->
+<!--        <property name="minIdle" value="${redis7.pool.minIdle}"/>-->
+<!--        <property name="maxWaitMillis" value="${redis7.pool.maxWait}"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; redis的连接池pool &ndash;&gt;-->
+<!--    <bean id = "jedisPool7" class="redis.clients.jedis.JedisPool" destroy-method="destroy">-->
+<!--        <constructor-arg index="0" ref="jedisPoolConfig7" name="poolConfig" />-->
+<!--        <constructor-arg index="1" value="${redis7.host}" type="java.lang.String" name="host"/>-->
+<!--        <constructor-arg index="2" value="${redis7.port}" type="int" name="port"/>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; redis连接池的配置 &ndash;&gt;-->
+<!--    <bean id="jedisPoolConfig8" class="redis.clients.jedis.JedisPoolConfig">-->
+<!--        <property name="maxTotal" value="${redis8.pool.maxTotal}"/>-->
+<!--        <property name="maxIdle" value="${redis8.pool.maxIdle}"/>-->
+<!--        <property name="minIdle" value="${redis8.pool.minIdle}"/>-->
+<!--        <property name="maxWaitMillis" value="${redis8.pool.maxWait}"/>-->
+<!--    </bean>-->
+
+    <!--天假四台redis add by luozi-->
+    <bean id="jedisPoolConfig9" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis9.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis9.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis9.pool.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis9.pool.maxWait}"/>
+    </bean>
+    <bean id="jedisPoolConfig10" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis10.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis10.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis10.pool.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis10.pool.maxWait}"/>
+    </bean>
+    <bean id="jedisPoolConfig11" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis11.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis11.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis11.pool.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis11.pool.maxWait}"/>
+    </bean>
+    <bean id="jedisPoolConfig12" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis12.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis12.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis12.pool.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis12.pool.maxWait}"/>
+    </bean>
+
+    <!--评论专用的4台服务器-->
+    <bean id="jedisPoolConfig13" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis13.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis13.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis13.pool.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis13.pool.maxWait}"/>
+    </bean>
+    <bean id="jedisPoolConfig14" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis14.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis14.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis14.pool.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis14.pool.maxWait}"/>
+    </bean>
+    <bean id="jedisPoolConfig15" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis15.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis15.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis15.pool.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis15.pool.maxWait}"/>
+    </bean>
+    <bean id="jedisPoolConfig16" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="${redis16.pool.maxTotal}"/>
+        <property name="maxIdle" value="${redis16.pool.maxIdle}"/>
+        <property name="minIdle" value="${redis16.pool.minIdle}"/>
+        <property name="maxWaitMillis" value="${redis16.pool.maxWait}"/>
+    </bean>
+<!--     &lt;!&ndash;add end&ndash;&gt;-->
+<!--    &lt;!&ndash; redis的连接池pool &ndash;&gt;-->
+<!--    <bean id = "jedisPool8" class="redis.clients.jedis.JedisPool" destroy-method="destroy">-->
+<!--        <constructor-arg index="0" ref="jedisPoolConfig8" name="poolConfig" />-->
+<!--        <constructor-arg index="1" value="${redis8.host}" type="java.lang.String" name="host"/>-->
+<!--        <constructor-arg index="2" value="${redis8.port}" type="int" name="port"/>-->
+<!--    </bean>-->
+
+    <!--新增四个redis-->
+    <!-- redis的连接池pool add by luozi-->
+    <bean id = "jedisPool9" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg index="0" ref="jedisPoolConfig9" name="poolConfig" />
+        <constructor-arg index="1" value="${redis9.host}" type="java.lang.String" name="host"/>
+        <constructor-arg index="2" value="${redis9.port}" type="int" name="port"/>
+    </bean>
+    <bean id = "jedisPool10" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg index="0" ref="jedisPoolConfig10" name="poolConfig" />
+        <constructor-arg index="1" value="${redis10.host}" type="java.lang.String" name="host"/>
+        <constructor-arg index="2" value="${redis10.port}" type="int" name="port"/>
+    </bean>
+    <bean id = "jedisPool11" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg index="0" ref="jedisPoolConfig11" name="poolConfig" />
+        <constructor-arg index="1" value="${redis11.host}" type="java.lang.String" name="host"/>
+        <constructor-arg index="2" value="${redis11.port}" type="int" name="port"/>
+    </bean>
+    <bean id = "jedisPool12" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg index="0" ref="jedisPoolConfig12" name="poolConfig" />
+        <constructor-arg index="1" value="${redis12.host}" type="java.lang.String" name="host"/>
+        <constructor-arg index="2" value="${redis12.port}" type="int" name="port"/>
+    </bean>
+
+
+    <!--新增四个redis  评论专用-->
+    <bean id = "jedisPool13" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg index="0" ref="jedisPoolConfig13" name="poolConfig" />
+        <constructor-arg index="1" value="${redis13.host}" type="java.lang.String" name="host"/>
+        <constructor-arg index="2" value="${redis13.port}" type="int" name="port"/>
+    </bean>
+    <bean id = "jedisPool14" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg index="0" ref="jedisPoolConfig14" name="poolConfig" />
+        <constructor-arg index="1" value="${redis14.host}" type="java.lang.String" name="host"/>
+        <constructor-arg index="2" value="${redis14.port}" type="int" name="port"/>
+    </bean>
+    <bean id = "jedisPool15" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg index="0" ref="jedisPoolConfig15" name="poolConfig" />
+        <constructor-arg index="1" value="${redis15.host}" type="java.lang.String" name="host"/>
+        <constructor-arg index="2" value="${redis15.port}" type="int" name="port"/>
+    </bean>
+    <bean id = "jedisPool16" class="redis.clients.jedis.JedisPool" destroy-method="destroy">
+        <constructor-arg index="0" ref="jedisPoolConfig16" name="poolConfig" />
+        <constructor-arg index="1" value="${redis16.host}" type="java.lang.String" name="host"/>
+        <constructor-arg index="2" value="${redis16.port}" type="int" name="port"/>
+    </bean>
+
+    <!--add end-->
+    <bean id="redisClient" class="com.testing.center.common.cache.RedisClient" destroy-method="destory">
+    <constructor-arg name="jedisPool">
+        <array>
+            <ref bean="jedisPool"/>
+            <ref bean="jedisPool2"/>
+<!--            <ref bean="jedisPool3"/>-->
+<!--            <ref bean="jedisPool4"/>-->
+<!--            <ref bean="jedisPool5"/>-->
+<!--            <ref bean="jedisPool6"/>-->
+<!--            <ref bean="jedisPool7"/>-->
+<!--            <ref bean="jedisPool8"/>-->
+        </array>
+    </constructor-arg>
+</bean>
+
+<!--    <bean id="redisClientVipAndComent" class="com.chineseall.iwanvi.cx.common.cache.RedisClientVipAndComent" destroy-method="destory">-->
+<!--        <constructor-arg name="jedisPool">-->
+<!--            <array>-->
+<!--                &lt;!&ndash;add by luozi&ndash;&gt;-->
+<!--                <ref bean="jedisPool9"></ref>-->
+<!--                <ref bean="jedisPool10"></ref>-->
+<!--                <ref bean="jedisPool11"></ref>-->
+<!--                <ref bean="jedisPool12"></ref>-->
+<!--                &lt;!&ndash;add emd&ndash;&gt;-->
+<!--            </array>-->
+<!--        </constructor-arg>-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash;新增评论专用接口&ndash;&gt;-->
+<!--    <bean id="redisClientComment" class="com.chineseall.iwanvi.cx.common.cache.RedisClientComment" destroy-method="destory">-->
+<!--        <constructor-arg name="jedisPool">-->
+<!--            <array>-->
+<!--                <ref bean="jedisPool13"></ref>-->
+<!--                <ref bean="jedisPool14"></ref>-->
+<!--                <ref bean="jedisPool15"></ref>-->
+<!--                <ref bean="jedisPool16"></ref>-->
+<!--                &lt;!&ndash;add emd&ndash;&gt;-->
+<!--            </array>-->
+<!--        </constructor-arg>-->
+<!--    </bean>-->
+</beans>

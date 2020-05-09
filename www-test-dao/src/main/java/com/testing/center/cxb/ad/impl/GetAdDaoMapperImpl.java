@@ -8,29 +8,21 @@ import java.util.*;
 import java.util.Map;
 
 import java.util.List;
-import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JavaType;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.testing.center.cmmon.utils.ZLYStream.BuffReaderCalls;
-import com.testing.center.cmmon.utils.ZLYStream.StreamUtil;
-import com.testing.center.cmmon.utils.cxb.URLEnvironment;
-import com.testing.center.cmmon.utils.http.HttpUtils;
-import com.testing.center.cmmon.utils.http.NetworkHeaders;
+import com.testing.center.common.utils.cxb.URLEnvironment;
+import com.testing.center.common.utils.http.HttpUtils;
+import com.testing.center.common.utils.http.NetworkHeaders;
 import com.testing.center.cxb.ad.GetAdDaoMapper;
 import com.testing.center.entity.cxb.ad.GetAd;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.message.BasicNameValuePair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StreamUtils;
 
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Map;
 
 @Repository("getAdDaoMapper")
 public class GetAdDaoMapperImpl implements GetAdDaoMapper {
@@ -114,41 +106,84 @@ public class GetAdDaoMapperImpl implements GetAdDaoMapper {
         String url = "http://localhost:8080/test_www_page_war/ad/adLuaFunnel";
         Map<String, Object> map = new HashMap<>();
         map.put("uid", -1);
-        map.put("environment", 1);
-        map.put("adGG", "GG-31");
+        map.put("environment", 0);
         map.put("net", "wifi");
         String response;
-//        PrintWriter printWriter = new PrintWriter(
-//                new OutputStreamWriter(
-//                        new FileOutputStream(new File("ad.txt")), StandardCharsets.UTF_8), true);
-        BufferedReader bufferedReader = StreamUtil.getCharacterBufferedReader(new File("ad.txt"));
+        PrintWriter printWriter = new PrintWriter(
+                new OutputStreamWriter(
+                        new FileOutputStream(new File("ad.txt")), StandardCharsets.UTF_8), true);
+//        BufferedReader bufferedReader = StreamUtil.getCharacterBufferedReader(new File("ad.txt"));
         String buffread;
         int index = 0;
-        for (int i = 1000; i < 15000; i++) {
-            map.put("cnid", i);
-            if (i < 1800 && i > 1600) {
-                map.put("version", "5.7.2");
-                map.putAll(getApp(2));
-            } else if (i < 10100 && i > 10000) {
-                map.put("version", "5.7.3");
-                map.putAll(getApp(1));
-            } else if (i > 14000 && i < 14100) {
-                map.put("version", "5.7.0");
-                map.putAll(getApp(0));
-            } else {
-                continue;
-            }
-            response = HttpUtils.doPost(url, map);
-            buffread = bufferedReader.readLine();
-            if (!buffread.equals(response)) {
-                System.out.println(++index + " 检查失败");
-                System.out.println("预期结果：" + buffread);
-                System.out.println("实际结果：" + response);
-                return;
-            }
-//            printWriter.println(response);
+//        测试
+        String[] channelids = ("10001," +
+                "10013," +
+                "10453," +
+                "10456," +
+                "10456,1062," +
+                "10457," +
+                "10458," +
+                "10459," +
+                "1061," +
+                "1062," +
+                "1062,10456," +
+                "1062,1063," +
+                "1062,23451," +
+                "14002," +
+                "14510," +
+                "14567," +
+                "14568," +
+                "14569," +
+                "22," +
+                "2345," +
+                "2345,23451," +
+                "2346," +
+                "2347").split(",");
+        for (int appname = 0; appname < 3; appname++) {
+            map.putAll(getApp(appname));
+            for (int version = 560; version < 580; version++) {
 
-        }
+                    map.put("version", StringUtils.join(String.valueOf(version).toCharArray(), '.'));
+                    for (String cnid : channelids) {
+                        if (map.get("appname").equals("cxb") && Integer.parseInt(cnid) > 10000 && Integer.parseInt(cnid) != 1062)
+                            continue;
+                        if (!map.get("appname").equals("cxb") && Integer.parseInt(cnid) < 10000 && Integer.parseInt(cnid) != 1062)
+                            continue;
+                        map.put("cnid", cnid);
+                        for (int GG = 1; GG < 90; GG++) {
+                            map.put("adGG", "GG-" + GG);
+                            response = HttpUtils.doPost(url, map);
+                            printWriter.println(response);
+                        }
+                    }
+                }
+            }
+//      测试end
+//        綫上
+//        for (int i = 1000; i < 15000; i++) {
+//            map.put("cnid", i);
+//            if (i < 1800 && i > 1600) {
+//                map.put("version", "5.7.2");
+//                map.putAll(getApp(2));
+//            } else if (i < 10100 && i > 10000) {
+//                map.put("version", "5.7.3");
+//                map.putAll(getApp(1));
+//            } else if (i > 14000 && i < 14100) {
+//                map.put("version", "5.7.0");
+//                map.putAll(getApp(0));
+//            } else {
+//                continue;
+//            }
+//            response = HttpUtils.doPost(url, map);
+//            buffread = bufferedReader.readLine();
+//            if (!buffread.equals(response)) {
+//                System.out.println(++index + " 检查失败");
+//                System.out.println("预期结果：" + buffread);
+//                System.out.println("实际结果：" + response);
+//                return;
+//            }
+//            printWriter.println(response);
+//        }
         System.out.println("检查通过");
     }
 

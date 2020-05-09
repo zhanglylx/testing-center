@@ -1,7 +1,6 @@
 package com.testing.center.service;
 
-import com.testing.center.cmmon.utils.TestingCenterResult;
-import org.apache.ibatis.annotations.Param;
+import com.testing.center.common.utils.TestingCenterResult;
 
 import java.util.List;
 import java.util.Map;

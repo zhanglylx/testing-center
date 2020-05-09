@@ -1,6 +1,6 @@
 package com.testing.center.service.cxb.ad.impl;
 
-import com.testing.center.cmmon.utils.TestingCenterResult;
+import com.testing.center.common.utils.TestingCenterResult;
 import com.testing.center.cxb.ad.GetAdDaoMapper;
 import com.testing.center.entity.cxb.ad.GetAd;
 import com.testing.center.service.cxb.ad.GetAdService;

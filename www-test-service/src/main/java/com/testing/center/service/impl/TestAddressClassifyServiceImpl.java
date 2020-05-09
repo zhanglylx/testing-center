@@ -1,9 +1,8 @@
 package com.testing.center.service.impl;
 
-import com.testing.center.cmmon.utils.TestingCenterResult;
+import com.testing.center.common.utils.TestingCenterResult;
 import com.testing.center.dao.TestAddressClassifyDaoMapper;
 import com.testing.center.service.TestAddressClassifyService;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

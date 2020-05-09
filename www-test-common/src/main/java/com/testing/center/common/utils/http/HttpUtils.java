@@ -1,6 +1,6 @@
-package com.testing.center.cmmon.utils.http;
+package com.testing.center.common.utils.http;
 
-import com.testing.center.cmmon.utils.ZLYJSON.ZLYJSONArray;
+import com.testing.center.common.utils.ZLYJSON.ZLYJSONArray;
 import net.sf.json.JSONArray;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.*;

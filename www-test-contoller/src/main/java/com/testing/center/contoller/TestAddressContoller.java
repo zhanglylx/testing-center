@@ -1,18 +1,15 @@
 package com.testing.center.contoller;
 
-import com.testing.center.cmmon.utils.TestingCenterResult;
+import com.testing.center.common.utils.TestingCenterResult;
 import com.testing.center.service.TestAddressClassifyService;
 import com.testing.center.service.TestAddressListService;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.Pattern;
 import java.util.List;
 import java.util.Map;
 

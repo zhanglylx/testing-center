@@ -1,4 +1,4 @@
-package com.testing.center.cmmon.utils;
+package com.testing.center.common.utils;
 
 import org.apache.commons.lang3.StringUtils;
 

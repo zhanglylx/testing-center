@@ -1,10 +1,7 @@
-package com.testing.center.cmmon.utils.cdn;
+package com.testing.center.common.utils.cdn;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 
 
 /**

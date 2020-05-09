@@ -1,7 +1,6 @@
 package com.testing.center.entity;
 
-import com.testing.center.cmmon.utils.http.NetworkHeaders;
-import sun.plugin2.message.Serializer;
+import com.testing.center.common.utils.http.NetworkHeaders;
 
 import java.io.Serializable;
 import java.util.Map;

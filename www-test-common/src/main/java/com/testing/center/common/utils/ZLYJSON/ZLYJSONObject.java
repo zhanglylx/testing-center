@@ -1,6 +1,6 @@
-package com.testing.center.cmmon.utils.ZLYJSON;
+package com.testing.center.common.utils.ZLYJSON;
 
-import com.testing.center.cmmon.utils.http.HttpUtils;
+import com.testing.center.common.utils.http.HttpUtils;
 import net.sf.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;

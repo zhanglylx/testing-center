@@ -1,4 +1,4 @@
-package com.testing.center.cmmon.utils.cxb;
+package com.testing.center.common.utils.cxb;
 
 import org.apache.commons.lang3.StringUtils;
 

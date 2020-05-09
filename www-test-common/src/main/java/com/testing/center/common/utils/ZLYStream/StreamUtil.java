@@ -1,4 +1,4 @@
-package com.testing.center.cmmon.utils.ZLYStream;
+package com.testing.center.common.utils.ZLYStream;
 
 import java.nio.charset.Charset;
 import java.io.File;

@@ -1,7 +1,7 @@
-package com.testing.center.cmmon.utils;
+package com.testing.center.common.utils;
 
 
-import com.testing.center.cmmon.utils.http.HttpUtils;
+import com.testing.center.common.utils.http.HttpUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.nio.charset.Charset;

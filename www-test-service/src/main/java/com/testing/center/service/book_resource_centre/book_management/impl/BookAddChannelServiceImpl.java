@@ -2,16 +2,13 @@ package com.testing.center.service.book_resource_centre.book_management.impl;
 
 import com.testing.center.book_resource_centre.book_management.business_book.BookAddChannelDaoMapper;
 import com.testing.center.book_resource_centre.book_management.business_book.entity.BookAddChannel;
-import com.testing.center.cmmon.utils.TestingCenterResult;
+import com.testing.center.common.utils.TestingCenterResult;
 import com.testing.center.service.book_resource_centre.book_management.BookAddChannelService;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service("bookAddChannelService")
 public class BookAddChannelServiceImpl implements BookAddChannelService {

@@ -39,6 +39,7 @@
     <bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dbcp"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="configLocation" value="classpath:db/mybatis-config.xml"/>
     </bean>
     <!--    配置mapper扫描-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

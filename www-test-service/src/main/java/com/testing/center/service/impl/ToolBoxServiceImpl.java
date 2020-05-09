@@ -1,11 +1,10 @@
 package com.testing.center.service.impl;
 
-import com.testing.center.cmmon.utils.TestingCenterResult;
+import com.testing.center.common.utils.TestingCenterResult;
 import com.testing.center.dao.ToolBoxDaoMapper;
 import com.testing.center.entity.ToolBox;
 import com.testing.center.service.ToolBoxService;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.annotation.Validated;
 
 import javax.annotation.Resource;
 import java.util.List;
