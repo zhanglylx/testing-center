@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testing.center.web.dao.dao.ToolBoxDaoMapper">
+    <select id="findAll" resultType="com.testing.center.entity.ToolBox">
+        SELECT * FROM tool_box WHERE tool_box_status = 1;
+   </select>
+    <select id="findById" resultType="com.testing.center.entity.ToolBox">
+        SELECT * FROM tool_box WHERE tool_box_status = 1 AND id=#{id};
+   </select>
+</mapper>
+
+
+
+
+
+
