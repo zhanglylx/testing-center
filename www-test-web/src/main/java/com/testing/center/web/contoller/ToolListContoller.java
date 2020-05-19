@@ -19,13 +19,13 @@ public class ToolListContoller {
     @Resource(name = "toolListService")
     private ToolListService toolListService;
 
-    @RequestMapping(value = "/findAll", produces = "application/json;charset:utf-8")
+    @RequestMapping(value = "/findAll", produces = "application/json;charset:UTF-8")
     @ResponseBody
     public TestingCenterResult<List<Map>> loadToolListAll() {
         return toolListService.loadAllToolList();
     }
 
-    @RequestMapping(value = "/findByBoxId", method = RequestMethod.POST, produces = "application/json;charset:utf-8")
+    @RequestMapping(value = "/findByBoxId", method = RequestMethod.POST, produces = "application/json;charset:UTF-8")
     @ResponseBody
     public TestingCenterResult<List<Map>> loadByBoxIdToolList(@RequestParam("boxId") Integer boxId) {
         return toolListService.loadByBoxIdToolList(boxId);
@@ -37,7 +37,7 @@ public class ToolListContoller {
      * @param toolListId listId
      * @return
      */
-    @RequestMapping(value = "/addHeat", method = RequestMethod.POST, produces = "application/json;charset:utf-8")
+    @RequestMapping(value = "/addHeat", method = RequestMethod.POST, produces = "application/json;charset:UTF-8")
     @ResponseBody
     public TestingCenterResult addHeat(@RequestParam("toolListId") Integer toolListId) {
         return toolListService.addHeat(toolListId);
