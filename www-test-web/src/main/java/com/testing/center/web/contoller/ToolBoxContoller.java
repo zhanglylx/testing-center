@@ -24,7 +24,6 @@ public class ToolBoxContoller {
 
     @RequestMapping("/findAll")
     public TestingCenterResult<List<ToolBox>> findAllToolBox() {
-        logger.info("访问了findAll");
         return toolBoxService.findAll();
     }
 
