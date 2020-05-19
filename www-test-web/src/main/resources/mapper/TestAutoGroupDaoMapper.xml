@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testing.center.web.dao.dao.test_auto.TestAutoGroupDaoMapper">
+    <select id="findAll" resultType="map">
+        SELECT * FROM test_auto_group ORDER by id
+    </select>
+</mapper>
+
+
+
+
+
+
