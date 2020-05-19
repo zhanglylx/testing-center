@@ -22,13 +22,13 @@ public class TestAddressContoller {
     @Resource(name = "testAddressListService")
     private TestAddressListService testAddressListService;
 
-    @RequestMapping(value = "/findAllClassify", produces = "application/json;charset:utf-8")
+    @RequestMapping(value = "/findAllClassify", produces = "application/json;charset:UTF-8")
     @ResponseBody
     public TestingCenterResult<List<Map>> findAllClassify() {
         return testAddressClassifyService.findAllClassify();
     }
 
-    @RequestMapping(value = "/findAddressListByClassifyId", method = RequestMethod.POST, produces = "application/json;charset:utf-8")
+    @RequestMapping(value = "/findAddressListByClassifyId", method = RequestMethod.POST, produces = "application/json;charset:UTF-8")
     @ResponseBody
     public TestingCenterResult<List<Map>> findAddressListByClassifyId(@RequestParam("classifyId") Integer classifyId) {
         return testAddressListService.findTestAddressListByClassifyId(classifyId);
