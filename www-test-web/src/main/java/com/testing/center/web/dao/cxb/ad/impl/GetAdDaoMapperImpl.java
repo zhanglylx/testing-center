@@ -101,8 +101,9 @@ public class GetAdDaoMapperImpl implements GetAdDaoMapper {
         }
     }
 
+
     public static void main(String[] args) throws IOException {
-        String url = "http://localhost:8080/test_www_page_war/ad/adLuaFunnel";
+        String url = "http://localhost:8080/www-test-web/ad/adLuaFunnel";
         Map<String, Object> map = new HashMap<>();
         map.put("uid", -1);
         map.put("environment", 0);
