@@ -30,6 +30,7 @@ const CXB_DEFAULT_REQUEST_PARAMETER_CNID = 1062;
 const CXB_DEFAULT_REQUEST_PARAMETER_ADGG = "GG-";
 const CXB_DEFAULT_REQUEST_PARAMETER_UID = "-1";
 
+
 //bookResourceCentre
 
 const CENTRE_PATH_BOOK_MANAGEMENT_ADD_BOOKS_CHANNEL="bookResourceCentre/bookManagement/addChannelBooks"

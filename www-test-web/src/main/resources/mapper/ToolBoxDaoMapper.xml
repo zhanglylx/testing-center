@@ -3,10 +3,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.testing.center.web.dao.dao.ToolBoxDaoMapper">
-    <select id="findAll" resultType="com.testing.center.entity.ToolBox">
+    <select id="findAll" resultType="com.testing.center.web.dao.entity.ToolBox">
         SELECT * FROM tool_box WHERE tool_box_status = 1;
    </select>
-    <select id="findById" resultType="com.testing.center.entity.ToolBox">
+    <select id="findById" resultType="com.testing.center.web.dao.entity.ToolBox">
         SELECT * FROM tool_box WHERE tool_box_status = 1 AND id=#{id};
    </select>
 </mapper>

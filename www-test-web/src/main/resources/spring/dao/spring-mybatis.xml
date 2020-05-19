@@ -21,6 +21,7 @@
     <import resource="classpath:spring/dao/spring-cdn.xml"/>
     <import resource="classpath:spring/dao/spring-bean.xml"/>
     <import resource="classpath:spring/dao/spring-ad.xml"/>
+    <import resource="classpath:spring/dao/spring-cache.xml"/>
     <import resource="classpath:spring/dao/spring-book-resource-centre.xml"/>
 
     <bean id="dbcp" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
