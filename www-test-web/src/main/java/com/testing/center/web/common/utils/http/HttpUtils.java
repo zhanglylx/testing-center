@@ -45,7 +45,7 @@ import java.util.*;
  */
 public class HttpUtils {
     // HTTP内容类型。相当于form表单的形式，提交数据
-    private static final String CONTENT_TYPE_JSON_URL = "application/json;charset=utf-8";
+    public static final String CONTENT_TYPE_JSON_URL = "application/json;charset=UTF-8";
     // 超时时间:ms
     private static final int SOCKET_TIME_OUT = 60 * 1000;
     //创建连接的最长时间:ms
