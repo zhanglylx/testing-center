@@ -19,7 +19,7 @@ public class BookManagementContoller {
     @Autowired
     private BookAddChannelService bookAddChannelService;
 
-    @PostMapping(value = "addChannelBooks", produces = "application/json;charset:utf-8")
+    @PostMapping(value = "addChannelBooks", produces = "application/json;charset:UTF-8")
     public TestingCenterResult<Object> addChannelBooks(
             @NotBlank String channel, @NotBlank String books) {
         books = books.replace("，", ",");
