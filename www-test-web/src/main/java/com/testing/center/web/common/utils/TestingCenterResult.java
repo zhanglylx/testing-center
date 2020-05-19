@@ -28,7 +28,11 @@ public class TestingCenterResult<T> {
         return this;
     }
 
-
+    public TestingCenterResult<T> errorCommon(String msg,Exception exception) {
+        this.setMsg(msg+":"+exception.getLocalizedMessage());
+        this.setStatus(1);
+        return this;
+    }
     public TestingCenterResult<T> setSuccess(T t) {
         return setSuccess(null, t);
     }
