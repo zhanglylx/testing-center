@@ -1,12 +1,21 @@
 package com.testing.center.web.contoller;
 
+import com.testing.center.web.common.utils.http.HttpUtils;
+import com.testing.center.web.common.utils.http.ServletUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class TestCenterPageContoller {
+    private Logger logger = LoggerFactory.getLogger(TestCenterPageContoller.class);
+
     @RequestMapping("/home")
-    public String getTestHomePage() {
+    public String getTestHomePage(HttpServletRequest httpRequest) {
+        this.logger.info(ServletUtils.getUserIP(httpRequest) + "访问了页面");
         return "test-home";
     }
 
