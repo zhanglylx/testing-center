@@ -1,0 +1,21 @@
+.test_auto_div dl {
+    color: var(--theme-colors);
+    /*鼠标悬浮时，显示鼠标手*/
+    cursor: pointer;
+}
+
+.test_auto_div dd {
+    margin-left: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.test_auto_div .test_auto_group_dd_host {
+    width: 50%;
+    display: inline-block;
+
+}
+
+.test_auto_div .test_auto_group_dd_host_clear {
+    clear: right;
+}

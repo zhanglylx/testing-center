@@ -1,0 +1,80 @@
+<body>
+<div class="test_auto_div">
+
+</div>
+<script>
+
+    $(function () {
+        _$ajaxGetJSON(
+            CXB_PATH_URL_TEST_AUTO_GROUP_FINDALL,
+            "",
+            function (response) {
+                _$analysisJsonSuccessResponse(response, function (data) {
+                    if (data.length === 0) {
+                        _$toastText("没有找到相关的测试组");
+                        return;
+                    }
+                    for (var i = 0; i < data.length; i++) {
+                        $(".test_auto_div").append(createGroup(
+                            data[i].test_auto_group_name,
+                            data[i].test_auto_group_host,
+                            data[i].id));
+                    }
+
+                });
+            }
+        );
+        $(".test_auto_div").on("click", "dl", function () {
+            $(this).children("dd").hide(200);
+            _$empty($(this).children("dd"));
+            var $dl = $(this);
+            var id = $(this).data("groupId");
+            _$ajaxPostJSON(
+                CXB_PATH_URL_TEST_AUTO_LIST_FINDBYGROUPID,
+                {"testAutoGroupId": id},
+                function (response) {
+                    _$analysisJsonSuccessResponse(response, function (data) {
+                        if (data.length === 0) {
+                            _$toastText("没有找到相关的测试用例");
+                            return;
+                        }
+                        for (var i = 0; i < data.length; i++) {
+                            $dl.append(createList(
+                                data[i].test_auto_list_name,
+                                data[i].test_auto_list_path,
+                                data[i].id
+                            ));
+                        }
+                        $dl.next().show();
+                    });
+                }
+            );
+        });
+    });
+
+    /**
+     * @private
+     */
+    function createList(name, host, id) {
+        var dd = '<dd class="test_auto_group_dd"><h5><span>API:【' + name + '】</span> ' +
+            '<div class="test_auto_group_dd_host">path:【' + host + '】</div></h5></dd>';
+        var $dd = $(dd);
+        $dd.data("listId", id);
+        return $dd;
+    }
+
+    /**
+     * 创建组
+     * @private
+     */
+    function createGroup(name, host, id) {
+        var dl = '<dl class="test_auto_group_dl"><h3>project:【' + name + '】 host:【' + host + '】</h3></dl>' +
+            '<div hidden class="too_halving_div"  style="background-color:' + _$cssGetThemeColoRGBA(0.5) + ';margin-top: 5px"></div>';
+        var $dl = $(dl);
+        $dl.data("groupId", id);
+        return $dl;
+    }
+</script>
+
+
+</body>

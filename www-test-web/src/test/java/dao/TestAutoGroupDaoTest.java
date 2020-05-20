@@ -5,10 +5,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class TestAutoGroupDaoTest {
-    private ApplicationContext applicationContext = new ClassPathXmlApplicationContext(
-            "spring\\dao\\spring-mybatis.xml"
-    );
+public class TestAutoGroupDaoTest implements BaseTestDao {
+
 
     @Test
     public void testFindAll(){

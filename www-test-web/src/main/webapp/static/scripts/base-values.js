@@ -26,6 +26,10 @@ const STATIC_HTML_CXB_PUBLIC_CXB_INPUT_ENVIRONMENT = "static/public-html/cxb/pub
 const CXB_PATH_URL_GETVOLUME = "volume/getCxbVolume";
 const CXB_PATH_URL_GETCDNVOLUME = "volume/getCdnVolume";
 const CXB_PATH_URL_AD_LUA_FUNNEL = "ad/adLuaFunnel";
+//自动化测试path
+const CXB_PATH_URL_TEST_AUTO_GROUP_FINDALL = "testAuto/groupFindAll";
+const CXB_PATH_URL_TEST_AUTO_LIST_FINDBYGROUPID = "testAuto/list/findByGroupId";
+//静态配置
 const CXB_DEFAULT_REQUEST_PARAMETER_CNID = 1062;
 const CXB_DEFAULT_REQUEST_PARAMETER_ADGG = "GG-";
 const CXB_DEFAULT_REQUEST_PARAMETER_UID = "-1";
