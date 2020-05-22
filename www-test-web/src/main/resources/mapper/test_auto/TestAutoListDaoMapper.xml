@@ -4,7 +4,10 @@
 
 <mapper namespace="com.testing.center.web.dao.dao.test_auto.TestAutoListDaoMapper">
     <select id="findByGroupId" resultType="map">
-        SELECT * FROM test_auto_list WHERE test_auto_group_id = #{testAutoGroupId} ORDER by id
+        SELECT * FROM test_auto_list WHERE test_auto_group_id = #{testAutoGroupId} AND test_auto_list_status>=0 ORDER by id
+    </select>
+    <select id="findCaseNameById" resultType="map">
+            SELECT * FROM test_auto_list WHERE id=#{id} AND test_auto_list_status>=0
     </select>
 </mapper>
 

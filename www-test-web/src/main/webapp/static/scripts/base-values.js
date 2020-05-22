@@ -29,6 +29,10 @@ const CXB_PATH_URL_AD_LUA_FUNNEL = "ad/adLuaFunnel";
 //自动化测试path
 const CXB_PATH_URL_TEST_AUTO_GROUP_FINDALL = "testAuto/groupFindAll";
 const CXB_PATH_URL_TEST_AUTO_LIST_FINDBYGROUPID = "testAuto/list/findByGroupId";
+const CXB_PATH_URL_TEST_AUTO_EXECUTE = "testAuto/execute";
+const CXB_PATH_URL_TEST_AUTO_LIST_GETLOG = "testAuto/list/getLog";
+const CXB_PATH_URL_TEST_AUTO_STOP = "testAuto/stop";
+const CXB_PATH_URL_TEST_AUTO_GET_CASE_LOG = "testAuto/getCaseLog";
 //静态配置
 const CXB_DEFAULT_REQUEST_PARAMETER_CNID = 1062;
 const CXB_DEFAULT_REQUEST_PARAMETER_ADGG = "GG-";

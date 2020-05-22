@@ -1,21 +1,54 @@
+.test_auto_div {
+    width: 50%;
+    display: inline-block;
+}
+
 .test_auto_div dl {
     color: var(--theme-colors);
     /*鼠标悬浮时，显示鼠标手*/
     cursor: pointer;
+    width: 100%
+}
+
+/**
+悬浮动画
+ */
+.test_auto_div dd:hover {
+    position: relative;
+    left: -2px;
+    top: -2px;
 }
 
 .test_auto_div dd {
     margin-left: 20px;
     margin-top: 10px;
     cursor: pointer;
+    width: 100%;
 }
 
-.test_auto_div .test_auto_group_dd_host {
-    width: 50%;
+.test_auto_div_log {
     display: inline-block;
-
+    width: 50%;
+    float: right;
+    height: 100%;
 }
 
-.test_auto_div .test_auto_group_dd_host_clear {
+
+.test_auto_div_log textarea {
+    width: 100%;
+    height: 300px;
+    padding: 0 3px;
+}
+
+.test_auto_div_log_clear {
     clear: right;
 }
+.test_auto_div_log_button{
+    margin-bottom: 5px;
+}
+.test_auto_div_log_button button{
+    margin-right: 5px;
+    padding: 0 4px;
+    color: var(--theme-colors);
+}
+

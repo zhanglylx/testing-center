@@ -9,4 +9,6 @@ import java.util.Map;
 @Repository("testAutoListDaoMapper")
 public interface TestAutoListDaoMapper {
     List<Map<String, Object>> findByGroupId(@Param("testAutoGroupId") Integer testAutoGroupId);
+
+    Map<String,Object> findCaseNameById(@Param("id") Integer id);
 }

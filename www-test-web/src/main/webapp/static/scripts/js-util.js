@@ -431,17 +431,22 @@ function _$copyText(selector) {
  * 浮动弹窗提示文本
  * 在页面中心悬浮2.5秒后自然消失
  */
+/**
+ * @private
+ */
 var _$toastTextIntervalId;
 
 function _$toastText(text) {
     var width = text.length * 20;
     var math = Math.random();
+    var left = 45 - (text.length/2);
+    if(left<0)left=0;
     if (_$toastTextIntervalId) {
         clearInterval(_$toastTextIntervalId);
     }
 
     $(".body_reminder_div").remove();
-    $("body").prepend("<div math=" + math + " class='body_reminder_div'style='z-index: 1000000;position: absolute;top: 45%;left:49%;background: rgba(220,220,220,0.9);'>" +
+    $("body").prepend("<div math=" + math + " class='body_reminder_div'style='z-index: 1000000;position: absolute;top: 8%;left:" + left + "%;background: rgba(220,220,220,0.9);'>" +
         '<div style="height: 25px ;width: ' + width + 'px;text-align: center; font-size: 15px ;line-height: 25px; color: var(--theme-colors)">' +
         text +
         '</div>' +

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.testing.center.web.dao.dao.test_auto.TestAutoSyncDaoMapper">
+    <insert id="save" useGeneratedKeys="true" keyProperty="testAutoSync.id">
+        INSERT INTO test_auto_sync(test_auto_list_id,test_auto_sync_status,test_auto_sync_createtime,test_auto_sync_updatetime)
+        VALUES (
+            #{testAutoSync.test_auto_list_id},
+            #{testAutoSync.test_auto_sync_status},
+            #{testAutoSync.test_auto_sync_createtime},
+            #{testAutoSync.test_auto_sync_updatetime}
+        );
+    </insert>
+    <select id="findRunning" resultType="string">
+        SELECT list.test_auto_list_name FROM test_auto_sync AS sync,test_auto_list AS list
+         WHERE sync.test_auto_sync_status=1  AND sync.test_auto_list_id = list.id;
+    </select>
+    <update id="update">
+        UPDATE test_auto_sync SET  test_auto_list_id =  #{testAutoSync.test_auto_list_id},
+        test_auto_sync_status =  #{testAutoSync.test_auto_sync_status},
+        test_auto_sync_createtime =   #{testAutoSync.test_auto_sync_createtime},
+        test_auto_sync_updatetime =   #{testAutoSync.test_auto_sync_updatetime}
+        WHERE id = #{testAutoSync.id}
+    </update>
+</mapper>
+
+
+
+
+
+

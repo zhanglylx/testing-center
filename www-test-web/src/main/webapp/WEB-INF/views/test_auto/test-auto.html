@@ -2,62 +2,132 @@
 <div class="test_auto_div">
 
 </div>
+<div class="test_auto_div_log">
+    <div class="test_auto_div_log_button">
+        <button id="test_auto_div_log_button_stop">停止执行</button>
+        <button id="test_auto_div_log_button_download">手动下载测试结果</button>
+    </div>
+
+    <div class="test_auto_div_log_textarea_div"><textarea id="test_auto_div_log_textarea" readonly>Log</textarea></div>
+    <div class="test_auto_div_log_clear"></div>
+</div>
 <script>
 
     $(function () {
-        _$ajaxGetJSON(
-            CXB_PATH_URL_TEST_AUTO_GROUP_FINDALL,
-            "",
-            function (response) {
-                _$analysisJsonSuccessResponse(response, function (data) {
-                    if (data.length === 0) {
-                        _$toastText("没有找到相关的测试组");
-                        return;
-                    }
-                    for (var i = 0; i < data.length; i++) {
-                        $(".test_auto_div").append(createGroup(
-                            data[i].test_auto_group_name,
-                            data[i].test_auto_group_host,
-                            data[i].id));
-                    }
-
-                });
-            }
-        );
-        $(".test_auto_div").on("click", "dl", function () {
-            $(this).children("dd").hide(200);
-            _$empty($(this).children("dd"));
-            var $dl = $(this);
-            var id = $(this).data("groupId");
-            _$ajaxPostJSON(
-                CXB_PATH_URL_TEST_AUTO_LIST_FINDBYGROUPID,
-                {"testAutoGroupId": id},
+            _$ajaxGetJSON(
+                CXB_PATH_URL_TEST_AUTO_GROUP_FINDALL,
+                "",
                 function (response) {
                     _$analysisJsonSuccessResponse(response, function (data) {
                         if (data.length === 0) {
-                            _$toastText("没有找到相关的测试用例");
+                            _$toastText("没有找到相关的测试组");
                             return;
                         }
                         for (var i = 0; i < data.length; i++) {
-                            $dl.append(createList(
-                                data[i].test_auto_list_name,
-                                data[i].test_auto_list_path,
-                                data[i].id
-                            ));
+                            $(".test_auto_div").append(createGroup(
+                                data[i].test_auto_group_name,
+                                data[i].test_auto_group_host,
+                                data[i].id));
                         }
-                        $dl.next().show();
+
                     });
                 }
             );
-        });
-    });
+
+            //绑定项目点击
+            $(".test_auto_div").on("click", "dl", function () {
+                $(this).children("dd").hide(200);
+                $(this).children("dd").remove();
+                var $dl = $(this);
+                var id = $(this).data("groupId");
+                _$ajaxPostJSON(
+                    CXB_PATH_URL_TEST_AUTO_LIST_FINDBYGROUPID,
+                    {"testAutoGroupId": id},
+                    function (response) {
+                        _$analysisJsonSuccessResponse(response, function (data) {
+                            if (data.length === 0) {
+                                _$toastText("没有找到相关的测试用例");
+                                return;
+                            }
+                            for (var i = 0; i < data.length; i++) {
+                                $dl.append(createList(
+                                    data[i].test_auto_list_name,
+                                    data[i].test_auto_list_path,
+                                    data[i].id
+                                ));
+                            }
+                            $dl.next().show();
+                        });
+                    }
+                );
+            });
+            //    绑定list点击
+            $(".test_auto_div").on("click", "dd", function () {
+                var listId = $(this).data("listId");
+                _$ajaxPostJSON(
+                    CXB_PATH_URL_TEST_AUTO_EXECUTE,
+                    {"listId": listId},
+                    function (response) {
+                        _$toastText(response.msg);
+                        //成功代码可以获取log了
+                        getLog();
+                    }
+                );
+                return false;
+            });
+            //绑定停止用例按钮
+            $("#test_auto_div_log_button_stop").click(function () {
+                _$ajaxGetJSON(
+                    CXB_PATH_URL_TEST_AUTO_STOP,
+                    "",
+                    function (response) {
+                        _$toastText(response.msg);
+                    }
+                );
+            });
+            //    绑定下载接口
+            $("#test_auto_div_log_button_download").click(function () {
+                _$goToUrlNewPage(CXB_PATH_URL_TEST_AUTO_GET_CASE_LOG, "get", "");
+            });
+            //进入页面开始刷新
+            getLog();
+        }
+    );
+    var testAutoGetLogId;
+
+    function getLog() {
+        if (testAutoGetLogId) clearInterval(testAutoGetLogId);
+        testAutoGetLogId = setInterval(function () {
+            _$ajax(
+                CXB_PATH_URL_TEST_AUTO_LIST_GETLOG,
+                "get",
+                "",
+                "JSON",
+                function (response) {
+                    _$empty($("#test_auto_div_log_textarea"));
+                    for (var i = 0; i < response.data.length; i++) {
+                        $("#test_auto_div_log_textarea").append(response.data[i] + "\n");
+                    }
+                    if (response.status === 0) {
+                        _$toastText("自动化测试用例正在执行中，请您耐心等候！")
+                    }
+                    //textarea滚动到最底下
+                    // document.getElementById("test_auto_div_log_textarea").scrollTop = document.getElementById("test_auto_div_log_textarea").scrollHeight;
+                    if (response.status === 1) {
+                        //服务端返回失败关闭定时任务
+                        if (testAutoGetLogId) clearInterval(testAutoGetLogId);
+                    }
+                }
+            );
+        }, 2000)
+    }
 
     /**
      * @private
      */
     function createList(name, host, id) {
         var dd = '<dd class="test_auto_group_dd"><h5><span>API:【' + name + '】</span> ' +
-            '<div class="test_auto_group_dd_host">path:【' + host + '】</div></h5></dd>';
+            'path:【' + host + '】</h5></dd>';
         var $dd = $(dd);
         $dd.data("listId", id);
         return $dd;
