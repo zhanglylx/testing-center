@@ -5,6 +5,8 @@ import java.util.Properties;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Component
 public class URLEnvironment {
@@ -12,7 +14,8 @@ public class URLEnvironment {
     public static final int ONLINE = 1;
     private static Properties properties;
 
-    @Value("#{URLEnvironment}")
+
+    @Value("#{URLEnvironmentProperties}")
     public void setProperties(Properties properties) {
         URLEnvironment.properties = properties;
     }
@@ -70,6 +73,22 @@ public class URLEnvironment {
     }
 
     public static String contextSwitchingWebApp(String path, Integer environment) {
+        return contextSwitchingProperties(path, environment, "cxb_webapp_qa_Host", "cxb_webapp_Online_Host");
+    }
+
+    public static String contextSwitchingReadBook(String path, Integer environment) {
+        return contextSwitchingProperties("readbook", path, environment);
+    }
+
+    private static String contextSwitchingProperties(String qaName, String path, Integer environment) {
+        if (StringUtils.isBlank(path)) {
+            throw new NullPointerException("path不能为空");
+        }
+        path = path.trim().startsWith("/") ? path : "/" + path;
+        return contextSwitching(properties.getProperty(qaName) + path, environment);
+    }
+
+    private static String contextSwitchingProperties(String path, Integer environment, String qaName, String onlineName) {
         if (StringUtils.isBlank(path)) {
             throw new NullPointerException("path不能为空");
         }
@@ -79,10 +98,10 @@ public class URLEnvironment {
         path = path.trim().startsWith("/") ? path : "/" + path;
         switch (environment) {
             case QA:
-                return properties.getProperty("cxb_webapp_qa_Host") +
+                return properties.getProperty(qaName) +
                         path;
             case ONLINE:
-                return properties.getProperty("cxb_webapp_Online_Host") + path;
+                return properties.getProperty(onlineName) + path;
             default:
                 throw new IllegalArgumentException("不支持的类型,：" + environment);
         }
