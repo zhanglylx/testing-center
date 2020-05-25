@@ -28,11 +28,12 @@ public class TestingCenterResult<T> {
         return this;
     }
 
-    public TestingCenterResult<T> errorCommon(String msg,Exception exception) {
-        this.setMsg(msg+":"+exception.getLocalizedMessage());
+    public TestingCenterResult<T> errorCommon(String msg, Exception exception) {
+        this.setMsg(msg + ":" + exception.getLocalizedMessage());
         this.setStatus(1);
         return this;
     }
+
     public TestingCenterResult<T> setSuccess(T t) {
         return setSuccess(null, t);
     }
@@ -62,7 +63,7 @@ public class TestingCenterResult<T> {
         } else {
             msg = "[ " + msg + " ]";
         }
-        return errorParameter("参数" + msg + "不能为空");
+        return errorParameter("参数错误:" + msg);
     }
 
     /**
