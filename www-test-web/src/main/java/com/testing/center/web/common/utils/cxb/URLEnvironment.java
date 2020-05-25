@@ -76,9 +76,11 @@ public class URLEnvironment {
         if (environment == null) {
             throw new NullPointerException("switchOnline不能为空");
         }
+        path = path.trim().startsWith("/") ? path : "/" + path;
         switch (environment) {
             case QA:
-                return properties.getProperty("cxb_webapp_qa_Host") + path;
+                return properties.getProperty("cxb_webapp_qa_Host") +
+                        path;
             case ONLINE:
                 return properties.getProperty("cxb_webapp_Online_Host") + path;
             default:
