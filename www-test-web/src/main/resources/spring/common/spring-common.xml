@@ -18,6 +18,9 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <context:component-scan base-package="com.testing.center.web.common"/>
+
     <import resource="classpath*:spring/common/application-redis.xml"/>
     <!--    &lt;!&ndash;    配置组件扫描&ndash;&gt;-->
     <!--    <context:component-scan base-package="com.testing.center.contoller"/>-->
@@ -47,6 +50,17 @@
     <bean id="recipientAddress1" class="javax.mail.internet.InternetAddress">
         <constructor-arg index="0" value="zhangly@cread.com"/>
     </bean>
+
+
+    <util:properties id="URLEnvironmentProperties">
+        <prop key="cxb_webapp_qa_Host">http://web-cx-qa.ikanshu.cn</prop>
+        <prop key="cxb_webapp_Online_Host">http://web-cx-qa.ikanshu.cn</prop>
+        <prop key="readbook">http://readbook-service-freebook-qa.cread.com</prop>
+        <prop key="zwscad_qa">http://zwscad-qa.cread.com</prop>
+        <prop key="zwscad_online">http://zwscad-qa.cread.com</prop>
+    </util:properties>
+
+
 
 </beans>
 
