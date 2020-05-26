@@ -123,11 +123,12 @@
                 </p>
             </td>
         </tr>
-        <tr>
+        <tr class="public_cxb_parameter_div_table_tr">
             <!--            environment-->
             <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_net">
-                <span class="reqyured_fields" style="display: none">*</span>environment:
+                <span class="reqyured_fields" style="display: none">*</span>net:
             </td>
+            <!--                        net-->
             <td class="public_cxb_parameter_div_table_td_value"
                 id="public_cxb_parameter_div_table_td_value_net">
                 <input type="radio" id="public_cxb_parameter_div_input_net_wifi"
@@ -140,6 +141,37 @@
                        value="1"/><label for="public_cxb_parameter_div_input_net_move"
                                          style="margin-right: 5px;cursor: pointer;">move</label>
             </td>
+            <!--            imei-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_imei">
+                <label
+                        for="public_cxb_parameter_div_input_imei"> <span class="reqyured_fields"
+                                                                         style="display: none">*</span>imei:</label>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value" id="public_cxb_parameter_div_table_td_value_imei">
+                <input type="text" id="public_cxb_parameter_div_input_imei" autofocus/>
+            </td>
+        </tr>
+        <tr class="public_cxb_parameter_div_table_tr">
+            <!--            oaid-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_oaid">
+                <label
+                        for="public_cxb_parameter_div_input_oaid"> <span class="reqyured_fields"
+                                                                         style="display: none">*</span>oaid:</label>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value" id="public_cxb_parameter_div_table_td_value_oaid">
+                <input type="text" id="public_cxb_parameter_div_input_oaid" autofocus/>
+            </td>
+        </tr>
+        <tr>
+            <!--            oscode-->
+            <td class="public_cxb_parameter_div_table_td_key" id="public_cxb_parameter_div_table_td_key_oscode">
+                <label
+                        for="public_cxb_parameter_div_input_oscode"> <span class="reqyured_fields"
+                                                                           style="display: none">*</span>oscode:</label>
+            </td>
+            <td class="public_cxb_parameter_div_table_td_value" id="public_cxb_parameter_div_table_td_value_oscode">
+                <input type="text" id="public_cxb_parameter_div_input_oscode" autofocus/>
+            </td>
         </tr>
         <tr class="public_cxb_parameter_div_table_tr_submit">
             <td colspan="6">
@@ -151,7 +183,7 @@
 <script>
     $(".public_cxb_parameter_div_table td").hide();
     $(".public_cxb_parameter_div_table_tr_submit td").show();
-    _$loadCss("static/css/public-css/cdn/public-cxb-input-parameter.css");
+    _$loadCss("static/css/public-css/public-cxb-input-parameter.css");
     $(function () {
         $(".public_cxb_parameter_div_table").css("border", _$cssGetThemeColoRGBA(0.6) + " 1px solid");
         $("#public_cxb_parameter_div_input_cnid").val(CXB_DEFAULT_REQUEST_PARAMETER_CNID);
@@ -203,6 +235,9 @@
         const appname = _PgetPublicAppnameValue();
         const packname = _PgetPublicPacknameValue();
         const net = _PgetPulibcNetValue();
+        const imei = _PgetPublicImeiValue();
+        const oaid = _PgetPublicOaidValue();
+        const oscode = _PgetPublicOscodeValue();
         var keys = {
             "bookId": bookid,
             "bookName": bookName,
@@ -213,7 +248,10 @@
             "version": version,
             "appname": appname,
             "packname": packname,
-            "net": net
+            "net": net,
+            "imei": imei,
+            "oaid": oaid,
+            "oscode": oscode
         };
         _$traversalJSON(keys, function (key, value) {
             data = StitchingParameters(data, key, value);
@@ -228,7 +266,8 @@
      * @return {boolean|object}
      */
     function StitchingParameters(object, key, value) {
-        if (!_$isHidden($("#public_cxb_parameter_div_input_" + key))) {
+
+        if (!_$isHidden($("#public_cxb_parameter_div_table_td_key_" + key + ""))) {
             if (!_$isHidden("#public_cxb_parameter_div_table_td_key_" + key + " .reqyured_fields")) {
                 if (_$isNullNonZero(value, alterNullData, key)) {
                     return false;
@@ -285,6 +324,18 @@
         _Pshow("net", reqyured_fields);
     }
 
+    function _PshowImei(reqyured_fields) {
+        _Pshow("imei", reqyured_fields);
+    }
+
+    function _PshowOaid(reqyured_fields) {
+        _Pshow("oaid", reqyured_fields);
+    }
+
+    function _PshowOscode(reqyured_fields) {
+        _Pshow("oscode", reqyured_fields);
+    }
+
     /**
      * @private
      */
@@ -311,6 +362,18 @@
 
     function _PgetPublicUidValue() {
         return _$getValTrim("#public_cxb_parameter_div_input_uid");
+    }
+
+    function _PgetPublicImeiValue() {
+        return _$getValTrim("#public_cxb_parameter_div_input_imei");
+    }
+
+    function _PgetPublicOaidValue() {
+        return _$getValTrim("#public_cxb_parameter_div_input_oaid");
+    }
+
+    function _PgetPublicOscodeValue() {
+        return _$getValTrim("#public_cxb_parameter_div_input_oscode");
     }
 
     function _PgetPublicAdGGValue() {
