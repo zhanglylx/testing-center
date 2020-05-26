@@ -80,6 +80,10 @@ public class URLEnvironment {
         return contextSwitchingProperties("readbook", path, environment);
     }
 
+    public static String contextSwitchingZwscad(String path, Integer environment) {
+        return contextSwitchingProperties(path, environment, "zwscad_qa", "zwscad_online");
+    }
+
     private static String contextSwitchingProperties(String qaName, String path, Integer environment) {
         if (StringUtils.isBlank(path)) {
             throw new NullPointerException("path不能为空");
