@@ -45,14 +45,14 @@ public class BusinessLiftDaoMapperImpl implements BusinessLiftDaoMapper {
         BusinessLift businessLift = new BusinessLift();
         try {
             URIBuilder uriBuilder = new URIBuilder(URLEnvironment.contextSwitchingZwscad(url, environment));
+            HttpUtils.addParameterURIBuilder(uriBuilder, "adgroup_name", bookId);
             HttpUtils.addParameterURIBuilder(uriBuilder, "muid", imei);
+            HttpUtils.addParameterURIBuilder(uriBuilder, "oaid", oaid);
             HttpUtils.addParameterURIBuilder(uriBuilder, "click_time", ZLYDateUtils.getLongSysDefaultFormat());
             HttpUtils.addParameterURIBuilder(uriBuilder, "click_id", ZLYRandomUtils.getRandomString());
             HttpUtils.addParameterURIBuilder(uriBuilder, "appid", ZLYRandomUtils.getRandomString());
             HttpUtils.addParameterURIBuilder(uriBuilder, "advertiser_id", ZLYRandomUtils.getRandomString());
             HttpUtils.addParameterURIBuilder(uriBuilder, "app_type", "Android");
-            HttpUtils.addParameterURIBuilder(uriBuilder, "oaid", oaid);
-            HttpUtils.addParameterURIBuilder(uriBuilder, "adgroup_name", bookId);
             NetworkHeaders networkHeaders = new NetworkHeaders();
             URI uri = uriBuilder.build();
             String response = HttpUtils.doGet(uri, null, networkHeaders);
