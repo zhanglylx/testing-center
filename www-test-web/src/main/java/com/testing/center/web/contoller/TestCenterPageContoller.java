@@ -40,7 +40,12 @@ public class TestCenterPageContoller {
     }
 
     @RequestMapping("testAuto/testAuto")
-    public String getTestAuto(){
+    public String getTestAuto() {
         return "test_auto/test-auto";
+    }
+
+    @RequestMapping("other/businessLift")
+    public String getBusinessLift() {
+        return "other/business-lift";
     }
 }

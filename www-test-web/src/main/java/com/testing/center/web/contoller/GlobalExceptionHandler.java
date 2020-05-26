@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.validation.ConstraintViolationException;
+import javax.validation.ValidationException;
 
 @ControllerAdvice
 @Component
@@ -21,12 +22,12 @@ public class GlobalExceptionHandler {
         return new MethodValidationPostProcessor();
     }
 
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<TestingCenterResult<Object>> handle(ConstraintViolationException exception) {
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<TestingCenterResult<Object>> handle(ValidationException exception) {
         TestingCenterResult<Object> testingCenterResult = new TestingCenterResult<>();
         testingCenterResult.errorParameterDefaultNull(exception.getLocalizedMessage());
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json;charset=UTF-8");
-        return new ResponseEntity<TestingCenterResult<Object>>(testingCenterResult, headers, HttpStatus.OK);
+        return new ResponseEntity<>(testingCenterResult, headers, HttpStatus.OK);
     }
 }

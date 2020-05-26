@@ -36,7 +36,13 @@
             <artifactId>hibernate-validator</artifactId>
             <version>6.1.0.Final</version>
         </dependency>
-
+        <!--        在tomcat关闭时，因为会发现出现close关闭数据库连接失败情况，所以将jar拷贝到了tomcat的lib目录下，这时关闭时，没有出现报错-->
+        <!--        mysql和 javax 在test时需要取消注释-->
+<!--                <dependency>-->
+<!--                    <groupId>mysql</groupId>-->
+<!--                    <artifactId>mysql-connector-java</artifactId>-->
+<!--                    <version>8.0.17</version>-->
+<!--                </dependency>-->
         <!--        validation 校驗器 end-->
         <!--===============    web ============-->
         <dependency>
@@ -160,6 +166,14 @@
             <version>2.10.0</version>
         </dependency>
         <!--        缓存依赖结束-->
+<!--        邮件依赖-->
+        <!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <!--邮件依赖结束-->
     </dependencies>
 
     <build>
