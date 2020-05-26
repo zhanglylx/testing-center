@@ -1,0 +1,30 @@
+<body>
+<div class="business_lift_div">
+
+</div>
+<div class="business_lift_div_result"></div>
+<script>
+    _$loadHtmlGet(STATIC_HTML_CXB_PUBLIC_CXB_INPUT_ENVIRONMENT, function (html) {
+        $(".business_lift_div").append(html);
+        _PshowBookId();
+        _PshowEnvironment();
+        _PshowImei(false);
+        _PshowOaid(false);
+        _Psubmit(function () {
+            var data = _PgetShowParameterData();
+            if (data === false) return;
+            _$empty(".business_lift_div_result");
+            _$ajaxPostJSON(
+                CXB_PATH_URL_OTHER_BUSINESS_LIFT,
+                data,
+                function (response) {
+                    _$analysisJsonSuccessResponse(response, function (data) {
+                        $(".business_lift_div_result").append(_jFormatJsonProcess(data));
+                    });
+                }
+            );
+        });
+    })
+</script>
+
+</body>
