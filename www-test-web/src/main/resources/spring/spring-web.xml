@@ -19,10 +19,11 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
+    <import resource="classpath*:spring/common/spring-common.xml"/>
     <import resource="classpath*:spring/dao/spring-mybatis.xml"/>
     <import resource="classpath*:spring/service/spring-service.xml"/>
     <import resource="classpath*:spring/contoller/spring-contoller.xml"/>
-    <import resource="classpath*:spring/common/spring-common.xml"/>
+
     <!--    &lt;!&ndash;    配置mvc注解扫描&ndash;&gt;-->
     <!--    <mvc:annotation-driven/>-->
     <!-- static resources -->
