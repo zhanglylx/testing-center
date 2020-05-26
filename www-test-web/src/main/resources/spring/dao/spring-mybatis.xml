@@ -24,6 +24,7 @@
     <import resource="classpath:spring/dao/spring-cache.xml"/>
     <import resource="classpath:spring/dao/spring-book-resource-centre.xml"/>
     <import resource="classpath:spring/dao/spring-test-auto-case.xml"/>
+    <import resource="classpath:spring/dao/spring-other.xml"/>
 
     <bean id="dbcp" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="#{jdbcConfig.driverClassName}"/>
