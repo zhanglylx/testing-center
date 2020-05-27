@@ -1,4 +1,11 @@
 <body>
+<div class="notice_for_use">
+    <h3>使用须知:</h3>
+    <p>如果你的手机是安卓10，请务必填写oaid，获取oaid方法：使用钉钉“文文”获取手机oaid。目前仅支持<span class="notice_for_use_deepen">《免费电子书》</span></p>
+    <h3>系统原理:</h3>
+    <p>在广告中点击免费电子书广告，广告回调中文接口传入用户的imei、书籍id、oaid等信息，服务端将用户信息保存到缓存中，当客户端启动时
+        访问服务端，服务端匹配到用户对应信息后将书籍响应到客户端中，客户端收到响应进行跳转阅读页操作</p>
+</div>
 <div class="business_lift_div">
 
 </div>
@@ -8,8 +15,8 @@
         $(".business_lift_div").append(html);
         _PshowBookId();
         _PshowEnvironment();
-        _PshowImei(false);
-        _PshowOaid(false);
+        _PshowImei(false, "非安卓10必须填写");
+        _PshowOaid(false, "安卓10必须填写");
         _Psubmit(function () {
             var data = _PgetShowParameterData();
             if (data === false) return;
