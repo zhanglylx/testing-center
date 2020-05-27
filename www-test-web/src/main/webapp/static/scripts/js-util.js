@@ -308,6 +308,9 @@ function _$isNullNonZero(object, f, msg) {
     }
 };
 
+function _$isNotNullNonZero(object, f, msg) {
+    return !_$isNullNonZero(object,f,msg);
+}
 
 /**
  * 判断元素是否显示
