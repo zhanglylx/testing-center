@@ -9,7 +9,7 @@
     font-weight: bold;
 }
 
-button,input[type="radio"] {
+button, input[type="radio"] {
     cursor: pointer;
 }
 
@@ -17,3 +17,17 @@ button:hover {
     border-color: var(--theme-colors);
 }
 
+.notice_for_use {
+    color: var(--theme-colors);
+    margin-bottom: 10px;
+}
+
+.notice_for_use p {
+    text-indent: 2em;
+}
+
+.notice_for_use_deepen {
+    font-weight: bolder;
+    /*下划线*/
+    text-decoration: underline ;
+}
