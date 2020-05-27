@@ -212,6 +212,7 @@
         //将appname与packname关联结束
     });
 
+
     function _Psubmit(f) {
         _$keydownEnter_ClickStatic(
             $(".public_cxb_parameter_div_table input"),
@@ -284,28 +285,28 @@
         alert(msg + "不能为空")
     }
 
-    function _PshowBookId(reqyured_fields) {
-        _Pshow("bookId", reqyured_fields);
+    function _PshowBookId(reqyured_fields,set_placeholder) {
+        _Pshow("bookId", reqyured_fields,set_placeholder);
     }
 
-    function _PshowBookName(reqyured_fields) {
-        _Pshow("bookName", reqyured_fields);
+    function _PshowBookName(reqyured_fields,set_placeholder) {
+        _Pshow("bookName", reqyured_fields,set_placeholder);
     }
 
-    function _PshowCnid(reqyured_fields) {
-        _Pshow("cnid", reqyured_fields);
+    function _PshowCnid(reqyured_fields,set_placeholder) {
+        _Pshow("cnid", reqyured_fields,set_placeholder);
     }
 
-    function _PshowUid(reqyured_fields) {
-        _Pshow("uid", reqyured_fields);
+    function _PshowUid(reqyured_fields,set_placeholder) {
+        _Pshow("uid", reqyured_fields,set_placeholder);
     }
 
     function _PshowEnvironment(reqyured_fields) {
         _Pshow("environment", reqyured_fields);
     }
 
-    function _PshowAdGG(reqyured_fields) {
-        _Pshow("adGG", reqyured_fields);
+    function _PshowAdGG(reqyured_fields,set_placeholder) {
+        _Pshow("adGG", reqyured_fields,set_placeholder);
     }
 
     function _PshowVersion(reqyured_fields) {
@@ -324,26 +325,29 @@
         _Pshow("net", reqyured_fields);
     }
 
-    function _PshowImei(reqyured_fields) {
-        _Pshow("imei", reqyured_fields);
+    function _PshowImei(reqyured_fields,set_placeholder) {
+        _Pshow("imei", reqyured_fields,set_placeholder);
     }
 
-    function _PshowOaid(reqyured_fields) {
-        _Pshow("oaid", reqyured_fields);
+    function _PshowOaid(reqyured_fields,set_placeholder) {
+        _Pshow("oaid", reqyured_fields,set_placeholder);
     }
 
-    function _PshowOscode(reqyured_fields) {
-        _Pshow("oscode", reqyured_fields);
+    function _PshowOscode(reqyured_fields,set_placeholder) {
+        _Pshow("oscode", reqyured_fields,set_placeholder);
     }
 
     /**
      * @private
      */
-    function _Pshow(name, reqyured_fields) {
+    function _Pshow(name, reqyured_fields, set_placeholder) {
         var key = "#public_cxb_parameter_div_table_td_key_" + name;
         $(key).show();
         if (reqyured_fields !== false) {
             $(key).find(".reqyured_fields").show();
+        }
+        if (_$isNotNullNonZero(set_placeholder)) {
+            $("#public_cxb_parameter_div_input_" + name).attr("placeholder", set_placeholder);
         }
         $("#public_cxb_parameter_div_table_td_value_" + name).show();
     }
