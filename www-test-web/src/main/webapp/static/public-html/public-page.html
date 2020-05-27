@@ -42,6 +42,7 @@
         $("#navigation_select_all").click(allClick);
         $("#navigation_ul_tool").on("click", "li", function () {
             clickNavigationCss(this);
+            test_home_copy_hide();
             _$ajaxPostJSON(
                 path_toolList_findByBoxId,
                 {"boxId": $(this).data(data_navigationId)},
@@ -86,6 +87,7 @@
             "",
             function (response) {
                 loadTool(response);
+                test_home_copy_show();
             }, null, $("body")
         );
     }
