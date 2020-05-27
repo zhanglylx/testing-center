@@ -66,6 +66,8 @@ $(function () {
         switch (tool_list_type) {
             case 1:
                 clickNavigationByIdCss(tool_box_id);
+                //隐藏底部版权
+                test_home_copy_hide();
                 _$ajax(
                     tool_list_url,
                     tool_list_request_method,
