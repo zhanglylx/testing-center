@@ -36,8 +36,11 @@
 
             //绑定项目点击
             $(".test_auto_div").on("click", "dl", function () {
-                $(this).children("dd").hide(200);
-                $(this).children("dd").remove();
+                if ($(this).children("dd").length > 0) {
+                    $(this).children("dd").hide(200);
+                    $(this).children("dd").remove();
+                    return;
+                }
                 var $dl = $(this);
                 var id = $(this).data("groupId");
                 _$ajaxPostJSON(
@@ -56,7 +59,6 @@
                                     data[i].id
                                 ));
                             }
-                            $dl.next().show();
                         });
                     }
                 );
@@ -138,8 +140,8 @@
      * @private
      */
     function createGroup(name, host, id) {
-        var dl = '<dl class="test_auto_group_dl"><h3>project:【' + name + '】 host:【' + host + '】</h3></dl>' +
-            '<div hidden class="too_halving_div"  style="background-color:' + _$cssGetThemeColoRGBA(0.5) + ';margin-top: 5px"></div>';
+        var dl = '<dl class="test_auto_group_dl"><h4>project:【' + name + '】 host:【' + host + '】</h4></dl>' +
+            '<div  class="too_halving_div"  style="background-color:' + _$cssGetThemeColoRGBA(0.7) + ';margin-top: 5px"></div>';
         var $dl = $(dl);
         $dl.data("groupId", id);
         return $dl;
