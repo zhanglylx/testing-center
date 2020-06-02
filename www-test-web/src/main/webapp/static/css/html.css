@@ -29,5 +29,13 @@ button:hover {
 .notice_for_use_deepen {
     font-weight: bolder;
     /*下划线*/
-    text-decoration: underline ;
+    text-decoration: underline;
+}
+
+input[type="text"] {
+    padding-left: 2px;
+}
+
+input[type="text"]:focus {
+    outline: var(--theme-colors) 1px solid;
 }
