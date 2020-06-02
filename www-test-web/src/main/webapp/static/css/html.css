@@ -32,10 +32,12 @@ button:hover {
     text-decoration: underline;
 }
 
+/*加入input text左内边距距离*/
 input[type="text"] {
     padding-left: 2px;
 }
 
+/*加入input text焦点时的样式*/
 input[type="text"]:focus {
     outline: var(--theme-colors) 1px solid;
 }
