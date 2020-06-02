@@ -81,7 +81,7 @@ public class URLEnvironment {
     }
 
     public static String contextSwitchingZwscad(String path, Integer environment) {
-        return contextSwitchingProperties(path, environment, "zwscad_qa", "zwscad_online");
+        return contextSwitchingProperties("zwscad_qa", path, environment);
     }
 
     private static String contextSwitchingProperties(String qaName, String path, Integer environment) {

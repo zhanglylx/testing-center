@@ -57,7 +57,6 @@
         <prop key="cxb_webapp_Online_Host">http://web-cx-qa.ikanshu.cn</prop>
         <prop key="readbook">http://readbook-service-freebook-qa.cread.com</prop>
         <prop key="zwscad_qa">http://zwscad-qa.cread.com</prop>
-        <prop key="zwscad_online">http://zwscad-qa.cread.com</prop>
     </util:properties>
 
 
