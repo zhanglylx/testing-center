@@ -19,6 +19,10 @@
     <bean id="logPathFile" class="java.io.File">
         <constructor-arg index="0" type="java.lang.String" value="E:\server-testng\target\surefire-reports\html"/>
     </bean>
+
+    <bean id="fileLogZip" class="java.io.File">
+        <constructor-arg index="0" type="java.lang.String" value="testing-center\test-auto\fileLogZip.zip"/>
+    </bean>
 </beans>
 
 

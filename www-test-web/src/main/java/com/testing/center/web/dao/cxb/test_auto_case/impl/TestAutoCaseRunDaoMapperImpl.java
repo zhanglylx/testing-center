@@ -30,7 +30,8 @@ public class TestAutoCaseRunDaoMapperImpl implements TestAutoCaseRunDaoMapper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestAutoCaseRunDaoMapperImpl.class);
 
-    private File fileLogZip = new File("testing_center.zip");
+    @Autowired
+    private File fileLogZip;
 
     @Override
     public void execute(String testCaseName, List<String> log) throws IOException, InterruptedException {
@@ -46,7 +47,6 @@ public class TestAutoCaseRunDaoMapperImpl implements TestAutoCaseRunDaoMapper {
 
     @Override
     public boolean sendMailLog(String title, String content) {
-
         if (!logPathFile.exists()) throw new RuntimeException("没有log");
         if (!ZipUtils.toZip(logPathFile, fileLogZip, true)) {
             if (fileLogZip.exists()) {
