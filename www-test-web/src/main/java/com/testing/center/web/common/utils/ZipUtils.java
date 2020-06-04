@@ -26,7 +26,7 @@ public class ZipUtils {
      * 压缩成ZIP 方法1
      *
      * @param srcDir           压缩文件夹路径
-     * @param outSrc              压缩文件输出流
+     * @param outSrc           压缩文件输出流
      * @param KeepDirStructure 是否保留原来的目录结构,true:保留目录结构;
      *                         <p>
      *                         <p>
@@ -37,9 +37,17 @@ public class ZipUtils {
      */
     public static boolean toZip(File srcDir, File outSrc, boolean KeepDirStructure)
             throws RuntimeException {
-        if(srcDir==null)throw new NullPointerException("srcDir");
-        if(outSrc==null)throw new NullPointerException("outSrc");
-        if(!outSrc.getName().toLowerCase().endsWith(".zip"))outSrc=new File(outSrc.getPath()+".zip");
+        if (srcDir == null) throw new NullPointerException("srcDir");
+        if (outSrc == null) throw new NullPointerException("outSrc");
+        if (!outSrc.getName().toLowerCase().endsWith(".zip")) outSrc = new File(outSrc.getPath() + ".zip");
+        if (!srcDir.exists()) {
+            throw new RuntimeException("文件路径不存在:" + srcDir);
+        }
+        if (!outSrc.getParentFile().exists()) {
+            if (!outSrc.getParentFile().mkdirs()) {
+                throw new RuntimeException("创建文件目录失败:" + outSrc.getParentFile());
+            }
+        }
         long start = System.currentTimeMillis();
         ZipOutputStream zos = null;
         FileOutputStream fos = null;
@@ -67,17 +75,17 @@ public class ZipUtils {
      */
     public static void toZip(List<File> srcFiles, File outSrc) throws RuntimeException {
         long start = System.currentTimeMillis();
-        if(srcFiles==null)throw new NullPointerException("srcFiles");
-        if(!outSrc.getName().toLowerCase().endsWith(".zip"))outSrc=new File(outSrc.getPath()+".zip");
+        if (srcFiles == null) throw new NullPointerException("srcFiles");
+        if (!outSrc.getName().toLowerCase().endsWith(".zip")) outSrc = new File(outSrc.getPath() + ".zip");
         ZipOutputStream zos = null;
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(outSrc);
             zos = new ZipOutputStream(fos);
             for (File srcFile : srcFiles) {
-                System.out.println("开始压缩文件:"+ srcFile.getName());
+                System.out.println("开始压缩文件:" + srcFile.getName());
                 zipOutWrite(zos, srcFile, srcFile.getName());
-                System.out.println("文件压缩完成:"+ srcFile.getName());
+                System.out.println("文件压缩完成:" + srcFile.getName());
             }
             long end = System.currentTimeMillis();
             System.out.println("压缩完成，耗时：" + (end - start) + " ms");
