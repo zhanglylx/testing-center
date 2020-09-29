@@ -4,8 +4,8 @@ package com.testing.center.web.common.cache;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.testing.center.web.common.utils.cdn.Compressor;
-import org.apache.commons.lang.StringUtils;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.Jedis;
