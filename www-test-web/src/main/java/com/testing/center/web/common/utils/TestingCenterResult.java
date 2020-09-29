@@ -39,15 +39,15 @@ public class TestingCenterResult<T> {
     }
 
     /**
-     * 通用错误
+     * 设置成功
      *
      * @param msg
      * @return
      */
-    public TestingCenterResult<T> setSuccess(String msg, T t) {
+    public TestingCenterResult<T> setSuccess(String msg, T data) {
         this.setMsg(msg);
         this.setStatus(0);
-        this.setData(t);
+        this.setData(data);
         return this;
     }
 
