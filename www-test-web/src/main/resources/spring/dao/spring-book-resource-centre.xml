@@ -23,6 +23,7 @@
     <util:map id="book_resource_centre">
         <entry key="bookAddChannel"
                value="http://book-admin-freebook-qa.cread.com/book/professionalBook/add"/>
+        <entry key="getBookByBookListId" value="http://book-center-freebook-qa.cread.com/book/getBookByBookListId"/>
     </util:map>
 </beans>
 

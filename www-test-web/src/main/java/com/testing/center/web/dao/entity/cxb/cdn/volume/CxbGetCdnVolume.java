@@ -3,7 +3,6 @@ package com.testing.center.web.dao.entity.cxb.cdn.volume;
 import com.testing.center.web.dao.entity.ServerBean;
 
 public class CxbGetCdnVolume extends ServerBean {
-    private Long date;
     private Integer error_code;
     private String error_msg;
     private CxbGetCdnVolumeData data;
@@ -11,7 +10,6 @@ public class CxbGetCdnVolume extends ServerBean {
     @Override
     public String toString() {
         return "Volume{" +
-                "date=" + date +
                 ", error_code=" + error_code +
                 ", error_msg='" + error_msg + '\'' +
                 ", data=" + data +
@@ -24,14 +22,6 @@ public class CxbGetCdnVolume extends ServerBean {
 
     public void setError_msg(String error_msg) {
         this.error_msg = error_msg;
-    }
-
-    public Long getDate() {
-        return date;
-    }
-
-    public void setDate(Long date) {
-        this.date = date;
     }
 
     public Integer getError_code() {

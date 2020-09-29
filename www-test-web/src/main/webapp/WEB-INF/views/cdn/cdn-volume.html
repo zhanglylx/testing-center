@@ -1,9 +1,6 @@
 <body>
 <div class="cxb_cdn_form_div">
     <div class="public-cxb-input-environment-cdn"></div>
-    <div class="cxb_form_div_form_subimt_div">
-        <button id="cxb_form_div_form_subimt_button">查询</button>
-    </div>
     <h3>cxb接口:</h3>
     <div class="CXB_PATH_URL_GETVOLUME_div">
 
@@ -20,7 +17,6 @@
         $(function () {
             _Psubmit(function () {
                     var dataParameters = _PgetShowParameterData();
-                    console.info(dataParameters);
                     if (dataParameters === false) return;
                     _$empty(".CXB_PATH_URL_GETVOLUME_div");
                     _$empty(".CXB_PATH_URL_GETCDNVOLUME_div");
@@ -30,10 +26,7 @@
                         dataParameters,
                         function (response) {
                             _$analysisJsonSuccessResponse(response, function (data) {
-                                console.log(data)
                                 $(".CXB_PATH_URL_GETVOLUME_div").append(_jFormatJsonProcess(data));
-                                console.log(data)
-                                console.log(data.data)
                                 getCdnVolume(data.data, dataParameters.environment);
                             });
                         }, null, $(".public_cxb_parameter_div_table_tr_submit"))

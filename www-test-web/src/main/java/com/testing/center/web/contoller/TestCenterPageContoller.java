@@ -39,6 +39,11 @@ public class TestCenterPageContoller {
         return "book_resource_centre/add-channel-books";
     }
 
+    @RequestMapping("bookResourceCentre/bookManagement/searchBookCenter")
+    public String getSearchBookCenter() {
+        return "book_resource_centre/search-book-center";
+    }
+
     @RequestMapping("testAuto/testAuto")
     public String getTestAuto() {
         return "test_auto/test-auto";

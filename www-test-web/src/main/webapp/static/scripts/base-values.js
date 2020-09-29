@@ -27,6 +27,7 @@ const CXB_PATH_URL_GETVOLUME = "volume/getCxbVolume";
 const CXB_PATH_URL_GETCDNVOLUME = "volume/getCdnVolume";
 const CXB_PATH_URL_AD_LUA_FUNNEL = "ad/adLuaFunnel";
 const CXB_PATH_URL_OTHER_BUSINESS_LIFT = "other/businessLift";
+const CXB_PATH_URL_BOOKCENTER_SEARCH_BOOK = "bookResourceCentre/bookManagement/searchBook";
 //自动化测试path
 const CXB_PATH_URL_TEST_AUTO_GROUP_FINDALL = "testAuto/groupFindAll";
 const CXB_PATH_URL_TEST_AUTO_LIST_FINDBYGROUPID = "testAuto/list/findByGroupId";
